@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "airlinebooking-314e9": {
+      "hosting": {
+        "airline-booking": [
+          "airlinebooking-314e9"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "airlinebooking-314e9"
+  }
+}
