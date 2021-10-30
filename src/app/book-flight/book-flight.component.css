@@ -1,0 +1,46 @@
+.bookflight {
+    width: 700px;
+    margin: 0 auto;
+    margin-top:5%;
+}
+
+.title {
+    text-align: center;
+}
+
+.field {
+    width: 324px;
+    margin-top: 2%;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.airline-field {
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    display: grid;
+    border-radius: 15px;
+}
+
+mat-select {
+    font-size: 20px;
+}
+
+mat-label {
+    font-size: 20px;
+}
+
+input {
+    font-size: 20px;
+}
+
+.search {
+    height: 50px;
+    font-size: 20px;
+    margin-top: 2%;
+    margin-left: 75%;
+    width: 25%;
+}

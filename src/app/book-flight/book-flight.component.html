@@ -1,1 +1,78 @@
-<p>book-flight works!</p>
+<mat-card class="bookflight">
+    <mat-card-title class="title">Flight Booking</mat-card-title>
+    <mat-card-content>
+        <form class="flight-form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="airline-field">
+                <mat-label>
+                    <mat-icon>flight</mat-icon>
+                    Airline
+                </mat-label>
+                <mat-select formControlName="airLine" [(value)]="selectedAir" >
+                    <mat-option *ngFor="let airline of airlines" [value]="airline.value">
+                        {{airline.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="airLine.errors?.required">Please choose an airline.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field">
+                <mat-label>
+                    <mat-icon>flight_takeoff</mat-icon> 
+                    Origin
+                </mat-label>
+                <mat-select formControlName="orig" [(value)]="selectedOri">
+                    <mat-option *ngFor="let origin of destinations" [value]="origin.value">
+                        {{origin.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="orig.errors?.required">Please select origin.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field">
+                <mat-label>
+                    <mat-icon>flight_land</mat-icon> 
+                    Destination
+                </mat-label>                              
+                <mat-select formControlName="dest" [(value)]="selectedDes">
+                    <mat-option *ngFor="let destination of destinations" [value]="destination.value">
+                        {{destination.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="dest.errors?.required">Please select destination.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field">
+                <mat-label>
+                    <mat-icon>route</mat-icon>
+                    Select trip
+                </mat-label>
+                <mat-select formControlName="trip" [(value)]="selectedTrip">
+                    <mat-option value="trip1">One-Way Trip</mat-option>
+                    <mat-option value="trip2">Round Trip</mat-option>
+                </mat-select>
+                <mat-error *ngIf="trip.errors?.required">Please select a trip.</mat-error>
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field class="field" *ngIf="selectedTrip == 'trip1' || selectedTrip == 'trip2'">
+                <label for="depDate">Departure Date</label>
+                <input matInput
+                    type="Date"
+                    formControlName="depDate"
+                    >
+                <mat-error *ngIf="depDate.errors?.required">Please select departure date.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field" *ngIf="selectedTrip == 'trip2'">
+                <label for="retDate">Return Date</label>
+                <input matInput
+                    type="Date"
+                    formControlName="retDate"
+                    >
+            </mat-form-field>
+            
+            <button mat-raised-button color="primary" class="search" [disabled]="!bookForm.valid">Search Flight</button>
+        </form>
+    </mat-card-content>
+</mat-card>
