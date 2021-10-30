@@ -1,3 +1,4 @@
+import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -37,6 +38,11 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreModule,
+} from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 import { HomeComponent } from './home/home.component';
 import { FlightListComponent } from './flight-list/flight-list.component';
 import { BookFlightComponent } from './book-flight/book-flight.component';
@@ -47,6 +53,7 @@ import { LogoutComponent } from './logout/logout.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    CreateFlightComponent,
     FlightListComponent,
     BookFlightComponent,
     LoginComponent,
@@ -80,11 +87,10 @@ import { LogoutComponent } from './logout/logout.component';
     MatProgressBarModule,
     FormsModule,
     ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

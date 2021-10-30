@@ -1,15 +1,30 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/flights.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
+interface Flight {
+  $key: string;
+  destination: string;
+  origin: string;
+  depTime: any;
+  arrTime: any;
+  type: string;
+  flightCode: string;
+  flightPrice: number;
+  airline: string;
+}
 
 @Component({
   selector: 'app-create-flight',
   templateUrl: './create-flight.component.html',
   styleUrls: ['./create-flight.component.css']
 })
+
 export class CreateFlightComponent implements OnInit {
 
-  createFlight = this.fb.group ({
+  form = this.fb.group ({
+    $key: [''],
     destination: ['', Validators.required],
     origin: ['', Validators.required],
     depTime: ['', Validators.required],
@@ -26,7 +41,8 @@ export class CreateFlightComponent implements OnInit {
   }
 
   onSubmit () {
-    const flight = {
+    const payload: Flight = {
+      $key: '',
       destination: this.info.destination.value,
       origin: this.info.origin.value,
       depTime: this.info.depTime.value,
@@ -36,9 +52,11 @@ export class CreateFlightComponent implements OnInit {
       flightPrice: this.info.flightPrice.value,
       airline: this.info.airline.value,
     }
+
+    this.flights.addFlight(payload);
   }
 
   get info () {
-    return this.createFlight.controls;
+    return this.form.controls;
   }
 }

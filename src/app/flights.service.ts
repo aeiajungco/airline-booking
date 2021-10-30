@@ -1,34 +1,35 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+
+interface Flight {
+  $key: string;
+  destination: string;
+  origin: string;
+  depTime: any;
+  arrTime: any;
+  type: string;
+  flightCode: string;
+  flightPrice: number;
+  airline: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 
-class FlightInfo {
-  destination!: string;
-  origin!: string;
-  depTime: any;
-  arrTime: any;
-  type!: string;
-  flightCode!: string;
-  flightPrice!: number;
-  airline!: string;
-}
-
 export class FlightsService {
+  private flightsCollection: AngularFirestoreCollection<Flight>;
+  flight$!: Observable<Flight[]>;
 
-  flightList: FlightInfo [] = [
-    {
-      destination: 'Ozamiz',
-      origin: 'Cebu',
-      depTime: '9:00 AM',
-      arrTime: '10:15 AM',
-      type: 'Economy',
-      flightCode: 'OZC',
-      flightPrice: 1987,
-      airline: 'Cebu Pacific',
-    }
-  ]
+  constructor(private afs: AngularFirestore) {
+    this.flightsCollection = this.afs.collection<Flight>('flights')
+    this.flight$ = this.flightsCollection.valueChanges();
+  }
 
-  constructor() { }
+  addFlight (flight: Flight) {
+    const pushkey = this.afs.createId();
+    flight.$key = pushkey;
+    this.flightsCollection.doc(pushkey).set(flight);
+  }
 }

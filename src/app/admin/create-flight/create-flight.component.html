@@ -1,6 +1,6 @@
 <mat-card class="createFlight">
   <mat-card-content>
-    <form (ngSubmit)="onSubmit()" [formGroup]="createFlight">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
       <div class="form-group">
         <mat-label>Destination</mat-label>
         <mat-form-field>
@@ -26,7 +26,7 @@
           <mat-label>Departure Time</mat-label>
             <input
             matInput
-            type="text"
+            type="time"
             formControlName="depTime"
             required
             />
@@ -36,7 +36,7 @@
           <mat-label>Arrival Time</mat-label>
             <input
             matInput
-            type="text"
+            type="time"
             formControlName="arrTime"
             required
             />
@@ -83,7 +83,7 @@
         </mat-form-field>
         
       </div>
-      <button type="submit" class="btn btn-secondary" [disabled]="!createFlight.valid">
+      <button type="submit" class="btn btn-secondary" [disabled]="!form.valid">
         ENTER
       </button>
     </form>
