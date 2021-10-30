@@ -1,3 +1,4 @@
+import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateFlightComponent implements OnInit {
 
-  constructor() { }
+  form = this.fb.group ({
+    
+  }
+  )
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }

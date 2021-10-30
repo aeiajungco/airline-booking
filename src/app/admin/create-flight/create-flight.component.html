@@ -1,1 +1,80 @@
-<p>create-flight works!</p>
+<mat-card>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class="form-group">
+        <mat-form-field>
+          <input
+          matInput
+          type="text"
+          formControlName="destination"
+          placeholder="Destination"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input
+            matInput
+            type="text"
+            formControlName="origin"
+            placeholder="Origin"
+            />
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input
+            matInput
+            type="text"
+            formControlName="depTime"
+            placeholder="Departure Time"
+            />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input
+            matInput
+            type="text"
+            formControlName="arrTime"
+            placeholder="Arrival Time"
+            />
+        </mat-form-field>
+          
+        <mat-form-field>
+            <input
+            matInput
+            type="text"
+            formControlName="type"
+            placeholder="Type"
+            />
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input
+            matInput
+            type="text"
+            formControlName="flightCode"
+            placeholder="Flight Code"
+            />
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input
+            matInput
+            type="number"
+            formControlName="flightPrice"
+            placeholder="Flight Price"
+            />
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input
+            matInput
+            type="text"
+            formControlName="airline"
+            placeholder="Airline"
+            />
+        </mat-form-field>
+        
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
