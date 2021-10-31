@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import { FlightsService } from '../services/flights.service';
 
 interface Destination {
   value: string;
@@ -24,6 +25,7 @@ export class BookFlightComponent implements OnInit {
   selectedOri = "";
   selectedAir = "";
   selectedTrip ="";
+  flightList: any = [];
 
   bookForm = this.fb.group ({
     airLine: ['', Validators.required],
@@ -34,7 +36,7 @@ export class BookFlightComponent implements OnInit {
     retDate: [''],
   });
 
-  constructor(private fb: FormBuilder) { } 
+  constructor(private fb: FormBuilder, private flight: FlightsService) { } 
 
   destinations: Destination [] = [
     {value: 'cdo-0', viewValue: 'Cagayan De Oro'},
@@ -64,16 +66,7 @@ export class BookFlightComponent implements OnInit {
   }
 
   onSubmit() {
-    const flightRec = {
-      airLine: this.bf.airLine.value,
-      orig: this.bf.orig.value,
-      dest: this.bf.dest.value,
-      trip: this.bf.trip.value,
-      depDate: this.bf.depDate.value,
-      retDate: this.bf.retDate.value,
-    };
-
-    
+    this.flightList = this.flight.getFlights();
   }
 
   get airLine() {

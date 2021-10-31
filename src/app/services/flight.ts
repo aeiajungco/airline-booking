@@ -1,4 +1,4 @@
-interface Flight {
+export interface Flight {
     $key: string;
     destination: string;
     origin: string;
