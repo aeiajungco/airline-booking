@@ -1,7 +1,6 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FlightsService } from 'src/app/flights.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FlightsService } from 'src/app/services/flights.service';
 
 interface Flight {
   $key: string;
@@ -13,6 +12,7 @@ interface Flight {
   flightCode: string;
   flightPrice: number;
   airline: string;
+  status: string;
 }
 
 @Component({
@@ -51,9 +51,11 @@ export class CreateFlightComponent implements OnInit {
       flightCode: this.info.flightCode.value,
       flightPrice: this.info.flightPrice.value,
       airline: this.info.airline.value,
+      status: 'Available',
     }
 
     this.flights.addFlight(payload);
+    this.form.reset();
   }
 
   get info () {

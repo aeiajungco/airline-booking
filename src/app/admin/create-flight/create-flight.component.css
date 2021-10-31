@@ -1,0 +1,15 @@
+.createFlight {
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+mat-form-field {
+    padding: 10px;
+}
+
+button {
+    background-color: blue;
+    width: 400px;
+}

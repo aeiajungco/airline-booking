@@ -12,6 +12,7 @@ interface Flight {
   flightCode: string;
   flightPrice: number;
   airline: string;
+  status: string;
 }
 
 @Injectable({
@@ -31,5 +32,9 @@ export class FlightsService {
     const pushkey = this.afs.createId();
     flight.$key = pushkey;
     this.flightsCollection.doc(pushkey).set(flight);
+  }
+
+  getFlights () {
+    return this.flight$;
   }
 }
