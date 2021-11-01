@@ -35,10 +35,6 @@ const routes: Routes = [
     component: UserHomeComponent,
     children: [
       {
-        path: '',
-        component: UserHomeComponent,
-      },
-      {
         path: 'book',
         component: BookFlightComponent,
       },

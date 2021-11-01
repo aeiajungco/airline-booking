@@ -11,6 +11,7 @@ interface User {
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   private userCollection: AngularFirestoreCollection<User>;
   user$!: Observable<User[]>;

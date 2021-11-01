@@ -1,4 +1,3 @@
-import { UserHomeComponent } from './user/user-home/user-home.component';
 import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -49,6 +48,7 @@ import { BookFlightComponent } from './book-flight/book-flight.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { LoginComponent } from './login/login.component';
+import { UserHomeComponent } from './user/user-home/user-home.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +59,7 @@ import { LoginComponent } from './login/login.component';
     LoginComponent,
     LogoutComponent,
     AdminHomeComponent,
-    UserHomeComponent,
-    LoginComponent
+    UserHomeComponent
   ],
   imports: [
     BrowserModule,
