@@ -21,7 +21,7 @@
                     Origin
                 </mat-label>
                 <mat-select formControlName="orig" [(value)]="selectedOri">
-                    <mat-option *ngFor="let origin of destinations" [value]="origin.value">
+                    <mat-option *ngFor="let origin of locations" [value]="origin.value">
                         {{origin.viewValue}}
                     </mat-option>
                 </mat-select>
@@ -34,7 +34,7 @@
                     Destination
                 </mat-label>                              
                 <mat-select formControlName="dest" [(value)]="selectedDes">
-                    <mat-option *ngFor="let destination of destinations" [value]="destination.value">
+                    <mat-option *ngFor="let destination of locations" [value]="destination.value">
                         {{destination.viewValue}}
                     </mat-option>
                 </mat-select>
@@ -76,3 +76,5 @@
         </form>
     </mat-card-content>
 </mat-card>
+
+<app-flight-list *ngIf="matched >= 1"></app-flight-list>

@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, SimpleChange} from '@angular/core';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { FlightsService } from '../services/flights.service';
+import { OrigDestAirService } from '../services/orig-dest-air.service';
 
 interface Destination {
   value: string;
@@ -18,14 +19,15 @@ interface Airline {
   styleUrls: ['./book-flight.component.css']
 })
 export class BookFlightComponent implements OnInit {
-
-  @Output() submitted = new EventEmitter<boolean>();
   
   selectedDes = "";
   selectedOri = "";
   selectedAir = "";
   selectedTrip ="";
-  flightList: any = [];
+  flightList$: any = [];
+  submitted: boolean = false;
+  matched: number = 0;
+
 
   bookForm = this.fb.group ({
     airLine: ['', Validators.required],
@@ -36,37 +38,29 @@ export class BookFlightComponent implements OnInit {
     retDate: [''],
   });
 
-  constructor(private fb: FormBuilder, private flight: FlightsService) { } 
+  public locations: any = [];
+  public airlines: any = [];
 
-  destinations: Destination [] = [
-    {value: 'cdo-0', viewValue: 'Cagayan De Oro'},
-    {value: 'cam-1', viewValue: 'Camiguin'},
-    {value: 'ceb-2', viewValue: 'Cebu'},
-    {value: 'dav-3', viewValue: 'Davao'},
-    {value: 'gensan-4', viewValue: 'General Santos'},
-    {value: 'kal-5', viewValue: 'Kalibo'},
-    {value: 'metman-6', viewValue: 'Metro Manila'},
-    {value: 'oza-7', viewValue: 'Ozamiz'},
-    {value: 'pagad-8', viewValue: 'Pagadian'},
-    {value: 'puerto-9', viewValue: 'Puerto Princesa'},
-    {value: 'siar-10', viewValue: 'Siargao'},    
-  ];
-  
-  airlines: Airline [] = [
-    {value: 'swift-0', viewValue: 'Air Swift'},
-    {value: 'go-1', viewValue: 'Cebgo'},
-    {value: 'pacific-2', viewValue: 'Cebu Pacific'},
-    {value: 'asia-3', viewValue: 'Philippines AirAsia'},
-    {value: 'airlines-4', viewValue: 'Philippine Airlines'},   
-    {value: 'jet-5', viewValue: 'SkyJet Airlines Philippines'},
-    {value: 'pasada-6', viewValue: 'Sky Pasada'},
-  ];
+  constructor(private fb: FormBuilder, private flight: FlightsService, private loc: OrigDestAirService, private air: OrigDestAirService) { } 
 
   ngOnInit(): void {
+    this.flight.getFlights().subscribe((val) => {
+      this.flightList$ = val;
+    });
+
+    this.locations = this.loc.getLocations();
+    this.airlines = this.air.getAirLine();
   }
 
   onSubmit() {
-    this.flightList = this.flight.getFlights();
+    this.submitted = true;
+    this.matched = 0;
+    for (let val of this.flightList$) {
+      if (val.airline == this.bookForm.value.airLine && val.origin == this.bookForm.value.orig && val.destination == this.bookForm.value.dest)
+        this.matched++;
+    }
+    if (this.matched == 0)
+      this.matched = 0;
   }
 
   get airLine() {
@@ -93,7 +87,4 @@ export class BookFlightComponent implements OnInit {
     return this.bookForm.controls['retDate'];
   }
 
-  get bf() {
-    return this.bookForm.controls;
-  }
 }
