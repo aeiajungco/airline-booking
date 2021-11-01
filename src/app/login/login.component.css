@@ -1,0 +1,21 @@
+.login {
+    margin: 0 auto;
+    width: 500px;
+    text-align: center;
+    border: solid .5px;
+}
+
+form {
+    margin-top: 10px;
+}
+
+mat-form-field {
+    padding: 10px;
+}
+
+button {
+    background-color: rgba(211, 211, 211, 0.151);
+    border: solid .5px;
+    width: 150px;
+    margin: 10px;
+}

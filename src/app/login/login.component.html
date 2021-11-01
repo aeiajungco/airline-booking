@@ -1,1 +1,25 @@
-<p>login works!</p>
+<mat-card *ngIf="!isLoggedIn">
+  <mat-card-content class="login">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <button type="submit" (click)="setAdmin()">ADMIN</button>
+      <button type="submit" (click)="setUser()">USER</button>
+      <br>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" required />
+        <!-- <mat-error *ngIf=""></mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" required />
+        <!-- <mat-error *ngIf=""></mat-error> -->
+      </mat-form-field>
+
+      <button *ngIf="isAdmin" type="submit" class="btn btn-secondary" (click)="login()" routerLink="admin-home" routerLinkActive="router-link-active" >LOGIN</button>
+      <button *ngIf="isUser" type="submit" class="btn btn-secondary" (click)="login()" routerLink="user-home" routerLinkActive="router-link-active" >LOGIN</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<router-outlet *ngIf="isLoggedIn"></router-outlet>

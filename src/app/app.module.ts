@@ -1,3 +1,4 @@
+import { UserHomeComponent } from './user/user-home/user-home.component';
 import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -52,13 +53,13 @@ import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    // HomeComponent,
     CreateFlightComponent,
     FlightListComponent,
     BookFlightComponent,
-    // LoginComponent,
+    LoginComponent,
     LogoutComponent,
     AdminHomeComponent,
+    UserHomeComponent,
     LoginComponent
   ],
   imports: [

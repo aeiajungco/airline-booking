@@ -1,9 +1,11 @@
-import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
-import { BookFlightComponent } from './book-flight/book-flight.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
 import { AppComponent } from './app.component';
+import { BookFlightComponent } from './book-flight/book-flight.component';
+import { LogoutComponent } from './logout/logout.component';
+import { UserHomeComponent } from './user/user-home/user-home.component';
 
 const routes: Routes = [
   {
@@ -11,17 +13,45 @@ const routes: Routes = [
     component: AppComponent,
   },
   {
-    path: 'book',
-    component: BookFlightComponent,
+    path: 'admin-home',
+    component: AdminHomeComponent,
+    children: [
+      {
+        path: 'book',
+        component: BookFlightComponent,
+      },
+      {
+        path: 'create',
+        component: CreateFlightComponent,
+      },
+      {
+        path: 'logout',
+        component: AppComponent,
+      },
+    ],
   },
   {
-    path: 'create',
-    component: CreateFlightComponent
-  }
+    path: 'user-home',
+    component: UserHomeComponent,
+    children: [
+      {
+        path: '',
+        component: UserHomeComponent,
+      },
+      {
+        path: 'book',
+        component: BookFlightComponent,
+      },
+      {
+        path: 'logout',
+        component: AppComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

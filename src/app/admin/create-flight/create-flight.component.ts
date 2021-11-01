@@ -50,7 +50,7 @@ export class CreateFlightComponent implements OnInit {
   }
 
   onSubmit () {
-    const payload: Flight = {
+    const flightInfo: Flight = {
       $key: '',
       destination: this.info.destination.value,
       origin: this.info.origin.value,
@@ -64,7 +64,7 @@ export class CreateFlightComponent implements OnInit {
       status: 'Available',
     }
 
-    this.flights.addFlight(payload);
+    this.flights.addFlight(flightInfo);
     this.form.reset();
   }
 
