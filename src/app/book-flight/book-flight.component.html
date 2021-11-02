@@ -7,12 +7,12 @@
                     <mat-icon>flight</mat-icon>
                     Airline
                 </mat-label>
-                <mat-select formControlName="airLine" [(value)]="selectedAir" >
+                <mat-select formControlName="airLine" [(value)]="selectedAir">
                     <mat-option *ngFor="let airline of airlines" [value]="airline.value">
                         {{airline.viewValue}}
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="airLine.errors?.required">Please choose an airline.</mat-error>
+                <mat-error *ngIf="bf.airLine.errors?.required">Please choose an airline.</mat-error>
             </mat-form-field>
 
             <mat-form-field class="field">
@@ -25,7 +25,7 @@
                         {{origin.viewValue}}
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="orig.errors?.required">Please select origin.</mat-error>
+                <mat-error *ngIf="bf.orig.errors?.required">Please select origin.</mat-error>
             </mat-form-field>
 
             <mat-form-field class="field">
@@ -38,7 +38,7 @@
                         {{destination.viewValue}}
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="dest.errors?.required">Please select destination.</mat-error>
+                <mat-error *ngIf="bf.dest.errors?.required">Please select destination.</mat-error>
             </mat-form-field>
 
             <mat-form-field class="field">
@@ -50,7 +50,7 @@
                     <mat-option value="trip1">One-Way Trip</mat-option>
                     <mat-option value="trip2">Round Trip</mat-option>
                 </mat-select>
-                <mat-error *ngIf="trip.errors?.required">Please select a trip.</mat-error>
+                <mat-error *ngIf="bf.trip.errors?.required">Please select a trip.</mat-error>
             </mat-form-field>
 
             <br>
@@ -61,7 +61,7 @@
                     type="Date"
                     formControlName="depDate"
                     >
-                <mat-error *ngIf="depDate.errors?.required">Please select departure date.</mat-error>
+                <mat-error *ngIf="bf.depDate.errors?.required">Please select departure date.</mat-error>
             </mat-form-field>
 
             <mat-form-field class="field" *ngIf="selectedTrip == 'trip2'">
@@ -77,4 +77,5 @@
     </mat-card-content>
 </mat-card>
 
-<app-flight-list *ngIf="matched >= 1"></app-flight-list>
+<app-matching-flight-list *ngIf="matched >= 1" [matchingList]="matchingList"></app-matching-flight-list>
+

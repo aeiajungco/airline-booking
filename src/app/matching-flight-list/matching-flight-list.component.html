@@ -1,41 +1,41 @@
-<div class="container" *ngFor="let flight of flights$">
+<div class="container" *ngFor="let matched of matchingList">
     <mat-card>        
             <mat-card-content>
                 <table>
                     <tr>
                         <td>
                             <label for="fCode">Flight Code</label>
-                            <p>{{flight.flightCode}}</p>
+                            <p>{{matched.flightCode}}</p>
                         </td>
                         <td>
                             <label for="dest">Origin</label>
-                            <p>{{flight.origin}}</p>
+                            <p>{{matched.origin}}</p>
                         </td>
                         <td>
                             <label for="dest">Destination</label>
-                            <p>{{flight.destination}}</p>
+                            <p>{{matched.destination}}</p>
                         </td>
                         <td>
                             <label for="depTime">Departure Time</label>
-                            <p>{{flight.depTime}}</p>
+                            <p>{{matched.depTime}}</p>
                         </td>
                         <td>
                             <label for="arrTime">Arrival Time</label>
-                            <p>{{flight.arrTime}}</p>
+                            <p>{{matched.arrTime}}</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="type">Type</label>
-                            <p>{{flight.type}}</p>
+                            <p>{{matched.type}}</p>
                         </td>
                         <td>
                             <label for="fPrice">Flight Price</label>
-                            <p>{{flight.flightPrice}}</p>
+                            <p>{{matched.flightPrice}}</p>
                         </td>
                         <td>
                             <label for="airLine">Airline</label>
-                            <p>{{flight.airline}}</p>
+                            <p>{{matched.airline}}</p>
                         </td>
                     </tr>
                 </table>

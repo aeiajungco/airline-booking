@@ -48,6 +48,7 @@ import { FlightListComponent } from './flight-list/flight-list.component';
 import { BookFlightComponent } from './book-flight/book-flight.component';
 import { LoginComponent } from './home/login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { MatchingFlightListComponent } from './matching-flight-list/matching-flight-list.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { LogoutComponent } from './logout/logout.component';
     FlightListComponent,
     BookFlightComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    MatchingFlightListComponent
   ],
   imports: [
     BrowserModule,

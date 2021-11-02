@@ -1,17 +1,7 @@
-import { Component, OnInit, SimpleChange} from '@angular/core';
-import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import { Component, OnInit, Output,EventEmitter, SimpleChange} from '@angular/core';
+import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
-
-interface Destination {
-  value: string;
-  viewValue: string;
-}
-
-interface Airline {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-book-flight',
@@ -25,6 +15,7 @@ export class BookFlightComponent implements OnInit {
   selectedAir = "";
   selectedTrip ="";
   flightList$: any = [];
+  matchingList: any = [];
   submitted: boolean = false;
   matched: number = 0;
 
@@ -40,51 +31,39 @@ export class BookFlightComponent implements OnInit {
 
   public locations: any = [];
   public airlines: any = [];
+  //@Output() matchedList = new EventEmitter<any>();
 
-  constructor(private fb: FormBuilder, private flight: FlightsService, private loc: OrigDestAirService, private air: OrigDestAirService) { } 
+  constructor(private fb: FormBuilder, private flight: FlightsService, private locair: OrigDestAirService) { } 
+
 
   ngOnInit(): void {
     this.flight.getFlights().subscribe((val) => {
       this.flightList$ = val;
     });
 
-    this.locations = this.loc.getLocations();
-    this.airlines = this.air.getAirLine();
+    this.locations = this.locair.getLocations();
+    this.airlines = this.locair.getAirLine();
   }
 
   onSubmit() {
+    //this.matchedList.emit(this.matchingList);
     this.submitted = true;
     this.matched = 0;
+    this.matchingList.length = 0;
+
     for (let val of this.flightList$) {
-      if (val.airline == this.bookForm.value.airLine && val.origin == this.bookForm.value.orig && val.destination == this.bookForm.value.dest)
+      if (val.airline == this.selectedAir && val.origin == this.selectedOri && val.destination == this.selectedDes) {
+        this.matchingList.push(val);
         this.matched++;
+      }
     }
-    if (this.matched == 0)
+    if (this.matched == 0) {
       this.matched = 0;
+      this.matchingList.length = 0;
+    }
   }
 
-  get airLine() {
-    return this.bookForm.controls['airLine'];
+  get bf() {
+    return this.bookForm.controls;
   }
-
-  get orig() {
-    return this.bookForm.controls['orig'];
-  }
-
-  get dest() {
-    return this.bookForm.controls['dest'];
-  }
-
-  get trip() {
-    return this.bookForm.controls['trip'];
-  }
-
-  get depDate() {
-    return this.bookForm.controls['depDate'];
-  }
-
-  get retDate() {
-    return this.bookForm.controls['retDate'];
-  }
-
 }
