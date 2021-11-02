@@ -59,7 +59,7 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
     BookFlightComponent,
     LoginComponent,
     LogoutComponent,
-    MatchingFlightListComponent
+    MatchingFlightListComponent,
     AdminHomeComponent,
     UserHomeComponent
   ],
