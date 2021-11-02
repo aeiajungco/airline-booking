@@ -34,4 +34,17 @@ export class OrigDestAirService {
       {value: 'Sky Pasada', viewValue: 'Sky Pasada'},
     ];
   }
+
+  getAirLineFilter() {
+    return [
+      {value: 'All', viewValue: 'All'},
+      {value: 'Air Swift', viewValue: 'Air Swift'},
+      {value: 'Cebgo', viewValue: 'Cebgo'},
+      {value: 'Cebu Pacific', viewValue: 'Cebu Pacific'},
+      {value: 'Philippines AirAsia', viewValue: 'Philippines AirAsia'},
+      {value: 'Philippine Airlines', viewValue: 'Philippine Airlines'},   
+      {value: 'SkyJet Airlines Philippines', viewValue: 'SkyJet Airlines Philippines'},
+      {value: 'Sky Pasada', viewValue: 'Sky Pasada'},
+    ];
+  }
 }

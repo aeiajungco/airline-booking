@@ -1,4 +1,13 @@
-<div class="container" *ngFor="let flight of flights$">
+<div class="filter-bar">
+    <mat-form-field>
+        <mat-select [(value)]="filterChoice" placeholder="Choose an Airline" (valueChange)="onChange()"> 
+            <mat-option *ngFor="let airLines of airlines" [value]="airLines.value">
+                {{airLines.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="container" *ngFor="let flight of filteredList">
     <mat-card>        
             <mat-card-content>
                 <table>
@@ -33,7 +42,7 @@
                             <label for="fPrice">Flight Price</label>
                             <p>{{flight.flightPrice}}</p>
                         </td>
-                        <td>
+                        <td colspan="2">
                             <label for="airLine">Airline</label>
                             <p>{{flight.airline}}</p>
                         </td>
