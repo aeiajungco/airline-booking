@@ -1,0 +1,30 @@
+.bookForm {
+    width: 700px;
+    margin: 0 auto;
+    margin-top:5%; 
+}
+
+.bf-title {
+    text-align: center;
+}
+
+.field {
+    width: 324px;
+    margin-top: 2%;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+.inpField {
+    font-size: 20px;
+}
+
+.confirm {
+    height: 45px;
+    margin-left: 75%;
+    width: 25%;
+    font-size: 17px;
+}

@@ -50,6 +50,7 @@ import { MatchingFlightListComponent } from './matching-flight-list/matching-fli
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { LoginComponent } from './login/login.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
     LogoutComponent,
     MatchingFlightListComponent,
     AdminHomeComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    BookingFormComponent
   ],
   imports: [
     BrowserModule,

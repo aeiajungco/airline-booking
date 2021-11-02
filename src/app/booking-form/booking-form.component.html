@@ -1,0 +1,61 @@
+    <mat-card class="bookForm">
+        <mat-card-content>
+            <mat-card-title class="bf-title">Booking Form</mat-card-title>
+            <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+                <mat-form-field class="field">
+                    <mat-label>
+                        <mat-icon>person</mat-icon>
+                        First Name
+                    </mat-label>
+                    <input matInput
+                        class="inpField" 
+                        type="text"
+                        formControlName="fName">
+
+                    <mat-error *ngIf="bfInfo.fName.errors?.required">Please enter first name.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="field">
+                    <mat-label>
+                        <mat-icon>person</mat-icon>
+                        Last Name
+                    </mat-label>
+                    <input matInput
+                        class="inpField" 
+                        type="text"
+                        formControlName="lName">
+
+                    <mat-error *ngIf="bfInfo.lName.errors?.required">Please enter last name.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="field">
+                    <mat-label>
+                        <mat-icon>group</mat-icon>
+                        No. of Passengers
+                    </mat-label>
+                    <input matInput
+                        class="inpField" 
+                        type="number"
+                        formControlName="passNum">
+
+                    <mat-error *ngIf="bfInfo.passNum.errors?.required">Please enter no. of passengers.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="field">
+                    <mat-label>
+                        <mat-icon>airline_seat_recline_extra</mat-icon>
+                        Seat Class
+                    </mat-label>
+                    <mat-select class="inpField" formControlName="seatClass" [(value)]="selectedSeat">
+                        <mat-option value="econ">Economy</mat-option>
+                        <mat-option value="buss">Business</mat-option>
+                        <mat-option value="fClass">First Class</mat-option>
+                    </mat-select>
+
+                    <mat-error *ngIf="bfInfo.seatClass.errors?.required">Please select seat class.</mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" class="confirm" [disabled]="!bookingForm.valid">Confirm Booking</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
