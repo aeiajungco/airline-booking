@@ -1,3 +1,4 @@
+import { OrigDestAirService } from './../../services/orig-dest-air.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
@@ -6,6 +7,7 @@ interface Flight {
   $key: string;
   destination: string;
   origin: string;
+  depDate: Date;
   depTime: any;
   arrTime: any;
   type: string;
@@ -27,6 +29,7 @@ export class CreateFlightComponent implements OnInit {
     $key: [''],
     destination: ['', Validators.required],
     origin: ['', Validators.required],
+    depDate: ['', Validators.required],
     depTime: ['', Validators.required],
     arrTime: ['', Validators.required],
     type: ['', Validators.required],
@@ -35,16 +38,23 @@ export class CreateFlightComponent implements OnInit {
     airline: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder, private flights: FlightsService) { }
+  public locations: any = [];
+  public airlines: any = [];
+
+  constructor(private fb: FormBuilder, private flights: FlightsService, private option: OrigDestAirService) { }
 
   ngOnInit(): void {
+
+    this.locations = this.option.getLocations();
+    this.airlines = this.option.getAirLine();
   }
 
   onSubmit () {
-    const payload: Flight = {
+    const flightInfo: Flight = {
       $key: '',
       destination: this.info.destination.value,
       origin: this.info.origin.value,
+      depDate: this.info.depDate.value,
       depTime: this.info.depTime.value,
       arrTime: this.info.arrTime.value,
       type: this.info.type.value,
@@ -54,7 +64,7 @@ export class CreateFlightComponent implements OnInit {
       status: 'Available',
     }
 
-    this.flights.addFlight(payload);
+    this.flights.addFlight(flightInfo);
     this.form.reset();
   }
 

@@ -43,23 +43,25 @@ import {
   AngularFirestoreModule,
 } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { HomeComponent } from './home/home.component';
 import { FlightListComponent } from './flight-list/flight-list.component';
 import { BookFlightComponent } from './book-flight/book-flight.component';
-import { LoginComponent } from './home/login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MatchingFlightListComponent } from './matching-flight-list/matching-flight-list.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { LoginComponent } from './login/login.component';
+import { UserHomeComponent } from './user/user-home/user-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     CreateFlightComponent,
     FlightListComponent,
     BookFlightComponent,
     LoginComponent,
     LogoutComponent,
     MatchingFlightListComponent
+    AdminHomeComponent,
+    UserHomeComponent
   ],
   imports: [
     BrowserModule,
