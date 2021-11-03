@@ -13,9 +13,13 @@ const routes: Routes = [
     component: AppComponent,
   },
   {
-    path: 'admin-home',
+    path: 'admin',
     component: AdminHomeComponent,
     children: [
+      {
+        path: 'home',
+        component: AdminHomeComponent,
+      },
       {
         path: 'book',
         component: BookFlightComponent,
@@ -31,7 +35,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'user-home',
+    path: 'user',
     component: UserHomeComponent,
     children: [
       {
