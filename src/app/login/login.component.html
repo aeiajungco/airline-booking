@@ -1,8 +1,8 @@
 <mat-card *ngIf="!isLoggedIn">
   <mat-card-content class="login">
-    <form (ngSubmit)="onSubmit()" [formGroup]="form">
-      <button type="submit" (click)="setAdmin()">ADMIN</button>
-      <button type="submit" (click)="setUser()">USER</button>
+    <form [formGroup]="form">
+      <button (click)="loginAdmin()">ADMIN</button>
+      <button (click)="loginUser()">USER</button>
       <br>
       <mat-form-field>
         <mat-label>Username</mat-label>
@@ -16,10 +16,11 @@
         <!-- <mat-error *ngIf=""></mat-error> -->
       </mat-form-field>
 
-      <button *ngIf="isAdmin" type="submit" class="btn btn-secondary" (click)="login()" routerLink="admin-home" routerLinkActive="router-link-active" >LOGIN</button>
-      <button *ngIf="isUser" type="submit" class="btn btn-secondary" (click)="login()" routerLink="user-home" routerLinkActive="router-link-active" >LOGIN</button>
+      <button *ngIf="isAdmin" class="btn btn-secondary" (click)="login()" routerLink="admin">LOGIN</button>
+      <button *ngIf="isUser" class="btn btn-secondary" (click)="login()" routerLink="user">LOGIN</button>
     </form>
+    <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
   </mat-card-content>
 </mat-card>
 
-<router-outlet *ngIf="isLoggedIn"></router-outlet>
+<router-outlet *ngIf="isLoggedIn == 1"></router-outlet>
