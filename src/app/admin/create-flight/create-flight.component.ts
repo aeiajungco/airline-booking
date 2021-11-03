@@ -2,20 +2,7 @@ import { OrigDestAirService } from './../../services/orig-dest-air.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
-
-interface Flight {
-  $key: string;
-  destination: string;
-  origin: string;
-  depDate: Date;
-  depTime: any;
-  arrTime: any;
-  type: string;
-  flightCode: string;
-  flightPrice: number;
-  airline: string;
-  status: string;
-}
+import { Flight } from 'src/app/services/flight';
 
 @Component({
   selector: 'app-create-flight',
@@ -32,7 +19,6 @@ export class CreateFlightComponent implements OnInit {
     depDate: ['', Validators.required],
     depTime: ['', Validators.required],
     arrTime: ['', Validators.required],
-    type: ['', Validators.required],
     flightCode: ['', Validators.required],
     flightPrice: ['', Validators.required],
     airline: ['', Validators.required],
@@ -57,7 +43,6 @@ export class CreateFlightComponent implements OnInit {
       depDate: this.info.depDate.value,
       depTime: this.info.depTime.value,
       arrTime: this.info.arrTime.value,
-      type: this.info.type.value,
       flightCode: this.info.flightCode.value,
       flightPrice: this.info.flightPrice.value,
       airline: this.info.airline.value,

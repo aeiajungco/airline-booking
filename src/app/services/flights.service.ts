@@ -1,19 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-
-interface Flight {
-  $key: string;
-  destination: string;
-  origin: string;
-  depTime: any;
-  arrTime: any;
-  type: string;
-  flightCode: string;
-  flightPrice: number;
-  airline: string;
-  status: string;
-}
+import { Flight } from 'src/app/services/flight';
 
 @Injectable({
   providedIn: 'root'

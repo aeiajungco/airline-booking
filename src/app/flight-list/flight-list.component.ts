@@ -40,4 +40,8 @@ export class FlightListComponent implements OnInit {
       }
     }
   }
+
+  getflight(flight: any) {
+    console.log(flight);
+  }
 }
