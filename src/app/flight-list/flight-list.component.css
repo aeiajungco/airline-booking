@@ -10,22 +10,9 @@ td {
 }
 
 .container {
-    margin-top: 15px;
     width: 800px;
     padding: 1em;
-    border-radius: 10px;
-    background-color: rgb(140, 95, 212);
-}
-
-mat-card {
-    background-color: rgb(255, 255, 255);
-}
-
-mat-form-field {
-    height: 55px;
-    width: 250px;
-    font-size: 20px;
-    margin-top: 3%;
+    margin-top: 15px;
 }
 
 label {
@@ -33,6 +20,16 @@ label {
 }
 
 p {
+    font-style: italic;
+}
+
+.heading {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+h1 {
     font-style: italic;
 }
 
@@ -46,3 +43,9 @@ p {
     text-align: center;
 }
 
+mat-form-field {
+    height: 55px;
+    width: 250px;
+    font-size: 20px;
+    margin-top: 3%;
+}

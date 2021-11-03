@@ -1,5 +1,5 @@
 .bookForm {
-    width: 700px;
+    width: 400px;
     margin: 0 auto;
     margin-top:5%; 
 }
@@ -20,11 +20,19 @@
 
 .inpField {
     font-size: 20px;
+    display: grid;
 }
 
 .confirm {
-    height: 45px;
+    display: inline;
     margin-left: 75%;
-    width: 25%;
-    font-size: 17px;
+    width: 100px;
+    font-size: 15px;
+}
+
+.success-msg {
+    margin-top: 15px;
+    color: green;
+    font-style: italic;
+    text-align: center;
 }

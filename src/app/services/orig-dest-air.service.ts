@@ -9,7 +9,7 @@ export class OrigDestAirService {
 
   getLocations() {
     return [
-      {value: 'Cagayan De Oro', viewValue: 'Cagayan De Oro'},
+      {value: 'Cagayan de Oro', viewValue: 'Cagayan de Oro'},
       {value: 'Camiguin', viewValue: 'Camiguin'},
       {value: 'Cebu', viewValue: 'Cebu'},
       {value: 'Davao', viewValue: 'Davao'},

@@ -1,19 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-flight-list',
   templateUrl: './flight-list.component.html',
-  styleUrls: ['./flight-list.component.css']
+  styleUrls: ['./flight-list.component.css'],
+  providers: [DatePipe]
 })
 export class FlightListComponent implements OnInit {
   filterChoice = "";
+  flightIndex!: number;
   filteredList: any = [];
-
   flights$: any = [];
   public airlines: any = [];
-  constructor(private flight: FlightsService, private airline: OrigDestAirService) { }
+  
+  constructor(private flight: FlightsService, private airline: OrigDestAirService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.flight.getFlights().subscribe((val)=> {
@@ -28,7 +31,7 @@ export class FlightListComponent implements OnInit {
 
     if (this.filterChoice == "All") {
       for(let val of this.flights$)
-        this.filteredList.push(val)
+        this.filteredList.push(val);
     }
     else {
       for (let val of this.flights$) {
@@ -37,5 +40,4 @@ export class FlightListComponent implements OnInit {
       }
     }
   }
-
 }

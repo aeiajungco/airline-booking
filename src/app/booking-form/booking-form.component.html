@@ -1,4 +1,10 @@
-    <mat-card class="bookForm">
+<button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="openModal(template)">Book Now</button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <button mat-button class="close" (click)="closeModal(template)">X</button>
+    </div>
+    <mat-card class="modal-body bookForm">
         <mat-card-content>
             <mat-card-title class="bf-title">Booking Form</mat-card-title>
             <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
@@ -55,7 +61,10 @@
                     <mat-error *ngIf="bfInfo.seatClass.errors?.required">Please select seat class.</mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button color="primary" class="confirm" [disabled]="!bookingForm.valid">Confirm Booking</button>
+                <button mat-raised-button color="primary" class="confirm" [disabled]="!bookingForm.valid">Confirm</button>
             </form>
+            <h3 class="success-msg" *ngIf="submitted">You have successfully booked a ticket.</h3>
         </mat-card-content>
     </mat-card>
+</ng-template>
+

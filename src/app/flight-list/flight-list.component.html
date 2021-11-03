@@ -7,8 +7,18 @@
         </mat-select>
     </mat-form-field>
 </div>
-<div class="container" *ngFor="let flight of filteredList">
-    <mat-card>        
+<div class="heading" [ngSwitch]="filterChoice">
+    <h1  *ngSwitchCase="airlines[0].value">All Airlines</h1>
+    <h1  *ngSwitchCase="airlines[1].value">Air Swift</h1>
+    <h1  *ngSwitchCase="airlines[2].value">Cebgo</h1>
+    <h1  *ngSwitchCase="airlines[3].value">Cebu Pacific</h1>
+    <h1  *ngSwitchCase="airlines[4].value">Philippines AirAsia</h1>
+    <h1  *ngSwitchCase="airlines[5].value">Philippines Airlines</h1>
+    <h1  *ngSwitchCase="airlines[6].value">SkyJet Airlines Philippines</h1>
+    <h1  *ngSwitchCase="airlines[7].value">Sky Pasada</h1>    
+</div>
+
+    <mat-card class="container" *ngFor="let flight of filteredList">  
             <mat-card-content>
                 <table>
                     <tr>
@@ -48,7 +58,6 @@
                         </td>
                     </tr>
                 </table>
-                <button mat-raised-button class="book">BOOK NOW</button>
-            </mat-card-content>
+                <app-booking-form class="book"></app-booking-form>
+            </mat-card-content>     
     </mat-card>
-</div>

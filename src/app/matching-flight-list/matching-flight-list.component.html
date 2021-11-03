@@ -1,5 +1,4 @@
-<div class="container" *ngFor="let matched of matchingList">
-    <mat-card>        
+    <mat-card class="container" *ngFor="let matched of matchingList">        
             <mat-card-content>
                 <table>
                     <tr>
@@ -39,7 +38,6 @@
                         </td>
                     </tr>
                 </table>
-                <button mat-raised-button class="book">BOOK NOW</button>
+                <app-booking-form class="book"></app-booking-form>
             </mat-card-content>
     </mat-card>
-</div>

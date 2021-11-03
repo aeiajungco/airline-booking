@@ -1,7 +1,7 @@
 import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -31,7 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatStepperModule } from '@angular/material/stepper';
 
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -95,8 +95,9 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    ModalModule,
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFirestore, DatePipe, BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-booking-form',
@@ -10,7 +11,7 @@ export class BookingFormComponent implements OnInit {
 
   selectedSeat = "";
   submitted = false;
-
+  modalRef!: BsModalRef;
 
   bookingForm = this.bForm.group ({
     fName: ['', Validators.required],
@@ -19,7 +20,7 @@ export class BookingFormComponent implements OnInit {
     seatClass: ['', Validators.required],
   });
 
-  constructor(private bForm: FormBuilder) { }
+  constructor(private bForm: FormBuilder, private modalService: BsModalService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +29,15 @@ export class BookingFormComponent implements OnInit {
     this.submitted = true;
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+ }
+
+ closeModal(template: TemplateRef<any>) {
+   this.submitted = false;
+   this.bookingForm.reset();
+   this.modalRef.hide();
+ }
 
   get bfInfo() {
     return this.bookingForm.controls;
