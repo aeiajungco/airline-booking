@@ -19,6 +19,7 @@ export class CreateFlightComponent implements OnInit {
     depDate: ['', Validators.required],
     depTime: ['', Validators.required],
     arrTime: ['', Validators.required],
+    type: ['', Validators.required],
     flightCode: ['', Validators.required],
     flightPrice: ['', Validators.required],
     airline: ['', Validators.required],
@@ -43,6 +44,7 @@ export class CreateFlightComponent implements OnInit {
       depDate: this.info.depDate.value,
       depTime: this.info.depTime.value,
       arrTime: this.info.arrTime.value,
+      type: this.info.type.value,
       flightCode: this.info.flightCode.value,
       flightPrice: this.info.flightPrice.value,
       airline: this.info.airline.value,
@@ -50,8 +52,9 @@ export class CreateFlightComponent implements OnInit {
     }
 
     this.flights.addFlight(flightInfo);
-    this.form.reset();
   }
+
+
 
   get info () {
     return this.form.controls;

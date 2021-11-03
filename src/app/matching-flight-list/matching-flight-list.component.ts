@@ -16,4 +16,8 @@ export class MatchingFlightListComponent implements OnInit {
 
   }
 
+  getFlightCode(flight: any) {
+    console.log(flight);
+  }
+
 }

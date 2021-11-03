@@ -41,7 +41,7 @@ export class FlightListComponent implements OnInit {
     }
   }
 
-  getflight(flight: any) {
+  getFlightCode(flight: any) {
     console.log(flight);
   }
 }

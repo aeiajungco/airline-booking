@@ -5,6 +5,7 @@ export interface Flight {
   depDate: Date;
   depTime: any;
   arrTime: any;
+  type: string;
   flightCode: string;
   flightPrice: number;
   airline: string;
