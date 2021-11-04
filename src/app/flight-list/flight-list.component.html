@@ -52,12 +52,17 @@
                             <label for="fPrice">Flight Price</label>
                             <p>{{flight.flightPrice}}</p>
                         </td>
-                        <td colspan="2">
+                        <td>
                             <label for="airLine">Airline</label>
                             <p>{{flight.airline}}</p>
                         </td>
+                        <td>
+                            <label for="airLine">Status</label>
+                            <p>{{flight.status}}</p>
+                        </td>
                     </tr>
                 </table>
-                <app-booking-form class="book" (click)="getFlightCode(flight.flightCode)"></app-booking-form>
+                <app-booking-form class="book" [flightCode]="flight.flightCode"></app-booking-form>
+                <app-cancel-flight class="book" [flightCode]="flight.flightCode">Cancel Flight</app-cancel-flight> 
             </mat-card-content>     
     </mat-card>

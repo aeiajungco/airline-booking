@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
 import { DatePipe } from '@angular/common';
@@ -17,6 +17,8 @@ export class FlightListComponent implements OnInit {
   public airlines: any = [];
   
   constructor(private flight: FlightsService, private airline: OrigDestAirService, private datePipe: DatePipe) {}
+
+  flightCode = '';
 
   ngOnInit(): void {
     this.flight.getFlights().subscribe((val)=> {

@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
@@ -21,7 +21,9 @@ export class BookingFormComponent implements OnInit {
   });
 
   constructor(private bForm: FormBuilder, private modalService: BsModalService) { }
-
+  
+  @Input() flightCode: any; 
+  
   ngOnInit(): void {
   }
 

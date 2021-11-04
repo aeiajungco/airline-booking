@@ -1,3 +1,4 @@
+import { CancelFlightComponent } from './admin/cancel-flight/cancel-flight.component';
 import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -63,7 +64,8 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     MatchingFlightListComponent,
     AdminHomeComponent,
     UserHomeComponent,
-    BookingFormComponent
+    BookingFormComponent,
+    CancelFlightComponent,
   ],
   imports: [
     BrowserModule,

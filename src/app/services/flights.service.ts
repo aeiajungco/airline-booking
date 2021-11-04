@@ -25,5 +25,9 @@ export class FlightsService {
   getFlights () {
     return this.flight$;
   }
+
+  cancelFLight(flight: any, cancel: any) {
+    this.flightsCollection.doc(flight).update({status: cancel});
+  }
 }
    

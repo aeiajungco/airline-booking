@@ -6,6 +6,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { CreateFlightComponent } from './create-flight/create-flight.component';
 import { ViewBookingsComponent } from './view-bookings/view-bookings.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { CancelFlightComponent } from './cancel-flight/cancel-flight.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { UserListComponent } from './user-list/user-list.component';
     AdminHomeComponent,
     CreateFlightComponent,
     ViewBookingsComponent,
-    UserListComponent
+    UserListComponent,
+    CancelFlightComponent
   ],
   imports: [
     CommonModule,
