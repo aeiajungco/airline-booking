@@ -14,6 +14,7 @@ export class OrigDestAirService {
       {value: 'Cebu', viewValue: 'Cebu'},
       {value: 'Davao', viewValue: 'Davao'},
       {value: 'General Santos', viewValue: 'General Santos'},
+      {value: 'Iloilo', viewValue: 'Iloilo'},
       {value: 'Kalibo', viewValue: 'Kalibo'},
       {value: 'Metro Manila', viewValue: 'Metro Manila'},
       {value: 'Ozamiz', viewValue: 'Ozamiz'},
