@@ -14,6 +14,7 @@ export class OrigDestAirService {
       {value: 'Cebu', viewValue: 'Cebu'},
       {value: 'Davao', viewValue: 'Davao'},
       {value: 'General Santos', viewValue: 'General Santos'},
+      {value: 'Iloilo', viewValue: 'Iloilo'},
       {value: 'Kalibo', viewValue: 'Kalibo'},
       {value: 'Metro Manila', viewValue: 'Metro Manila'},
       {value: 'Ozamiz', viewValue: 'Ozamiz'},
@@ -25,26 +26,26 @@ export class OrigDestAirService {
 
   getAirLine() {
     return [
-      {value: 'Air Swift', viewValue: 'Air Swift'},
       {value: 'Cebgo', viewValue: 'Cebgo'},
       {value: 'Cebu Pacific', viewValue: 'Cebu Pacific'},
       {value: 'Philippines AirAsia', viewValue: 'Philippines AirAsia'},
       {value: 'Philippine Airlines', viewValue: 'Philippine Airlines'},   
-      {value: 'SkyJet Airlines Philippines', viewValue: 'SkyJet Airlines Philippines'},
-      {value: 'Sky Pasada', viewValue: 'Sky Pasada'},
+      {value: 'Sunlight Air', viewValue: 'Sunlight Air'},
+      {value: 'PAL Express', viewValue: 'PAL Express'},
+      {value: 'Pan Pacific Airlines', viewValue: 'Pan Pacific Airlines'},
     ];
   }
 
   getAirLineFilter() {
     return [
       {value: 'All', viewValue: 'All'},
-      {value: 'Air Swift', viewValue: 'Air Swift'},
       {value: 'Cebgo', viewValue: 'Cebgo'},
       {value: 'Cebu Pacific', viewValue: 'Cebu Pacific'},
       {value: 'Philippines AirAsia', viewValue: 'Philippines AirAsia'},
       {value: 'Philippine Airlines', viewValue: 'Philippine Airlines'},   
-      {value: 'SkyJet Airlines Philippines', viewValue: 'SkyJet Airlines Philippines'},
-      {value: 'Sky Pasada', viewValue: 'Sky Pasada'},
+      {value: 'Sunlight Air', viewValue: 'Sunlight Air'},
+      {value: 'PAL Express', viewValue: 'PAL Express'},
+      {value: 'Pan Pacific Airlines', viewValue: 'Pan Pacific Airlines'},
     ];
   }
 }
