@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { ValidationErrors } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-interface User {
+export interface User {
   $key: string;
   username: string;
+  email: string;
   password: string;
 }
 

@@ -18,6 +18,7 @@ export class BookFlightComponent implements OnInit {
   matchingList: any = [];
   submitted: boolean = false;
   matched: number = 0;
+  retDateMatched: number = 0;
 
 
   bookForm = this.fb.group ({
@@ -31,7 +32,6 @@ export class BookFlightComponent implements OnInit {
 
   public locations: any = [];
   public airlines: any = [];
-  //@Output() matchedList = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder, private flight: FlightsService, private locair: OrigDestAirService) { } 
 
@@ -46,21 +46,49 @@ export class BookFlightComponent implements OnInit {
   }
 
   onSubmit() {
-    //this.matchedList.emit(this.matchingList);
     this.submitted = true;
     this.matched = 0;
+    this.retDateMatched = 0;
     this.matchingList.length = 0;
 
-    for (let val of this.flightList$) {
-      if (val.airline == this.selectedAir && val.origin == this.selectedOri && val.destination == this.selectedDes) {
-        this.matchingList.push(val);
-        this.matched++;
-      }
-    }
-    if (this.matched == 0) {
+
+    if (this.selectedTrip == 'trip2' && this.bookForm.value.retDate == null) {
       this.matched = 0;
+      this.retDateMatched = 0;
       this.matchingList.length = 0;
     }
+    else {
+      if (this.bookForm.value.retDate == '' || this.bookForm.value.retDate != '') {
+        for (let val of this.flightList$) {
+          if (val.airline == this.selectedAir && val.origin == this.selectedOri && val.destination == this.selectedDes && val.depDate == this.bookForm.value.depDate) {
+            this.matchingList.push(val);
+            this.matched++;
+          }
+        }
+      }
+
+      if (this.bookForm.value.retDate != '') {
+        for (let val of this.flightList$) {
+          if (val.airline == this.selectedAir && val.origin == this.selectedDes && val.destination == this.selectedOri && val.depDate == this.bookForm.value.retDate) {
+            this.matchingList.push(val);
+            this.retDateMatched++;
+          }
+        }
+      }
+    }
+
+    if (this.matched == 0 && this.retDateMatched == 0) {
+      this.matched = 0;
+      this.retDateMatched = 0;
+      this.matchingList.length = 0;
+    }
+
+    console.log(this.bookForm.value.retDate)
+  }
+
+  onChange() {
+    if (this.selectedTrip == 'trip1')
+      this.bookForm.controls['retDate'].reset();
   }
 
   get bf() {

@@ -1,0 +1,33 @@
+.registerForm {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 5%;
+    background-color: rgba(174, 174, 243, 0.5);
+}
+
+.regTitle {
+    letter-spacing: 2px;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(122, 59, 158);
+}
+
+.regContent {
+    padding: 1em;
+}
+
+.inpField {
+    display: inline;
+}
+
+.reg {
+    text-align: center;
+}
+
+.reg button {
+    margin-top: 10px;
+    letter-spacing: 3px;
+    height: 50px;
+    width: 300px;
+}
