@@ -45,6 +45,14 @@ input {
     width: 25%;
 }
 
+#noMatches {
+    margin-top: 50px;
+    text-align: center;
+}
+
+h2 {
+    font-style: italic;
+}
 
 
 

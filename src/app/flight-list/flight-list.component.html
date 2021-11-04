@@ -9,13 +9,17 @@
 </div>
 <div class="heading" [ngSwitch]="filterChoice">
     <h1  *ngSwitchCase="airlines[0].value">All Airlines</h1>
-    <h1  *ngSwitchCase="airlines[1].value">Air Swift</h1>
-    <h1  *ngSwitchCase="airlines[2].value">Cebgo</h1>
-    <h1  *ngSwitchCase="airlines[3].value">Cebu Pacific</h1>
-    <h1  *ngSwitchCase="airlines[4].value">Philippines AirAsia</h1>
-    <h1  *ngSwitchCase="airlines[5].value">Philippines Airlines</h1>
-    <h1  *ngSwitchCase="airlines[6].value">SkyJet Airlines Philippines</h1>
-    <h1  *ngSwitchCase="airlines[7].value">Sky Pasada</h1>    
+    <h1  *ngSwitchCase="airlines[1].value">Cebgo</h1>
+    <h1  *ngSwitchCase="airlines[2].value">Cebu Pacific</h1>
+    <h1  *ngSwitchCase="airlines[3].value">Philippines AirAsia</h1>
+    <h1  *ngSwitchCase="airlines[4].value">Philippines Airlines</h1>
+    <h1  *ngSwitchCase="airlines[5].value">Sunlight Air</h1>
+    <h1  *ngSwitchCase="airlines[6].value">PAL Express</h1>
+    <h1  *ngSwitchCase="airlines[7].value">Pan Pacific Airlines</h1>   
+</div>
+
+<div id="notExisting" *ngIf="filteredList.length == 0 && filterChoice != ''">
+    <h2>- No existing flights -</h2> 
 </div>
 
     <mat-card class="container" *ngFor="let flight of filteredList">  
@@ -57,8 +61,12 @@
                             <p>{{flight.airline}}</p>
                         </td>
                         <td>
-                            <label for="airLine">Status</label>
+                            <label for="status">Status</label>
                             <p>{{flight.status}}</p>
+                        </td>
+                        <td>
+                            <label for="depDate">Departure Date</label>
+                            <p>{{flight.depDate}}</p>
                         </td>
                     </tr>
                 </table>

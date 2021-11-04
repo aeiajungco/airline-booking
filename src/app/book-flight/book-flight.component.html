@@ -46,7 +46,7 @@
                     <mat-icon>route</mat-icon>
                     Select trip
                 </mat-label>
-                <mat-select formControlName="trip" [(value)]="selectedTrip">
+                <mat-select formControlName="trip" [(value)]="selectedTrip" (valueChange)="onChange()">
                     <mat-option value="trip1">One-Way Trip</mat-option>
                     <mat-option value="trip2">Round Trip</mat-option>
                 </mat-select>
@@ -78,4 +78,7 @@
 </mat-card>
 
 <app-matching-flight-list *ngIf="matched >= 1" [matchingList]="matchingList"></app-matching-flight-list>
+<div id="noMatches" *ngIf="matched == 0 && submitted != false && retDateMatched == 0">
+    <h2>- No matches found -</h2>
+</div>
 
