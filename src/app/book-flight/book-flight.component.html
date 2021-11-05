@@ -70,15 +70,18 @@
                     type="Date"
                     formControlName="retDate"
                     >
+                
+                    <mat-error *ngIf="bf.retDate.errors?.confirmedValidator">Invalid return date.</mat-error>
             </mat-form-field>
+            
             
             <button mat-raised-button color="primary" class="search" [disabled]="!bookForm.valid">Show Flights</button>
         </form>
     </mat-card-content>
 </mat-card>
 
-<app-matching-flight-list *ngIf="matched >= 1" [matchingList]="matchingList"></app-matching-flight-list>
-<div id="noMatches" *ngIf="matched == 0 && submitted != false && retDateMatched == 0">
+<app-matching-flight-list *ngIf="matched == true" [matchingList]="matchingList"></app-matching-flight-list>
+<div id="noMatches" *ngIf="matched == false && submitted != false && retDateMatched == false">
     <h2>- No matches found -</h2>
 </div>
 

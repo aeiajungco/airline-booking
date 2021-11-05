@@ -2,7 +2,7 @@ import { Component, OnInit, Output,EventEmitter, SimpleChange} from '@angular/co
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
-
+import { DateValidator } from '../date.validator';
 @Component({
   selector: 'app-book-flight',
   templateUrl: './book-flight.component.html',
@@ -17,8 +17,8 @@ export class BookFlightComponent implements OnInit {
   flightList$: any = [];
   matchingList: any = [];
   submitted: boolean = false;
-  matched: number = 0;
-  retDateMatched: number = 0;
+  matched: boolean = false;
+  retDateMatched: boolean = false;
 
 
   bookForm = this.fb.group ({
@@ -28,7 +28,9 @@ export class BookFlightComponent implements OnInit {
     trip: ['', Validators.required],
     depDate: ['', Validators.required],
     retDate: [''],
-  });
+  }, {
+      validator: DateValidator('depDate', 'retDate')
+    });
 
   public locations: any = [];
   public airlines: any = [];
@@ -47,43 +49,44 @@ export class BookFlightComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.matched = 0;
-    this.retDateMatched = 0;
+    this.matched = false;
+    this.retDateMatched = false;
     this.matchingList.length = 0;
 
 
     if (this.selectedTrip == 'trip2' && this.bookForm.value.retDate == null) {
-      this.matched = 0;
-      this.retDateMatched = 0;
+      this.matched = false;
+      this.retDateMatched = false;
       this.matchingList.length = 0;
     }
     else {
-      if (this.bookForm.value.retDate == '' || this.bookForm.value.retDate != '') {
         for (let val of this.flightList$) {
           if (val.airline == this.selectedAir && val.origin == this.selectedOri && val.destination == this.selectedDes && val.depDate == this.bookForm.value.depDate) {
             this.matchingList.push(val);
-            this.matched++;
+            this.matched = true;
           }
-        }
-      }
+        }      
 
-      if (this.bookForm.value.retDate != '') {
+      if (this.bookForm.value.retDate != null) {
         for (let val of this.flightList$) {
           if (val.airline == this.selectedAir && val.origin == this.selectedDes && val.destination == this.selectedOri && val.depDate == this.bookForm.value.retDate) {
             this.matchingList.push(val);
-            this.retDateMatched++;
+            this.retDateMatched = true;
           }
         }
+        if (this.retDateMatched == false) 
+          this.matched = false;
       }
     }
 
-    if (this.matched == 0 && this.retDateMatched == 0) {
-      this.matched = 0;
-      this.retDateMatched = 0;
+    if (this.matched == false && this.retDateMatched == false) {
+      this.matched = false;
+      this.retDateMatched = false;
       this.matchingList.length = 0;
     }
 
-    console.log(this.bookForm.value.retDate)
+    console.log(this.retDateMatched);
+    console.log(this.matched);
   }
 
   onChange() {
