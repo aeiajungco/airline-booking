@@ -9,9 +9,8 @@ import { UserHomeComponent } from './user-home/user-home.component';
 
 @NgModule({
   declarations: [
-    RegisterComponent,
-    BookingListComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    BookingListComponent,    
   ],
   imports: [
     CommonModule,
