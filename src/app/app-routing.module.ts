@@ -5,6 +5,7 @@ import { CreateFlightComponent } from './admin/create-flight/create-flight.compo
 import { AppComponent } from './app.component';
 import { BookFlightComponent } from './book-flight/book-flight.component';
 import { FlightListComponent } from './flight-list/flight-list.component';
+import { LoginComponent } from './login/login.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 
 const routes: Routes = [
@@ -17,10 +18,6 @@ const routes: Routes = [
     component: AdminHomeComponent,
     children: [
       {
-        path: 'home',
-        component: AdminHomeComponent,
-      },
-      {
         path: 'book',
         component: BookFlightComponent,
       },
@@ -31,10 +28,6 @@ const routes: Routes = [
       {
         path: 'flights',
         component: FlightListComponent,
-      },
-      {
-        path: 'logout',
-        component: AppComponent,
       },
     ],
   },
@@ -47,8 +40,8 @@ const routes: Routes = [
         component: BookFlightComponent,
       },
       {
-        path: 'logout',
-        component: AppComponent,
+        path: 'flights',
+        component: FlightListComponent,
       },
     ],
   },

@@ -15,12 +15,13 @@ export interface User {
 
 export class UserService {
   private userCollection: AngularFirestoreCollection<User>;
-  
   user$!: Observable<User[]>;  
   
+
   constructor(private afs: AngularFirestore) {
     this.userCollection = this.afs.collection<User>('users');
     this.user$ = this.userCollection.valueChanges();
+    
   }
 
   addUser (user: User) {
@@ -28,9 +29,10 @@ export class UserService {
     user.$key = pushkey;
     this.userCollection.doc(pushkey).set(user);
   }
-
+  
   getUsers () {
     return this.user$;
   }
+  
 }
 

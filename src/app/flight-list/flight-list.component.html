@@ -71,6 +71,6 @@
                     </tr>
                 </table>
                 <app-booking-form class="book" [flightCode]="flight.flightCode"></app-booking-form>
-                <app-cancel-flight class="book" [flightCode]="flight.flightCode">Cancel Flight</app-cancel-flight> 
+                <app-cancel-flight *ngIf="variable.getAdmin()" class="book" [flightCode]="flight.flightCode">Cancel Flight</app-cancel-flight> 
             </mat-card-content>     
     </mat-card>

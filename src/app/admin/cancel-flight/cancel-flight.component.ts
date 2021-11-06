@@ -1,3 +1,4 @@
+import { LoginVarService } from './../../services/login-var.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
 

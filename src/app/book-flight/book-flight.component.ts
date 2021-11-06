@@ -1,20 +1,31 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit, Output,EventEmitter, SimpleChange} from '@angular/core';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
 import { DateValidator } from '../date.validator';
+import { LoginVarService } from '../services/login-var.service';
+
+interface Users {
+  value: any;
+  viewValue: any;
+}
+
 @Component({
   selector: 'app-book-flight',
   templateUrl: './book-flight.component.html',
   styleUrls: ['./book-flight.component.css']
 })
+
 export class BookFlightComponent implements OnInit {
   
   selectedDes = "";
   selectedOri = "";
   selectedAir = "";
-  selectedTrip ="";
+  selectedTrip = "";
+  selectedUser = "";
   flightList$: any = [];
+  userList$: any = [];
   matchingList: any = [];
   submitted: boolean = false;
   matched: boolean = false;
@@ -22,6 +33,7 @@ export class BookFlightComponent implements OnInit {
 
 
   bookForm = this.fb.group ({
+    user: ['', Validators.required],
     airLine: ['', Validators.required],
     orig: ['', Validators.required],
     dest: ['', Validators.required],
@@ -35,16 +47,28 @@ export class BookFlightComponent implements OnInit {
   public locations: any = [];
   public airlines: any = [];
 
-  constructor(private fb: FormBuilder, private flight: FlightsService, private locair: OrigDestAirService) { } 
+  constructor(private fb: FormBuilder, private flight: FlightsService, private locair: OrigDestAirService, private user: UserService, public variable: LoginVarService) { } 
 
 
   ngOnInit(): void {
     this.flight.getFlights().subscribe((val) => {
       this.flightList$ = val;
     });
+    this.user.getUsers().subscribe((val: any) => {
+      this.userList$ = val;
+    })
 
     this.locations = this.locair.getLocations();
     this.airlines = this.locair.getAirLine();
+  }
+
+  getUsernames() {
+    for (let un of this.userList$) {
+      // this.usernames.value = un.username;
+      // this.usernames.viewValue = un.username;
+      // this.usernames.push()
+      console.log(un.username)
+    }
   }
 
   onSubmit() {

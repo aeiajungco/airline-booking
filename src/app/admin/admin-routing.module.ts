@@ -6,28 +6,6 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { CreateFlightComponent } from './create-flight/create-flight.component';
 
 const routes: Routes = [
-  {
-    path: 'admin',
-    component: AdminHomeComponent,
-    children: [
-      {
-        path: '',
-        component: AdminHomeComponent,
-      },
-      {
-        path: 'book',
-        component: BookFlightComponent,
-      },
-      {
-        path: 'create',
-        component: CreateFlightComponent,
-      },
-      {
-        path: 'logout',
-        component: AppComponent,
-      },
-    ],
-  },
 ];
 
 @NgModule({

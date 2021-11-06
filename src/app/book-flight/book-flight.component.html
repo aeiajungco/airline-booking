@@ -74,6 +74,14 @@
                     <mat-error *ngIf="bf.retDate.errors?.confirmedValidator">Invalid return date.</mat-error>
             </mat-form-field>
             
+            <!-- <mat-form-field (click)="getUsernames()" *ngIf="variable.getAdmin()" class="select-user">
+                <mat-label>Input users to book</mat-label>
+                <mat-select formControlName="user" [(value)]="selectedUser">
+                    <mat-option *ngFor="let username of usernames" [value]="username.value">
+                        {{username.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> -->
             
             <button mat-raised-button color="primary" class="search" [disabled]="!bookForm.valid">Show Flights</button>
         </form>

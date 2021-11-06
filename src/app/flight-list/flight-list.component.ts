@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
 import { DatePipe } from '@angular/common';
+import { LoginVarService } from '../services/login-var.service';
 
 @Component({
   selector: 'app-flight-list',
@@ -16,7 +17,7 @@ export class FlightListComponent implements OnInit {
   flights$: any = [];
   public airlines: any = [];
   
-  constructor(private flight: FlightsService, private airline: OrigDestAirService, private datePipe: DatePipe) {}
+  constructor(private flight: FlightsService, private airline: OrigDestAirService, public variable: LoginVarService) {}
 
   flightCode = '';
 
@@ -29,6 +30,7 @@ export class FlightListComponent implements OnInit {
   }
 
   onChange() {
+    console.log(this.variable.getAdmin());
     this.filteredList.length = 0;
 
     if (this.filterChoice == "All") {
