@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
         else {
         this.isLoggedIn = 1;
         console.log("Succesfully logged in.")
+        break;
         }
       }
     }
@@ -81,6 +82,7 @@ export class LoginComponent implements OnInit {
         else {
         this.isLoggedIn = 1;
         console.log("Succesfully logged in.")
+        break;
         }
       }
       

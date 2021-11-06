@@ -8,7 +8,7 @@
 .regTitle {
     letter-spacing: 2px;
     padding: 5px;
-    font-weight: bold;
+    font-weight: 800;
     text-align: center;
     color: rgb(122, 59, 158);
 }
@@ -18,7 +18,8 @@
 }
 
 .inpField {
-    display: inline;
+    display: grid;
+    height: 55px;
 }
 
 .reg {
@@ -27,7 +28,27 @@
 
 .reg button {
     margin-top: 10px;
+    margin-bottom: 15px;
     letter-spacing: 3px;
     height: 50px;
     width: 300px;
+}
+
+#space {
+    height: 20px;
+    padding-top: 3px;
+    padding-left: 10px;
+    font-size: 11px;
+}
+
+.alert-success {
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+    height: 50px;
+    padding-top: 10.5px;
+}
+
+h3 {
+    font-style: italic;
 }

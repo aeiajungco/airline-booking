@@ -1,5 +1,5 @@
 <mat-card class="registerForm">
-    <mat-card-title class="regTitle">Registration</mat-card-title>
+    <mat-card-title class="regTitle">REGISTRATION</mat-card-title>
     <mat-card-content class="regContent">
         <form class="registration" [formGroup]="regForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="inpField" appearance="outline">
@@ -9,12 +9,16 @@
                 <input matInput
                     class="field"
                     formControlName="username"
-                    type="text">
-
+                    type="text"
+                    (input)="checkUsername()">
                 <mat-error *ngIf="rf.username.errors?.required">Please enter a username</mat-error>
                 <mat-error *ngIf="rf.username.errors?.minlength">Must contain at least 5 characters.</mat-error>
+         
             </mat-form-field>
-
+            <div id="space">
+                <mat-error class="userExists custError" *ngIf="usernameExists">Username already exists.</mat-error>
+            </div>
+            
             <mat-form-field class="inpField" appearance="outline">
                 <mat-label>
                     Email Address
@@ -22,11 +26,16 @@
                 <input matInput
                     class="field"
                     formControlName="email" 
-                    type="email">
+                    type="email"
+                    (input)="checkEmail()">
 
                 <mat-error *ngIf="rf.email.errors?.required">Please enter your email.</mat-error>
                 <mat-error *ngIf="rf.email.errors?.email">Invalid email.</mat-error> 
             </mat-form-field>
+
+            <div id="space">
+                <mat-error class="emailExists custError" *ngIf="emailaddExists">Email is already used.</mat-error>
+            </div>
 
             <mat-form-field class="inpField" appearance="outline">
                 <mat-label>
@@ -41,6 +50,8 @@
                 <mat-error *ngIf="rf.password.errors?.minlength">Must contain at least 8 characters.</mat-error>
             </mat-form-field>
 
+            <div id="space"></div>
+
             <mat-form-field class="inpField" appearance="outline">
                 <mat-label>
                     Verify your Password
@@ -53,9 +64,15 @@
                 <mat-error *ngIf="rf.verifpass.errors?.required">Please verify your password.</mat-error>
                 <mat-error *ngIf="rf.verifpass.errors?.confirmedValidator">Password does not match.</mat-error>
             </mat-form-field>
+
+            <div id="space"></div>
+            
             <div class="reg">
-                <button mat-raised-button color="primary" [disabled]="!regForm.valid">REGISTER YOUR ACCOUNT</button>
+                <button mat-raised-button color="primary" [disabled]="!regForm.valid || emailaddExists || usernameExists" (click)="onRegister()">REGISTER YOUR ACCOUNT</button>
             </div>
         </form>
+        <div class="alert-success" *ngIf="registered">
+            <h3>You have successfully registered an account.</h3>
+        </div>
     </mat-card-content>
 </mat-card>
