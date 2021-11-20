@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
       username: this.rf.username.value,
       email: this.rf.email.value,
       password: this.hashAndSalt(this.rf.password.value),
+      bookings: [],
     };
 
     this.user.addUser(payload);  

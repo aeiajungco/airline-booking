@@ -10,6 +10,7 @@ export class LoginVarService {
   isAdmin = 0;
   isUser = 0;
   isLoggedIn = 0;
+  userName: string = '';
 
   constructor () { }
 
@@ -35,5 +36,13 @@ export class LoginVarService {
 
   getLoggedIn () {
     return this.isLoggedIn;
+  }
+
+  setUserName (username: string) {
+    this.userName = username;
+  }
+
+  getUserName () {
+    return this.userName;
   }
 }

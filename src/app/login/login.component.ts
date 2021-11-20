@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
   login () {    
     this.variable.setLoggedIn(0);
     if (this.variable.getUser() == 1) {
+      this.variable.setUserName(this.info.username.value);
       for (let x of this.users$) {
         if (x.username != this.info.username.value || !bcrypt.compareSync(this.info.password.value, x.password)) {
           console.log("Incorrect");

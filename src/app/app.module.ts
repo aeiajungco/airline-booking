@@ -53,6 +53,7 @@ import { LoginComponent } from './login/login.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { RegisterComponent } from './user/register/register.component';
+import { BookingListComponent } from './user/booking-list/booking-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { RegisterComponent } from './user/register/register.component';
     AdminHomeComponent,
     UserHomeComponent,
     BookingFormComponent,
+    BookingListComponent,
     CancelFlightComponent,
     RegisterComponent
   ],

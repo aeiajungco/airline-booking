@@ -33,7 +33,7 @@ export class BookFlightComponent implements OnInit {
 
 
   bookForm = this.fb.group ({
-    user: ['', Validators.required],
+    //user: ['', Validators.required],
     airLine: ['', Validators.required],
     orig: ['', Validators.required],
     dest: ['', Validators.required],
@@ -76,7 +76,7 @@ export class BookFlightComponent implements OnInit {
     this.matched = false;
     this.retDateMatched = false;
     this.matchingList.length = 0;
-
+    
 
     if (this.selectedTrip == 'trip2' && this.bookForm.value.retDate == null) {
       this.matched = false;
