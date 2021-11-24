@@ -1,0 +1,8 @@
+.container-fluid {
+    background-color: rgb(216, 174, 255);
+    height: 50px;
+}
+
+li {
+    font-size: 30;
+}

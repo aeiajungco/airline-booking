@@ -8,16 +8,29 @@ import { FlightsService } from '../services/flights.service';
 })
 export class MatchingFlightListComponent implements OnInit {
 
-  @Input() matchingList: any = [];
+  @Input() departingFlight: any = [];
+  @Input() returningFlight: any = [];
+  depFlight = '';
+  retFlight = '';
   
   constructor() { }
 
   ngOnInit(): void {
-
+    this.depFlight = '';
+    this.retFlight = '';
   }
 
-  getFlightCode(flight: any) {
-    console.log(flight);
+  getDepart(flight: any) {
+    this.depFlight = flight;
+  }
+
+  getReturn(flight: any) {
+    this.retFlight = flight;
+  }
+
+  display() {
+    console.log('Departing: ' + this.depFlight);
+    console.log('Returning: ' + this.retFlight);
   }
 
 }

@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminHomeComponent,
     children: [
+      // {
+      //   path: '',
+      //   redirectTo: 'admin',
+      // },
       {
         path: 'book',
         component: BookFlightComponent,

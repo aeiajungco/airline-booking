@@ -83,12 +83,12 @@
                 </mat-select>
             </mat-form-field> -->
             
-            <button mat-raised-button color="primary" class="search" [disabled]="!bookForm.valid">Show Flights</button>
+            <button mat-raised-button color="primary" class="search" [disabled]="!bookForm.valid">Search Flights</button>
         </form>
     </mat-card-content>
 </mat-card>
 
-<app-matching-flight-list *ngIf="matched == true" [matchingList]="matchingList"></app-matching-flight-list>
+<app-matching-flight-list *ngIf="matched == true" [departingFlight]="departingFlight" [returningFlight]="returningFlight"></app-matching-flight-list>
 <div id="noMatches" *ngIf="matched == false && submitted != false && retDateMatched == false">
     <h2>- No matches found -</h2>
 </div>

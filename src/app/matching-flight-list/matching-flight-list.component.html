@@ -1,47 +1,100 @@
-    <mat-card class="container" *ngFor="let matched of matchingList">        
-            <mat-card-content>
-                <table>
-                    <tr>
-                        <td>
-                            <label for="fCode">Flight Code</label>
-                            <p>{{matched.flightCode}}</p>
-                        </td>
-                        <td>
-                            <label for="dest">Origin</label>
-                            <p>{{matched.origin}}</p>
-                        </td>
-                        <td>
-                            <label for="dest">Destination</label>
-                            <p>{{matched.destination}}</p>
-                        </td>
-                        <td>
-                            <label for="depTime">Departure Time</label>
-                            <p>{{matched.depTime}}</p>
-                        </td>
-                        <td>
-                            <label for="arrTime">Arrival Time</label>
-                            <p>{{matched.arrTime}}</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="type">Type</label>
-                            <p>{{matched.type}}</p>
-                        </td>
-                        <td>
-                            <label for="fPrice">Flight Price</label>
-                            <p>{{matched.flightPrice}}</p>
-                        </td>
-                        <td>
-                            <label for="airLine">Airline</label>
-                            <p>{{matched.airline}}</p>
-                        </td>
-                        <td>
-                            <label for="depDate">Departure Date</label>
-                            <p>{{matched.depDate}}</p>
-                        </td>
-                    </tr>
-                </table>
-                <app-booking-form class="book" (click)="getFlightCode(matched.flightCode)"></app-booking-form>
-            </mat-card-content>
-    </mat-card>
+<mat-card class="container" *ngFor="let matched of departingFlight">
+  <mat-card-content>
+    <table>
+      <tr>
+        <td>
+          <label for="fCode">Flight Code</label>
+          <p>{{ matched.flightCode }}</p>
+        </td>
+        <td>
+          <label for="dest">Origin</label>
+          <p>{{ matched.origin }}</p>
+        </td>
+        <td>
+          <label for="dest">Destination</label>
+          <p>{{ matched.destination }}</p>
+        </td>
+        <td>
+          <label for="depTime">Departure Time</label>
+          <p>{{ matched.depTime }}</p>
+        </td>
+        <td>
+          <label for="arrTime">Arrival Time</label>
+          <p>{{ matched.arrTime }}</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="type">Type</label>
+          <p>{{ matched.type }}</p>
+        </td>
+        <td>
+          <label for="fPrice">Flight Price</label>
+          <p>{{ matched.flightPrice }}</p>
+        </td>
+        <td>
+          <label for="airLine">Airline</label>
+          <p>{{ matched.airline }}</p>
+        </td>
+        <td>
+          <label for="depDate">Departure Date</label>
+          <p>{{ matched.depDate }}</p>
+        </td>
+      </tr>
+    </table>
+    <button mat-raised-button color="primary" type="button" class="btn btn-primary"  (click)="getDepart(matched.flightCode)">
+      SELECT
+    </button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="container" *ngFor="let matched of returningFlight">
+  <mat-card-content>
+    <table>
+      <tr>
+        <td>
+          <label for="fCode">Flight Code</label>
+          <p>{{ matched.flightCode }}</p>
+        </td>
+        <td>
+          <label for="dest">Origin</label>
+          <p>{{ matched.origin }}</p>
+        </td>
+        <td>
+          <label for="dest">Destination</label>
+          <p>{{ matched.destination }}</p>
+        </td>
+        <td>
+          <label for="depTime">Departure Time</label>
+          <p>{{ matched.depTime }}</p>
+        </td>
+        <td>
+          <label for="arrTime">Arrival Time</label>
+          <p>{{ matched.arrTime }}</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="type">Type</label>
+          <p>{{ matched.type }}</p>
+        </td>
+        <td>
+          <label for="fPrice">Flight Price</label>
+          <p>{{ matched.flightPrice }}</p>
+        </td>
+        <td>
+          <label for="airLine">Airline</label>
+          <p>{{ matched.airline }}</p>
+        </td>
+        <td>
+          <label for="depDate">Departure Date</label>
+          <p>{{ matched.depDate }}</p>
+        </td>
+      </tr>
+    </table>
+    <button mat-raised-button color="primary" type="button" class="btn btn-primary"  (click)="getReturn(matched.flightCode)">
+      SELECT
+    </button>
+  </mat-card-content>
+</mat-card>
+<app-booking-form class="book" (click)="display()"></app-booking-form>

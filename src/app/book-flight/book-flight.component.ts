@@ -27,6 +27,8 @@ export class BookFlightComponent implements OnInit {
   flightList$: any = [];
   userList$: any = [];
   matchingList: any = [];
+  departingFlight: any = [];
+  returningFlight: any = [];
   submitted: boolean = false;
   matched: boolean = false;
   retDateMatched: boolean = false;
@@ -75,8 +77,8 @@ export class BookFlightComponent implements OnInit {
     this.submitted = true;
     this.matched = false;
     this.retDateMatched = false;
-    this.matchingList.length = 0;
-    
+    this.departingFlight.length = 0;
+    this.returningFlight.length = 0;
 
     if (this.selectedTrip == 'trip2' && this.bookForm.value.retDate == null) {
       this.matched = false;
@@ -86,7 +88,7 @@ export class BookFlightComponent implements OnInit {
     else {
         for (let val of this.flightList$) {
           if (val.airline == this.selectedAir && val.origin == this.selectedOri && val.destination == this.selectedDes && val.depDate == this.bookForm.value.depDate) {
-            this.matchingList.push(val);
+            this.departingFlight.push(val);
             this.matched = true;
           }
         }      
@@ -94,7 +96,7 @@ export class BookFlightComponent implements OnInit {
       if (this.bookForm.value.retDate != null) {
         for (let val of this.flightList$) {
           if (val.airline == this.selectedAir && val.origin == this.selectedDes && val.destination == this.selectedOri && val.depDate == this.bookForm.value.retDate) {
-            this.matchingList.push(val);
+            this.returningFlight.push(val);
             this.retDateMatched = true;
           }
         }
@@ -106,7 +108,8 @@ export class BookFlightComponent implements OnInit {
     if (this.matched == false && this.retDateMatched == false) {
       this.matched = false;
       this.retDateMatched = false;
-      this.matchingList.length = 0;
+      this.departingFlight.length = 0;
+      this.returningFlight.length = 0;
     }
 
     console.log(this.retDateMatched);

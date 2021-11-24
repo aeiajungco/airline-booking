@@ -64,6 +64,7 @@ export class BookingFormComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+    console.log(this.flightCode);
  }
 
  closeModal(template: TemplateRef<any>) {
