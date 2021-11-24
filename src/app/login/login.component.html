@@ -1,32 +1,37 @@
-<mat-card *ngIf="!variable.getLoggedIn()">
-  <mat-card-content class="login">
-    <form [formGroup]="form">
-      <!-- <mat-form-field>
-        <mat-select formControlName="role">
-          <mat-option value="Admin">Admin</mat-option>
-          <mat-option value="User">User</mat-option>
-        </mat-select>
-      </mat-form-field> -->
-      <button (click)="loginAdmin()">ADMIN</button>
-      <button (click)="loginUser()">USER</button>
-      <br>
-      <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input matInput type="text" formControlName="username" required />
-        <!-- <mat-error *ngIf=""></mat-error> -->
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" required />
-        <!-- <mat-error *ngIf=""></mat-error> -->
-      </mat-form-field>
-
-      <button *ngIf="variable.getAdmin()" (click)="login()" routerLink="admin">LOGIN</button>
-      <button *ngIf="variable.getUser()" (click)="login()" routerLink="user">LOGIN</button>
-    </form>
-    <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
-  </mat-card-content>
-</mat-card>
+<div class="login-page" *ngIf="!variable.getLoggedIn()">
+  <div class="login-card">
+    <mat-card>
+      <mat-card-content class="login">
+        <form [formGroup]="form">
+          <mat-form-field>
+            <mat-select [(value)]="role" (selectionChange)="setRole()">
+              <mat-option value="Admin" >Admin</mat-option>
+              <mat-option value="User">User</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput type="text" formControlName="username" required />
+            <!-- <mat-error *ngIf=""></mat-error> -->
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required />
+            <!-- <mat-error *ngIf=""></mat-error> -->
+          </mat-form-field>
+          
+          <button *ngIf="!variable.getAdmin() && !variable.getUser()" disabled>LOGIN</button>
+          <button *ngIf="variable.getAdmin()" (click)="login()" routerLink="admin">LOGIN</button>
+          <button *ngIf="variable.getUser()" (click)="login()" routerLink="user">LOGIN</button>
+          <!-- <button *ngIf="variable.getAdmin()" (click)="login()"><a class="nav-link" href="/admin">LOGIN</a></button>
+          <button *ngIf="variable.getUser()" (click)="login()"><a class="nav-link" href="/user">LOGIN</a></button> -->
+        </form>
+        <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
 
 <router-outlet *ngIf="variable.getLoggedIn()"></router-outlet>

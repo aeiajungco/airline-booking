@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   incorrect = 0;
   admins$: any = [];
   users$: any = [];
+  role = '';
 
   form = this.fb.group ({
     $key: [''],
@@ -40,18 +41,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginAdmin () {
-    this.variable.setAdmin(1);
-    this.variable.setUser(0);
-    this.variable.setLoggedIn(0);
-    console.log("admin = " + this.variable.getAdmin())
-  }
-
-  loginUser () {
-    this.variable.setAdmin(0);
-    this.variable.setUser(1);
-    this.variable.setLoggedIn(0);
-    console.log("user = " + this.variable.getUser())
+  setRole() {
+    if (this.role == 'Admin') {
+      this.variable.setAdmin(1);
+      this.variable.setUser(0);
+      this.variable.setLoggedIn(0);    
+      console.log("admin = " + this.variable.getAdmin())
+    }
+    else {
+      this.variable.setAdmin(0);
+      this.variable.setUser(1);
+      this.variable.setLoggedIn(0);
+      console.log("user = " + this.variable.getUser())
+    }
   }
 
   login () {    
