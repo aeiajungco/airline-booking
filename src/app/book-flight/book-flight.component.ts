@@ -1,15 +1,10 @@
 import { UserService } from 'src/app/services/user.service';
-import { Component, OnInit, Output,EventEmitter, SimpleChange} from '@angular/core';
-import {Validators, FormBuilder, FormGroup} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder } from '@angular/forms';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
 import { DateValidator } from '../date.validator';
 import { LoginVarService } from '../services/login-var.service';
-
-interface Users {
-  value: any;
-  viewValue: any;
-}
 
 @Component({
   selector: 'app-book-flight',
@@ -23,7 +18,6 @@ export class BookFlightComponent implements OnInit {
   selectedOri = "";
   selectedAir = "";
   selectedTrip = "";
-  selectedUser = "";
   flightList$: any = [];
   userList$: any = [];
   matchingList: any = [];
@@ -35,7 +29,6 @@ export class BookFlightComponent implements OnInit {
 
 
   bookForm = this.fb.group ({
-    //user: ['', Validators.required],
     airLine: ['', Validators.required],
     orig: ['', Validators.required],
     dest: ['', Validators.required],
@@ -64,16 +57,9 @@ export class BookFlightComponent implements OnInit {
     this.airlines = this.locair.getAirLine();
   }
 
-  getUsernames() {
-    for (let un of this.userList$) {
-      // this.usernames.value = un.username;
-      // this.usernames.viewValue = un.username;
-      // this.usernames.push()
-      console.log(un.username)
-    }
-  }
-
   onSubmit() {
+    this.flight.setDepartingFlight(null);
+    this.flight.setReturningFlight(null);
     this.submitted = true;
     this.matched = false;
     this.retDateMatched = false;

@@ -13,24 +13,24 @@ export class MatchingFlightListComponent implements OnInit {
   depFlight = '';
   retFlight = '';
   
-  constructor() { }
+  constructor(private flight: FlightsService) {}
 
-  ngOnInit(): void {
-    this.depFlight = '';
-    this.retFlight = '';
-  }
+  ngOnInit(): void {    
+  } 
 
-  getDepart(flight: any) {
+  getDepart(flight: any) {    
     this.depFlight = flight;
+    this.flight.setDepartingFlight(flight);
   }
 
-  getReturn(flight: any) {
+  getReturn(flight: any) {    
     this.retFlight = flight;
+    this.flight.setReturningFlight(flight);
   }
 
   display() {
-    console.log('Departing: ' + this.depFlight);
-    console.log('Returning: ' + this.retFlight);
+    console.log('Departing: ' + this.flight.getDepartingFlight());
+    console.log('Returning: ' + this.flight.getReturningFlight());
   }
 
 }

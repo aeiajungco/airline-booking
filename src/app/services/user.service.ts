@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import * as firebase from 'firebase/compat';
-import { user } from 'rxfire/auth';
 import { Observable } from 'rxjs';
-import { AdminHomeComponent } from '../admin/admin-home/admin-home.component';
+
 
 export interface User {
   $key: string;

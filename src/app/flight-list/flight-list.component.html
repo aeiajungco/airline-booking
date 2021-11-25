@@ -39,6 +39,10 @@
                             <p>{{flight.destination}}</p>
                         </td>
                         <td>
+                            <label for="depDate">Departure Date</label>
+                            <p>{{flight.depDate}}</p>
+                        </td>
+                        <td>
                             <label for="depTime">Departure Time</label>
                             <p>{{flight.depTime}}</p>
                         </td>
@@ -46,8 +50,6 @@
                             <label for="arrTime">Arrival Time</label>
                             <p>{{flight.arrTime}}</p>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
                             <label for="type">Type</label>
                             <p>{{flight.type}}</p>
@@ -57,20 +59,12 @@
                             <p>{{flight.flightPrice}}</p>
                         </td>
                         <td>
-                            <label for="airLine">Airline</label>
-                            <p>{{flight.airline}}</p>
-                        </td>
-                        <td>
                             <label for="status">Status</label>
                             <p>{{flight.status}}</p>
                         </td>
-                        <td>
-                            <label for="depDate">Departure Date</label>
-                            <p>{{flight.depDate}}</p>
-                        </td>
                     </tr>
                 </table>
-                <app-booking-form class="book" [flightCode]="flight.flightCode"></app-booking-form>
+                
                 <app-cancel-flight *ngIf="variable.getAdmin()" class="book" [flightCode]="flight.flightCode">Cancel Flight</app-cancel-flight> 
             </mat-card-content>     
     </mat-card>

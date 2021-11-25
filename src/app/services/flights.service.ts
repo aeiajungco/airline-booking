@@ -10,6 +10,8 @@ import { Flight } from 'src/app/services/flight';
 export class FlightsService {
   private flightsCollection: AngularFirestoreCollection<Flight>;
   flight$!: Observable<Flight[]>;
+  depFlight = '';
+  retFlight = '';
 
   constructor(private afs: AngularFirestore) {
     this.flightsCollection = this.afs.collection<Flight>('flights')
@@ -24,6 +26,22 @@ export class FlightsService {
 
   getFlights () {
     return this.flight$;
+  }
+
+  setDepartingFlight(flightcode: any) {
+    this.depFlight = flightcode;
+  }
+
+  setReturningFlight(flightcode: any) {
+    this.retFlight = flightcode;
+  }
+
+  getDepartingFlight() {
+    return this.depFlight;
+  }
+
+  getReturningFlight() {
+    return this.retFlight;
   }
 
   cancelFLight(flight: any, cancel: any) {

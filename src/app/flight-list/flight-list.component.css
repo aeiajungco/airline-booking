@@ -1,17 +1,17 @@
 table {
     width: 100%;
-    background-color: rgba(245, 225, 114, 0.5);
     margin-bottom: 10px;
     border-radius: 15px;
+
 }
 
 td {
-    width: 20%;
-    padding: 1.5em;
+    width: 100px;
 }
 
 .container {
-    width: 900px;
+    background-color: rgba(245, 225, 114, 0.5);
+    width: 1200px;  
     margin-top: 15px;
 }
 
@@ -24,7 +24,7 @@ p {
 }
 
 .heading {
-    width: 800px;
+    width: 1200px;
     margin: 0 auto;
     margin-top: 25px;
 }

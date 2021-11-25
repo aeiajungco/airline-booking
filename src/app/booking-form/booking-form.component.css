@@ -2,6 +2,7 @@
     width: 400px;
     margin: 0 auto;
     margin-top:5%; 
+    margin-bottom: 5%;
 }
 
 .bf-title {
@@ -35,4 +36,8 @@
     color: green;
     font-style: italic;
     text-align: center;
+}
+
+.close {
+    font-size: 30px;
 }

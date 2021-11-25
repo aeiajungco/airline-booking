@@ -8,6 +8,16 @@
         <mat-card-content>
             <mat-card-title class="bf-title">Booking Form</mat-card-title>
             <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+            
+            <mat-form-field *ngIf="isAdmin" class="field">
+                <mat-label>Username</mat-label>
+                <mat-select formControlName="user" [(value)]="selectedUser">
+                    <mat-option *ngFor="let username of usernames" [value]="username.value">
+                        {{username.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
                 <mat-form-field class="field">
                     <mat-label>
                         <mat-icon>person</mat-icon>

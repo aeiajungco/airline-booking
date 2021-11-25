@@ -23,9 +23,18 @@ p {
     font-style: italic;
 }
 
-.book {
-    color: white;
-    background-color: rgb(176, 118, 192);
+.btn {
     margin-left: 85%;
 }
 
+.book {
+    margin-left: 45%;
+    margin-right: 45%;
+}
+
+.btn-container {
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
