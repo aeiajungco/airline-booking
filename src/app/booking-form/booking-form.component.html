@@ -2,7 +2,7 @@
 
 <ng-template #template>
     <div class="modal-header">
-        <button mat-button class="close" (click)="closeModal(template)">X</button>
+        <button mat-button class="close" (click)="closeModal()">X</button>
     </div>
     <mat-card class="modal-body bookForm">
         <mat-card-content>
@@ -63,9 +63,9 @@
                         Seat Class
                     </mat-label>
                     <mat-select class="inpField" formControlName="seatClass" [(value)]="selectedSeat">
-                        <mat-option value="econ">Economy</mat-option>
-                        <mat-option value="buss">Business</mat-option>
-                        <mat-option value="fClass">First Class</mat-option>
+                        <mat-option value="Economy">Economy</mat-option>
+                        <mat-option value="Business">Business</mat-option>
+                        <mat-option value="First Class">First Class</mat-option>
                     </mat-select>
 
                     <mat-error *ngIf="bfInfo.seatClass.errors?.required">Please select seat class.</mat-error>
