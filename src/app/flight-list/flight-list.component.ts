@@ -12,9 +12,11 @@ import { LoginVarService } from '../services/login-var.service';
 })
 export class FlightListComponent implements OnInit {
   filterChoice = "";
+  filterStatus = "";
   flightIndex!: number;
   filteredList: any = [];
   flights$: any = [];
+  public flightStat: any = [];
   public airlines: any = [];
   
   constructor(private flight: FlightsService, private airline: OrigDestAirService, public variable: LoginVarService) {}
@@ -26,7 +28,10 @@ export class FlightListComponent implements OnInit {
       this.flights$ = val;
     });
 
+    this.flightStat = this.airline.getStatus();
     this.airlines = this.airline.getAirLineFilter();
+    this.filterChoice = "All";
+    this.filterStatus = "All";
   }
 
   onChange() {
@@ -34,15 +39,25 @@ export class FlightListComponent implements OnInit {
     this.filteredList.length = 0;
 
     if (this.filterChoice == "All") {
-      for(let val of this.flights$)
-        this.filteredList.push(val);
+      for(let val of this.flights$) {
+        this.sortStatus(val);
+      }
     }
     else {
       for (let val of this.flights$) {
-        if (val.airline == this.filterChoice)
-          this.filteredList.push(val);
+        if (val.airline == this.filterChoice) {
+          this.sortStatus(val);
+        }
       }
     }
+  }
+
+  sortStatus (val: any) {
+    if (this.filterStatus == 'All') {
+      this.filteredList.push(val);
+  }
+  else if (val.status == this.filterStatus)
+    this.filteredList.push(val);
   }
 
   getFlightCode(flight: any) {

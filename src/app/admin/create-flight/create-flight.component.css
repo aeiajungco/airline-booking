@@ -9,7 +9,7 @@ mat-form-field {
     padding: 10px;
 }
 
-button {
+.btn-secondary {
     background-color: blue;
     width: 400px;
 }
@@ -17,4 +17,15 @@ button {
 .form-group {
     display: flex;
     flex-direction: column;
+}
+
+.confirmation {
+    text-align: center;
+}
+
+.closebtn {
+    border-style: none;
+    height: 30px;
+    width: 70px;
+    font-size: 20px;
 }

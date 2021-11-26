@@ -1,4 +1,4 @@
-<div class="login-page" *ngIf="!variable.getLoggedIn()">
+<div class="login-page" *ngIf="variable.getLoggedIn() == 0 && isUser == 1">
   <div class="login-card">
     <mat-card>
       <mat-card-content class="login">
@@ -29,9 +29,10 @@
           <button *ngIf="variable.getUser()" (click)="login()"><a class="nav-link" href="/user">LOGIN</a></button> -->
         </form>
         <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
+        <div>Don't have an account? <a (click)="register()" routerLink="register">Register Now</a></div>
       </mat-card-content>
     </mat-card>
   </div>
 </div>
 
-<router-outlet *ngIf="variable.getLoggedIn()"></router-outlet>
+<router-outlet *ngIf="(variable.getLoggedIn() == 1 || isUser == 0)"></router-outlet>

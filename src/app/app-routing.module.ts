@@ -1,3 +1,4 @@
+import { RegisterComponent } from './user/register/register.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: '',
     component: AppComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'admin',

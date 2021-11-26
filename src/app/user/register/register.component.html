@@ -73,6 +73,9 @@
         </form>
         <div class="alert-success" *ngIf="registered">
             <h3>You have successfully registered an account.</h3>
+            <button class="btn btn-secondary" routerLink="/">Go back to login page</button>
         </div>
     </mat-card-content>
 </mat-card>
+
+<router-outlet></router-outlet>

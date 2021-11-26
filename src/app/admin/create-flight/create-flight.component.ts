@@ -1,8 +1,10 @@
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { OrigDestAirService } from './../../services/orig-dest-air.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
 import { Flight } from 'src/app/services/flight';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-flight',
@@ -27,8 +29,10 @@ export class CreateFlightComponent implements OnInit {
 
   public locations: any = [];
   public airlines: any = [];
+  modalRef!: BsModalRef;
+  invalid = 0;
 
-  constructor(private fb: FormBuilder, private flights: FlightsService, private option: OrigDestAirService) { }
+  constructor(private fb: FormBuilder, private flights: FlightsService, private option: OrigDestAirService, private modalService: BsModalService,) { }
 
   ngOnInit(): void {
 
@@ -36,25 +40,46 @@ export class CreateFlightComponent implements OnInit {
     this.airlines = this.option.getAirLine();
   }
 
-  onSubmit () {
-    const flightInfo: Flight = {
-      $key: '',
-      destination: this.info.destination.value,
-      origin: this.info.origin.value,
-      depDate: this.info.depDate.value,
-      depTime: this.info.depTime.value,
-      arrTime: this.info.arrTime.value,
-      type: this.info.type.value,
-      flightCode: this.info.flightCode.value,
-      flightPrice: this.info.flightPrice.value,
-      airline: this.info.airline.value,
-      status: 'Available',
-    }
-
-    this.flights.addFlight(flightInfo);
+  onSubmit (template: TemplateRef<any>) {
+    
+      this.invalid = 0;
+      const flightInfo: Flight = {
+        $key: '',
+        destination: this.info.destination.value,
+        origin: this.info.origin.value,
+        depDate: this.info.depDate.value,
+        depTime: this.info.depTime.value,
+        arrTime: this.info.arrTime.value,
+        type: this.info.type.value,
+        flightCode: this.info.flightCode.value,
+        flightPrice: this.info.flightPrice.value,
+        airline: this.info.airline.value,
+        status: 'Available',
+      }
+      
+    this.showConfirm(template)
+    // this.flights.addFlight(flightInfo);
+  
   }
 
+  validateTime () {
+    if (this.info.depTime.value >= this.info.arrTime.value && this.info.arrTime.value) {
+      this.invalid = 1;
+      console.log(this.info.depTime.value - this.info.arrTime.value)
+    }
+    else
+      this.invalid = 0;
 
+  }
+
+  showConfirm (template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  close () {
+    this.form.reset();
+    this.modalRef?.hide();
+  }
 
   get info () {
     return this.form.controls;
