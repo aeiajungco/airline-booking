@@ -1,9 +1,9 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FlightsService } from '../services/flights.service';
 import { LoginVarService } from '../services/login-var.service';
-import { UserService } from '../services/user.service';
+import { UserBooking, UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-booking-form',
@@ -14,10 +14,10 @@ export class BookingFormComponent implements OnInit {
 
   selectedSeat = "";
   selectedUser = "";
-  submitted = false;
   confirmed = false;
   modalRef!: BsModalRef;
   userBookings$: any = [];
+  userLoggedIn = "";
   usernames: any = [];
   isAdmin: any;
 
@@ -37,6 +37,7 @@ export class BookingFormComponent implements OnInit {
     });
 
     this.isAdmin = this.variable.getAdmin();
+    this.userLoggedIn = this.variable.getUserName();
   }
 
   getUsernames() {
@@ -46,27 +47,54 @@ export class BookingFormComponent implements OnInit {
   }
 
   onSubmit() {    
-    this.submitted = true;
     this.confirmed = true;
 
-  
     for (let x of this.userBookings$) {
-      console.log(this.variable.getUserName());
-      console.log(x.username);
-      if (x.username == this.variable.getUserName()) {    
-        if (this.flight.getDepartingFlight() != null && this.flight.getReturningFlight() != null) {    
-          x.bookings.push(this.flight.getDepartingFlight());
-          x.bookings.push(this.flight.getReturningFlight());
+      if (x.username == this.variable.getUserName() || x.username == this.selectedUser) {    
+        if (x.bookings.filter((res: string) => res.includes(this.flight.getDepartingFlight() || this.flight.getReturningFlight())).length !== 0) {
+          alert("You have already booked this flight.");
+          this.confirmed = false;
+          this.closeModal();
+          break;          
         }
-        else if (this.flight.getReturningFlight() == null) {
-          x.bookings.push(this.flight.getDepartingFlight());
-        }
-        //this.users.addFlightCode(x.$key, x);
-        break;
-      }
-    }  
-  
+        else {       
+          if (this.flight.getDepartingFlight() != null && this.flight.getReturningFlight() != null) {    
+            x.bookings.push(this.flight.getDepartingFlight());
+            x.bookings.push(this.flight.getReturningFlight());
+          }
+          else if (this.flight.getReturningFlight() == null) {
+            x.bookings.push(this.flight.getDepartingFlight());
+          }
 
+          if (this.isAdmin) {
+            const bookingInfo: UserBooking = {
+              $key: '',
+              username: this.bfInfo.user.value,
+              firstName: this.bfInfo.fName.value,
+              lastName: this.bfInfo.lName.value,
+              passNum: this.bfInfo.passNum.value,
+              seatClass: this.bfInfo.seatClass.value,
+            }
+            this.users.addUserBooking(bookingInfo);
+          }
+          else {
+            const bookingInfo: UserBooking = {
+              $key: '',
+              username: this.userLoggedIn,
+              firstName: this.bfInfo.fName.value,
+              lastName: this.bfInfo.lName.value,
+              passNum: this.bfInfo.passNum.value,
+              seatClass: this.bfInfo.seatClass.value,
+            }
+            this.users.addUserBooking(bookingInfo);
+          }    
+
+          this.users.addFlightCode(x.$key, x);
+          break;
+        }
+      }      
+    }  
+    
     this.bookingForm.reset();
     this.bfInfo.fName.setErrors(null);
     this.bfInfo.lName.setErrors(null);
@@ -76,13 +104,12 @@ export class BookingFormComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.usernames.length = 0;
-    this.submitted = false;
     this.confirmed = false;
     this.modalRef = this.modalService.show(template);
     this.getUsernames();
   }
 
-  closeModal(template: TemplateRef<any>) {
+  closeModal() {
     this.bookingForm.reset();
     this.modalRef?.hide();
  }
