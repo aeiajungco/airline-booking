@@ -1,3 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: myFont;
+    src: url(assets/fonts/FivoSans-Regular.otf);
+  }
 
-html, body { height: 100%;  font-family: Roboto, "Helvetica Neue", sans-serif;}
+html,
+body {
+  height: 100%;
+  font-family: 'myFont';
+  background-color: rgb(255, 248, 248);
+}
