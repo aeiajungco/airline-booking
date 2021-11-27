@@ -13,20 +13,17 @@
           <mat-form-field>
             <mat-label>Username</mat-label>
             <input matInput type="text" formControlName="username" required />
-            <!-- <mat-error *ngIf=""></mat-error> -->
           </mat-form-field>
     
           <mat-form-field>
             <mat-label>Password</mat-label>
             <input matInput type="password" formControlName="password" required />
-            <!-- <mat-error *ngIf=""></mat-error> -->
           </mat-form-field>
           
           <button *ngIf="!variable.getAdmin() && !variable.getUser()" disabled>LOGIN</button>
           <button *ngIf="variable.getAdmin()" (click)="login()" routerLink="admin">LOGIN</button>
           <button *ngIf="variable.getUser()" (click)="login()" routerLink="user">LOGIN</button>
-          <!-- <button *ngIf="variable.getAdmin()" (click)="login()"><a class="nav-link" href="/admin">LOGIN</a></button>
-          <button *ngIf="variable.getUser()" (click)="login()"><a class="nav-link" href="/user">LOGIN</a></button> -->
+         
         </form>
         <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
         <div>Don't have an account? <a (click)="register()" routerLink="register">Register Now</a></div>

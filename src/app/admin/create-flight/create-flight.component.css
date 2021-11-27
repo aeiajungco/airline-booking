@@ -9,8 +9,8 @@ mat-form-field {
     padding: 10px;
 }
 
-.btn-secondary {
-    background-color: blue;
+button {
+    background-color: blueviolet;
     width: 400px;
 }
 
