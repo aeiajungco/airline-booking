@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { UserService, User } from 'src/app/services/user.service';
 import { ConfirmedValidator } from 'src/app/confirmed.validator';
 import * as bcrypt from 'bcryptjs';
-import { ThrowStmt } from '@angular/compiler';
 
 
 
@@ -43,7 +42,6 @@ export class RegisterComponent implements OnInit {
       username: this.rf.username.value,
       email: this.rf.email.value,
       password: this.hashAndSalt(this.rf.password.value),
-      bookings: [],
     };
 
     this.user.addUser(payload);  

@@ -49,8 +49,8 @@ export class BookingFormComponent implements OnInit {
   onSubmit() {    
     this.confirmed = true;
 
-    for (let x of this.userBookings$) {
-      if (x.username == this.variable.getUserName() || x.username == this.selectedUser) {    
+    //for (let x of this.userBookings$) {
+      /*if (x.username == this.variable.getUserName() || x.username == this.selectedUser) {    
         if (x.bookings.filter((res: string) => res.includes(this.flight.getDepartingFlight() || this.flight.getReturningFlight())).length !== 0) {
           alert("You have already booked this flight.");
           this.confirmed = false;
@@ -64,11 +64,12 @@ export class BookingFormComponent implements OnInit {
           }
           else if (this.flight.getReturningFlight() == null) {
             x.bookings.push(this.flight.getDepartingFlight());
-          }
+          }*/
 
           if (this.isAdmin) {
             const bookingInfo: UserBooking = {
               $key: '',
+              flightCode: [this.flight.getDepartingFlight(), this.flight.getReturningFlight()],
               username: this.bfInfo.user.value,
               firstName: this.bfInfo.fName.value,
               lastName: this.bfInfo.lName.value,
@@ -80,6 +81,7 @@ export class BookingFormComponent implements OnInit {
           else {
             const bookingInfo: UserBooking = {
               $key: '',
+              flightCode: [this.flight.getDepartingFlight(), this.flight.getReturningFlight()],
               username: this.userLoggedIn,
               firstName: this.bfInfo.fName.value,
               lastName: this.bfInfo.lName.value,
@@ -89,11 +91,11 @@ export class BookingFormComponent implements OnInit {
             this.users.addUserBooking(bookingInfo);
           }    
 
-          this.users.addFlightCode(x.$key, x);
-          break;
-        }
-      }      
-    }  
+          //this.users.addFlightCode(x.$key, x);
+          //break;
+        //}
+      //}      
+    //}  
     
     this.bookingForm.reset();
     this.bfInfo.fName.setErrors(null);

@@ -1,0 +1,168 @@
+.heading {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.book-heading {
+    font-style: italic;
+}
+
+.tick-container {
+    margin: 0 auto;
+    width: 1100px;
+}
+
+.oneway-blank, .retFlight {
+    width: 550px;
+}
+
+.container {
+    border-style: dotted;
+    border-width: 5px;
+    margin-top: 20px;
+    width: 500px;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.flightDet {
+    background-color: rgb(247, 224, 94);
+    height: 40px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+.dateLabel {
+    padding-right: 10px;
+    text-align: right;
+}
+
+.label {
+    color: rgb(115, 156, 245);
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.date {
+    font-size: 15px;
+}
+
+.depLabel {
+    color: rgb(115, 156, 245);
+    font-size: 12px;
+}
+
+.depDate {
+    color: skyblue;
+    font-size: 13px;
+}
+
+.flightCode {
+    font-style: italic;
+    font-weight: 500;
+}
+
+.codeLabel {
+    font-style: normal;
+    font-weight: 400;
+}
+
+p {
+    margin: 0;
+}
+
+.flight-content {
+    height: 170px;
+}
+
+.contentHeader {
+    padding: 10px;
+}
+
+.icon {
+    float: left;
+    height: 40px;
+    width: 40px;
+}
+
+.airplane {
+    height: 35px;
+}
+
+.departure {
+    width: 150px;
+    float: left;
+}
+
+.code-air {
+    text-align: right;
+}
+
+.origin {
+    width: 45%;
+    float: left;
+}
+
+.icon-to {
+    text-align: center;
+    padding-top: 15px;
+    float: left;
+    height: 50px;
+    width: 10%;
+}
+
+.paperplane {
+    height: 25px;
+}
+
+.destination {
+    
+    width: 45%;
+    float: right;
+}
+
+.flight-location {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.time {
+    text-align: right;
+    font-size: 20px;
+    padding-top: 10px;
+    padding: 10px;
+    padding-bottom: 10px;
+    float: left;
+    width: 45%;
+}
+
+.loc-det {
+    text-align: left;
+    float: right;
+    width: 55%;
+}
+
+.guestDet {
+    background-color: rgb(247, 224, 94);
+    height: 40px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+.guest-info {
+    padding: 10px;
+}
+
+.guestP {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.guest {
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 400;
+    width: 115px;
+}

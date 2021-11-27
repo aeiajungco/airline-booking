@@ -8,11 +8,11 @@ export interface User {
   username: string;
   email: string;
   password: string;
-  bookings: any;
 }
 
 export interface UserBooking {
   $key: string;
+  flightCode: any;
   username: string;
   firstName: string;
   lastName: string;

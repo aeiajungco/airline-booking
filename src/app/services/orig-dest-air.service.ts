@@ -9,18 +9,18 @@ export class OrigDestAirService {
 
   getLocations() {
     return [
-      {value: 'Cagayan de Oro', viewValue: 'Cagayan de Oro'},
-      {value: 'Camiguin', viewValue: 'Camiguin'},
-      {value: 'Cebu', viewValue: 'Cebu'},
-      {value: 'Davao', viewValue: 'Davao'},
-      {value: 'General Santos', viewValue: 'General Santos'},
-      {value: 'Iloilo', viewValue: 'Iloilo'},
-      {value: 'Kalibo', viewValue: 'Kalibo'},
-      {value: 'Metro Manila', viewValue: 'Metro Manila'},
-      {value: 'Ozamiz', viewValue: 'Ozamiz'},
-      {value: 'Pagadian', viewValue: 'Pagadian'},
-      {value: 'Puerto Princesa', viewValue: 'Puerto Princesa'},
-      {value: 'Siargao', viewValue: 'Siargao'},    
+      {value: 'CGY', viewValue: 'Cagayan de Oro'},
+      {value: 'CGM', viewValue: 'Camiguin'},
+      {value: 'CEB', viewValue: 'Cebu'},
+      {value: 'DVO', viewValue: 'Davao'},
+      {value: 'GES', viewValue: 'General Santos'},
+      {value: 'ILO', viewValue: 'Iloilo'},
+      {value: 'KLO', viewValue: 'Kalibo'},
+      {value: 'MNL', viewValue: 'Metro Manila'},
+      {value: 'OZC', viewValue: 'Ozamiz'},
+      {value: 'PAG', viewValue: 'Pagadian'},
+      {value: 'PPS', viewValue: 'Puerto Princesa'},
+      {value: 'IAO', viewValue: 'Siargao'},    
     ];
   }
 
