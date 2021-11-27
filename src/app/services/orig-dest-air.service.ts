@@ -48,4 +48,12 @@ export class OrigDestAirService {
       {value: 'Pan Pacific Airlines', viewValue: 'Pan Pacific Airlines'},
     ];
   }
+
+  getStatus () {
+    return [
+      {value: 'All', viewValue: 'All'},
+      {value: 'Available', viewValue: 'Available'},
+      {value: 'Cancelled', viewValue: 'Cancelled'},
+    ]
+  }
 }

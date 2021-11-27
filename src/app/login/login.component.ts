@@ -20,6 +20,7 @@ interface Login {
 export class LoginComponent implements OnInit {
   
   incorrect = 0;
+  isUser = 1;
   admins$: any = [];
   users$: any = [];
   role = '';
@@ -54,6 +55,10 @@ export class LoginComponent implements OnInit {
       this.variable.setLoggedIn(0);
       console.log("user = " + this.variable.getUser())
     }
+  }
+
+  register () {
+    this.isUser = 0;
   }
 
   login () {    

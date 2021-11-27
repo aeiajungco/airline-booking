@@ -10,11 +10,22 @@ mat-form-field {
 }
 
 button {
-    background-color: blue;
+    background-color: blueviolet;
     width: 400px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+}
+
+.confirmation {
+    text-align: center;
+}
+
+.closebtn {
+    border-style: none;
+    height: 30px;
+    width: 70px;
+    font-size: 20px;
 }

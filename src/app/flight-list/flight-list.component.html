@@ -1,8 +1,17 @@
+{{onChange()}}
+
 <div class="filter-bar">
     <mat-form-field>
-        <mat-select [(value)]="filterChoice" placeholder="Choose an Airline" (valueChange)="onChange()"> 
+        <mat-select [(value)]="filterChoice" placeholder="Airline" (valueChange)="onChange()"> 
             <mat-option *ngFor="let airLines of airlines" [value]="airLines.value">
                 {{airLines.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [(value)]="filterStatus" placeholder="Flight Status" (valueChange)="onChange()"> 
+            <mat-option *ngFor="let status of flightStat" [value]="status.value">
+                {{status.viewValue}}
             </mat-option>
         </mat-select>
     </mat-form-field>
@@ -17,6 +26,11 @@
     <h1  *ngSwitchCase="airlines[6].value">PAL Express</h1>
     <h1  *ngSwitchCase="airlines[7].value">Pan Pacific Airlines</h1>   
 </div>
+<div class="heading" [ngSwitch]="filterStatus">
+    <h1  *ngSwitchCase="flightStat[0].value">All</h1>
+    <h1  *ngSwitchCase="flightStat[1].value">Available</h1>
+    <h1  *ngSwitchCase="flightStat[2].value">Cancelled</h1>
+</div>
 
 <div id="notExisting" *ngIf="filteredList.length == 0 && filterChoice != ''">
     <h2>- No existing flights -</h2> 
@@ -26,6 +40,10 @@
             <mat-card-content>
                 <table>
                     <tr>
+                        <td>
+                            <label for="aLine">Airline</label>
+                            <p>{{flight.airline}}</p>
+                        </td>
                         <td>
                             <label for="fCode">Flight Code</label>
                             <p>{{flight.flightCode}}</p>
@@ -64,7 +82,6 @@
                         </td>
                     </tr>
                 </table>
-                
                 <app-cancel-flight *ngIf="variable.getAdmin()" class="book" [flightCode]="flight.flightCode">Cancel Flight</app-cancel-flight> 
             </mat-card-content>     
     </mat-card>
