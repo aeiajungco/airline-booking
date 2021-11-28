@@ -4,6 +4,7 @@ import { LoginVarService } from 'src/app/services/login-var.service';
 import { UserService } from 'src/app/services/user.service';
 
 interface AllFlightDetails {
+  $key: any;
   flightCode: any;
   origin: string;
   destination: string;
@@ -61,52 +62,14 @@ export class BookingListComponent implements OnInit {
     this.oneWay.length = 0;
     this.twoWayDep.length = 0;
     this.twoWayRet.length = 0;
-   
-    
+       
     for (let x of this.flights$) {
-      for (let y of this.userFlights) {
+      for (let y of this.userFlights) { 
 
-          if (x.flightCode == y.flightCode[0]) {
-            if (y.flightCode[1] != null) {             
-              const payload: AllFlightDetails = {
-                flightCode: x.flightCode,
-                origin: x.origin,
-                destination: x.destination,
-                depDate: x.depDate,
-                depTime: x.depTime,
-                arrTime: x.arrTime,
-                airline: x.airline,                
-                username: y.username,
-                firstName: y.firstName,
-                lastName: y.lastName,
-                passNum: y.passNum,
-                seatClass: y.seatClass,
-              }              
-              this.twoWayDep.push(payload);
-              break;
-            }
-            else {
-              const payload: AllFlightDetails = {
-                flightCode: x.flightCode,
-                origin: x.origin,
-                destination: x.destination,
-                depDate: x.depDate,
-                depTime: x.depTime,
-                arrTime: x.arrTime,
-                airline: x.airline,                
-                username: y.username,
-                firstName: y.firstName,
-                lastName: y.lastName,
-                passNum: y.passNum,
-                seatClass: y.seatClass,
-              }   
-              this.oneWay.push(payload);
-              break;
-            }
-          }
-
-          if (x.flightCode == y.flightCode[1]) {
-            const payload: AllFlightDetails = {
+        if (x.flightCode == y.flightCode[0]) {
+          if (y.flightCode[1] != null) {             
+            const depDet: AllFlightDetails = {
+              $key: y.$key,
               flightCode: x.flightCode,
               origin: x.origin,
               destination: x.destination,
@@ -119,14 +82,52 @@ export class BookingListComponent implements OnInit {
               lastName: y.lastName,
               passNum: y.passNum,
               seatClass: y.seatClass,
-            }                 
-            this.twoWayRet.push(payload);          
-            break;
+            }           
+            this.twoWayDep.push(depDet);                   
+            for (let z of this.flights$) {
+              if (z.flightCode == y.flightCode[1]) {
+                const retDet: AllFlightDetails = {
+                  $key: y.$key,
+                  flightCode: z.flightCode,
+                  origin: z.origin,
+                  destination: z.destination,
+                  depDate: z.depDate,
+                  depTime: z.depTime,
+                  arrTime: z.arrTime,
+                  airline: z.airline,                
+                  username: y.username,
+                  firstName: y.firstName,
+                  lastName: y.lastName,
+                  passNum: y.passNum,
+                  seatClass: y.seatClass,
+                }                   
+                this.twoWayRet.push(retDet);        
+              }
+            }              
           }
-
+          else {
+            const payload: AllFlightDetails = {
+              $key: y.$key,
+              flightCode: x.flightCode,
+              origin: x.origin,
+              destination: x.destination,
+              depDate: x.depDate,
+              depTime: x.depTime,
+              arrTime: x.arrTime,
+              airline: x.airline,                
+              username: y.username,
+              firstName: y.firstName,
+              lastName: y.lastName,
+              passNum: y.passNum,
+              seatClass: y.seatClass,
+            }   
+              this.oneWay.push(payload);
+          }         
+          break;     
+        }     
       }
     }
-
+    
     switch(this.filterChoice) {
       case 'Both':
         if (this.oneWay.length != 0 && this.twoWayDep != 0 && this.twoWayRet != 0)

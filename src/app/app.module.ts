@@ -56,6 +56,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { BookingListComponent } from './user/booking-list/booking-list.component';
 import { OnewayBookingListComponent } from './oneway-booking-list/oneway-booking-list.component';
 import { TwowayBookingListComponent } from './twoway-booking-list/twoway-booking-list.component';
+import { CancelBookingComponent } from './cancel-booking/cancel-booking.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,8 @@ import { TwowayBookingListComponent } from './twoway-booking-list/twoway-booking
     CancelFlightComponent,
     RegisterComponent,
     OnewayBookingListComponent,
-    TwowayBookingListComponent
+    TwowayBookingListComponent,
+    CancelBookingComponent
   ],
   imports: [
     BrowserModule,

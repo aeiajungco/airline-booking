@@ -1,14 +1,18 @@
 <div class="heading">
     <h1 class="book-heading">Two-Way Bookings</h1>
 </div>
-    <table class="tick-container">
-        <tr>
+    <table class="tick-container"> 
+        <tr> 
             <td>
-                <div class="container" *ngFor="let depFl of twoWayDep">
-        
-                    <div class="dateLabel">
-                        <p class="label">BOOKING DATE</p>
-                        <p class="date">{{depFl.depDate}}</p>
+                <div class="dep-container" *ngFor="let depFl of twoWayDep">
+
+                    <div class="flight-header">
+                        <div class="dateLabel">
+                            <p class="label">BOOKING DATE</p>
+                            <p class="date">{{depFl.depDate}}</p>
+                        </div>                    
+                        <div class="blank-cancel">                                             
+                        </div>
                     </div>
 
                     <div class="flightDet">
@@ -71,13 +75,17 @@
                     </div>
                 </div>
             </td>
+
             <td class="retFlight">
-                <div class="container" *ngFor="let retFl of twoWayRet">
-        
-                    <div class="dateLabel">
-                        <p class="label">BOOKING DATE</p>
-                        <p class="date">{{retFl.depDate}}</p>
-                    </div>
+                <div class="ret-container" *ngFor="let retFl of twoWayRet">               
+
+                    <div class="flight-header">      
+                        <div class="rfDateLabel">                        
+                        </div>
+                        <div class="cancel">
+                            <app-cancel-booking [bookingID]="retFl.$key" [twoWayFl]="retFl"></app-cancel-booking>                       
+                        </div>
+                    </div>                   
 
                     <div class="flightDet">
                         <p>Flight Details</p>
@@ -90,7 +98,7 @@
                             <img class="airplane" src="assets/images/airplane.png" alt="image">
                         </div>
                         <div class="departure">
-                            <p class="depLabel">DEPARTURE</p> 
+                            <p class="depLabel">RETURNING</p> 
                             <p class="depDate">{{retFl.depDate}}</p>
                         </div>        
                         <div class="code-air">

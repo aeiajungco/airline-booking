@@ -62,5 +62,9 @@ export class UserService {
     return this.userBooking$;
   }
   
+  removeBooking(bookingID: string) {
+    this.userBookingCollection.doc(bookingID).delete();
+  }
+
 }
 

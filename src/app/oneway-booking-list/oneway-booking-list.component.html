@@ -5,16 +5,22 @@
         <tr>
             <td>
                 <div class="container">
-
+                    
+                <div class="flight-header">
                     <div class="dateLabel">
                         <p class="label">BOOKING DATE</p>
                         <p class="date">{{depFl.depDate}}</p>
                     </div>
 
-                    <div class="flightDet">
-                        <p>Flight Details</p>
+                    <div class="cancel">
+                        <app-cancel-booking [bookingID]="depFl.$key" [oneWayFl]="depFl"></app-cancel-booking>                       
                     </div>
+                </div>
 
+                <div class="flightDet">
+                    <p>Flight Details</p>
+                </div>
+                
                 <div class="flight-content">
 
                     <div class="contentHeader">
