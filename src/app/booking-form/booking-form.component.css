@@ -5,6 +5,16 @@
     margin-bottom: 5%;
 }
 
+.modal-header {
+    height: 50px;
+}
+
+.close {
+    font-size: 15px;
+    height: 50px;
+    padding: 0;
+}
+
 .bf-title {
     text-align: center;
 }
@@ -31,13 +41,8 @@
     font-size: 15px;
 }
 
-.success-msg {
+.alert {
     margin-top: 15px;
-    color: green;
-    font-style: italic;
     text-align: center;
 }
 
-.close {
-    font-size: 30px;
-}

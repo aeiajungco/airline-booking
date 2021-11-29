@@ -1,9 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FlightsService } from '../services/flights.service';
 import { LoginVarService } from '../services/login-var.service';
 import { UserBooking, UserService } from '../services/user.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-booking-form',
@@ -11,7 +12,6 @@ import { UserBooking, UserService } from '../services/user.service';
   styleUrls: ['./booking-form.component.css']
 })
 export class BookingFormComponent implements OnInit {
-
   selectedSeat = "";
   selectedUser = "";
   confirmed = false;
@@ -20,6 +20,7 @@ export class BookingFormComponent implements OnInit {
   userLoggedIn = "";
   usernames: any = [];
   isAdmin: any;
+  currentDate: any;
 
   bookingForm = this.bForm.group ({
     user: ['',],
@@ -29,7 +30,7 @@ export class BookingFormComponent implements OnInit {
     seatClass: ['', Validators.required],
   });
 
-  constructor(private bForm: FormBuilder, private modalService: BsModalService, private users: UserService, private variable: LoginVarService, private flight: FlightsService ) { }
+  constructor(private bForm: FormBuilder, private modalService: BsModalService, private users: UserService, private variable: LoginVarService, private flight: FlightsService, public datepipe: DatePipe ) { }
    
   ngOnInit(): void {
     this.users.getUsers().subscribe((val:any)=> {
@@ -46,50 +47,42 @@ export class BookingFormComponent implements OnInit {
     }
   }
 
+  getCurrentDate() {
+    this.currentDate = new Date();
+    let bookDate = this.datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+    return bookDate;
+  }
+
   onSubmit() {    
     this.confirmed = true;
 
-    //for (let x of this.userBookings$) {
-      /*if (x.username == this.variable.getUserName() || x.username == this.selectedUser) {    
-        if (x.bookings.filter((res: string) => res.includes(this.flight.getDepartingFlight() || this.flight.getReturningFlight())).length !== 0) {
-          alert("You have already booked this flight.");
-          this.confirmed = false;
-          this.closeModal();
-          break;          
+      if (this.isAdmin) {
+        const bookingInfo: UserBooking = {
+          $key: '',
+          bookDate: this.getCurrentDate(),
+          flightCode: [this.flight.getDepartingFlight(), this.flight.getReturningFlight()],
+          username: this.bfInfo.user.value,
+          firstName: this.bfInfo.fName.value,
+          lastName: this.bfInfo.lName.value,
+          passNum: this.bfInfo.passNum.value,
+          seatClass: this.bfInfo.seatClass.value,
         }
-        else {       
-          if (this.flight.getDepartingFlight() != null && this.flight.getReturningFlight() != null) {    
-            x.bookings.push(this.flight.getDepartingFlight());
-            x.bookings.push(this.flight.getReturningFlight());
+          this.users.addUserBooking(bookingInfo);
+        }
+        else {
+          const bookingInfo: UserBooking = {
+            $key: '',
+            bookDate: this.getCurrentDate(),
+            flightCode: [this.flight.getDepartingFlight(), this.flight.getReturningFlight()],
+            username: this.userLoggedIn,
+            firstName: this.bfInfo.fName.value,
+            lastName: this.bfInfo.lName.value,
+            passNum: this.bfInfo.passNum.value,
+            seatClass: this.bfInfo.seatClass.value,
           }
-          else if (this.flight.getReturningFlight() == null) {
-            x.bookings.push(this.flight.getDepartingFlight());
-          }*/
-
-          if (this.isAdmin) {
-            const bookingInfo: UserBooking = {
-              $key: '',
-              flightCode: [this.flight.getDepartingFlight(), this.flight.getReturningFlight()],
-              username: this.bfInfo.user.value,
-              firstName: this.bfInfo.fName.value,
-              lastName: this.bfInfo.lName.value,
-              passNum: this.bfInfo.passNum.value,
-              seatClass: this.bfInfo.seatClass.value,
-            }
+            console.log(this.getCurrentDate());
             this.users.addUserBooking(bookingInfo);
-          }
-          else {
-            const bookingInfo: UserBooking = {
-              $key: '',
-              flightCode: [this.flight.getDepartingFlight(), this.flight.getReturningFlight()],
-              username: this.userLoggedIn,
-              firstName: this.bfInfo.fName.value,
-              lastName: this.bfInfo.lName.value,
-              passNum: this.bfInfo.passNum.value,
-              seatClass: this.bfInfo.seatClass.value,
-            }
-            this.users.addUserBooking(bookingInfo);
-          }    
+        }    
     
     this.bookingForm.reset();
     this.bfInfo.fName.setErrors(null);

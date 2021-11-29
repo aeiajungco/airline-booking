@@ -23,9 +23,9 @@ export class BookFlightComponent implements OnInit {
   matchingList: any = [];
   departingFlight: any = [];
   returningFlight: any = [];
-  submitted: boolean = false;
-  matched: boolean = false;
-  retDateMatched: boolean = false;
+  submitted!: boolean;
+  matched!: boolean;
+  retDateMatched!: boolean;
 
 
   bookForm = this.fb.group ({
@@ -73,7 +73,7 @@ export class BookFlightComponent implements OnInit {
     }
     else {
         for (let val of this.flightList$) {
-          if (val.airline == this.selectedAir && val.origin == this.selectedOri && val.destination == this.selectedDes && val.depDate == this.bookForm.value.depDate) {
+          if (val.airline == this.selectedAir && val.origin == this.selectedOri && val.destination == this.selectedDes && val.depDate == this.bookForm.value.depDate && val.status == 'Available') {
             this.departingFlight.push(val);
             this.matched = true;
           }
@@ -81,7 +81,7 @@ export class BookFlightComponent implements OnInit {
 
       if (this.bookForm.value.retDate != null) {
         for (let val of this.flightList$) {
-          if (val.airline == this.selectedAir && val.origin == this.selectedDes && val.destination == this.selectedOri && val.depDate == this.bookForm.value.retDate) {
+          if (val.airline == this.selectedAir && val.origin == this.selectedDes && val.destination == this.selectedOri && val.depDate == this.bookForm.value.retDate && val.status == 'Available') {
             this.returningFlight.push(val);
             this.retDateMatched = true;
           }
@@ -97,9 +97,14 @@ export class BookFlightComponent implements OnInit {
       this.departingFlight.length = 0;
       this.returningFlight.length = 0;
     }
+    else if (this.matched == false) {
+      this.retDateMatched = false;
+    }
 
+    console.log("BOOKING");
     console.log(this.retDateMatched);
     console.log(this.matched);
+    console.log(this.submitted);
   }
 
   onChange() {

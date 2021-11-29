@@ -9,11 +9,11 @@
                 <div class="flight-header">
                     <div class="dateLabel">
                         <p class="label">BOOKING DATE</p>
-                        <p class="date">{{depFl.depDate}}</p>
+                        <p class="date">{{depFl.bookDate}}</p>
                     </div>
 
                     <div class="cancel">
-                        <app-cancel-booking [bookingID]="depFl.$key" [oneWayFl]="depFl"></app-cancel-booking>                       
+                        <app-cancel-booking [bookingID]="depFl.$key" [bookingDate]="depFl.bookDate" [depDate]="depFl.depDate"></app-cancel-booking>                       
                     </div>
                 </div>
 

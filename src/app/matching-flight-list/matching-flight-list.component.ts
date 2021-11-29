@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FlightsService } from '../services/flights.service';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-matching-flight-list',
@@ -12,7 +13,8 @@ export class MatchingFlightListComponent implements OnInit {
   @Input() returningFlight: any = [];
   depFlight = '';
   retFlight = '';
-  
+  retIsSelected: boolean = false;  
+
   constructor(private flight: FlightsService) {}
 
   ngOnInit(): void {    
@@ -23,7 +25,7 @@ export class MatchingFlightListComponent implements OnInit {
     this.flight.setDepartingFlight(flight);
   }
 
-  getReturn(flight: any) {    
+  getReturn(flight: any) {
     this.retFlight = flight;
     this.flight.setReturningFlight(flight);
   }
@@ -32,5 +34,7 @@ export class MatchingFlightListComponent implements OnInit {
     console.log('Departing: ' + this.flight.getDepartingFlight());
     console.log('Returning: ' + this.flight.getReturningFlight());
   }
+
+
 
 }

@@ -9,10 +9,11 @@
                     <div class="flight-header">
                         <div class="dateLabel">
                             <p class="label">BOOKING DATE</p>
-                            <p class="date">{{depFl.depDate}}</p>
-                        </div>                    
-                        <div class="blank-cancel">                                             
+                            <p class="date">{{depFl.bookDate}}</p>
                         </div>
+                        <div class="cancel">
+                            <app-cancel-booking [bookingID]="depFl.$key" [bookingDate]="depFl.bookDate" [depDate]="depFl.depDate"></app-cancel-booking>                      
+                        </div>                                                                                
                     </div>
 
                     <div class="flightDet">
@@ -80,11 +81,8 @@
                 <div class="ret-container" *ngFor="let retFl of twoWayRet">               
 
                     <div class="flight-header">      
-                        <div class="rfDateLabel">                        
-                        </div>
-                        <div class="cancel">
-                            <app-cancel-booking [bookingID]="retFl.$key" [twoWayFl]="retFl"></app-cancel-booking>                       
-                        </div>
+                        <div class="rfDateLabel"></div>
+                        <div class="blank-cancel"></div>
                     </div>                   
 
                     <div class="flightDet">

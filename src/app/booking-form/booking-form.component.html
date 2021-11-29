@@ -73,7 +73,7 @@
 
                 <button mat-raised-button color="primary" class="confirm" [disabled]="!bookingForm.valid || confirmed">Confirm</button>
             </form>
-            <h3 class="success-msg" *ngIf="confirmed">You have successfully booked a ticket.</h3>
+            <h3 class="alert alert-success" *ngIf="confirmed">You have successfully booked a ticket.</h3>
         </mat-card-content>
     </mat-card>
 </ng-template>

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
 import { LoginVarService } from 'src/app/services/login-var.service';
@@ -5,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 
 interface AllFlightDetails {
   $key: any;
+  bookDate: any;
   flightCode: any;
   origin: string;
   destination: string;
@@ -38,7 +40,7 @@ export class BookingListComponent implements OnInit {
   twoWayDep: any = [];
   twoWayRet: any = [];
 
-  constructor(private users: UserService, private flights: FlightsService, private variable: LoginVarService) { }
+  constructor(private users: UserService, private flights: FlightsService, private variable: LoginVarService, public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.users.getUserBookings().subscribe((val:any)=> {
@@ -66,10 +68,11 @@ export class BookingListComponent implements OnInit {
     for (let x of this.flights$) {
       for (let y of this.userFlights) { 
 
-        if (x.flightCode == y.flightCode[0]) {
+        if (x.flightCode == y.flightCode[0] && x.status == 'Available') {
           if (y.flightCode[1] != null) {             
             const depDet: AllFlightDetails = {
               $key: y.$key,
+              bookDate: y.bookDate,
               flightCode: x.flightCode,
               origin: x.origin,
               destination: x.destination,
@@ -83,11 +86,12 @@ export class BookingListComponent implements OnInit {
               passNum: y.passNum,
               seatClass: y.seatClass,
             }           
-            this.twoWayDep.push(depDet);                   
+                           
             for (let z of this.flights$) {
-              if (z.flightCode == y.flightCode[1]) {
+              if (z.flightCode == y.flightCode[1] && z.status == 'Available') {
                 const retDet: AllFlightDetails = {
                   $key: y.$key,
+                  bookDate: y.bookDate,
                   flightCode: z.flightCode,
                   origin: z.origin,
                   destination: z.destination,
@@ -101,13 +105,15 @@ export class BookingListComponent implements OnInit {
                   passNum: y.passNum,
                   seatClass: y.seatClass,
                 }                   
-                this.twoWayRet.push(retDet);        
+                this.twoWayRet.push(retDet);
+                this.twoWayDep.push(depDet);            
               }
             }              
           }
           else {
             const payload: AllFlightDetails = {
               $key: y.$key,
+              bookDate: y.bookDate,
               flightCode: x.flightCode,
               origin: x.origin,
               destination: x.destination,

@@ -12,6 +12,7 @@ export interface User {
 
 export interface UserBooking {
   $key: string;
+  bookDate: any;
   flightCode: any;
   username: string;
   firstName: string;

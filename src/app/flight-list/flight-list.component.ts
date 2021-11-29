@@ -54,7 +54,7 @@ export class FlightListComponent implements OnInit {
 
   sortStatus (val: any) {
     if (this.filterStatus == 'All') {
-      this.filteredList.push(val);
+    this.filteredList.push(val);
   }
   else if (val.status == this.filterStatus)
     this.filteredList.push(val);

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Routes } from '@angular/router';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,11 +11,13 @@ import { UserService } from '../services/user.service';
 export class CancelBookingComponent implements OnInit {
 
   @Input() bookingID: string = '';
-  @Input() oneWayFl: any;
-  @Input() twoWayFl: any;
+  @Input() bookingDate: any;
+  @Input() depDate: any;
+  dateDiff: any;
+  modalRef!: BsModalRef;
+  confirmed: boolean = false;
 
-
-  constructor(private users: UserService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private users: UserService, private modalService: BsModalService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
   }
@@ -25,9 +28,28 @@ export class CancelBookingComponent implements OnInit {
     this.router.navigate(['./'], { relativeTo: this.route });
   }
   
-  onCancel() {    
-    this.users.removeBooking(this.bookingID);
-    this.reload();
+  onCancel() { 
+    const diffDays = (date: any, otherDate: any) => Math.ceil(Math.abs(date - otherDate) / (1000 * 60 * 60 * 24));
+    this.dateDiff = diffDays(new Date(this.depDate), new Date(this.bookingDate)); 
+
+    if(this.dateDiff >= 7) {
+      this.confirmed == true;
+      this.users.removeBooking(this.bookingID);
+      this.closeModal();
+      this.reload();      
+    }
+    else {
+      this.confirmed = false;
+    }
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+    this.confirmed = true;
+  }
+
+  closeModal() {
+    this.modalRef?.hide();
   }
 
 

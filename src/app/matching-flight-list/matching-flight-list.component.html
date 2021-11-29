@@ -42,7 +42,7 @@
         </td>
       </tr>
     </table>
-    <button mat-raised-button color="primary" type="button" class="btn btn-primary"  (click)="getDepart(matched.flightCode)">
+    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="sel-btn" (click)="getDepart(matched.flightCode)">
       SELECT
     </button>
   </mat-card-content>
@@ -92,12 +92,12 @@
         </td>
       </tr>
     </table>
-    <button mat-raised-button color="primary" type="button" class="btn btn-primary"  (click)="getReturn(matched.flightCode)">
+    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="sel-btn" (click)="getReturn(matched.flightCode)">
       SELECT
     </button>
   </mat-card-content>
 </mat-card>
-<div class="btn-container">
+<div class="btn-container" *ngIf="depFlight != ''">
   <app-booking-form class="book" (click)="display()"></app-booking-form>
 </div>
 

@@ -1,1 +1,21 @@
-<button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+<button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="openModal(template)">Cancel</button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <button mat-button class="close" (click)="closeModal()">X</button>
+    </div>
+    <div class="modal-body">
+        <div class="msg">
+            <p>
+                Do you want to cancel user booking?
+            </p>
+        </div>
+        <div class="option">
+            <button mat-button class="choice" (click)="onCancel()">Yes</button>
+            <button mat-button class="choice" (click)="closeModal()">No</button>
+        </div>
+        <div class="warning" *ngIf="confirmed == false">
+            <p class="alert alert-danger">You can only cancel bookings 7 days prior to its departure date.</p>
+        </div>
+    </div>
+</ng-template>
