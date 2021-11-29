@@ -90,12 +90,6 @@ export class BookingFormComponent implements OnInit {
             }
             this.users.addUserBooking(bookingInfo);
           }    
-
-          //this.users.addFlightCode(x.$key, x);
-          //break;
-        //}
-      //}      
-    //}  
     
     this.bookingForm.reset();
     this.bfInfo.fName.setErrors(null);

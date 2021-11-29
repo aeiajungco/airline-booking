@@ -13,17 +13,24 @@
     width: 1100px;
 }
 
-.oneway-blank, .retFlight {
+.retFlight {
     width: 550px;
 }
 
 .container {
-    border-style: dotted;
-    border-width: 5px;
     margin-top: 20px;
     width: 500px;
     padding: 0;
     background-color: rgb(255, 255, 255);
+}
+
+.dep-container {
+    margin-right: 0;
+}
+
+.ret-container {
+    margin-left: 0;
+
 }
 
 .flightDet {
@@ -33,9 +40,20 @@
     font-weight: 500;
 }
 
-.dateLabel {
-    padding-right: 10px;
-    text-align: right;
+.flight-header {
+    padding: 5px;
+}
+
+.blank-cancel {
+    height: 38px;
+    width: 15%;
+}
+
+.dateLabel, .rfDateLabel {
+    float: left;
+    text-align: left;
+    width: 85%;
+    height: 38px;
 }
 
 .label {

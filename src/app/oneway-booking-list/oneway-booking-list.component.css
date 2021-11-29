@@ -13,15 +13,15 @@
     width: 1100px;
 }
 
-.oneway-blank, .retFlight {
+.oneway-blank {
     width: 550px;
 }
 
 .container {
     border-style: dotted;
-    border-width: 5px;
+    border-width: 4px;
     margin-top: 20px;
-    width: 500px;
+    width: 550px;
     padding: 0;
     background-color: rgb(255, 255, 255);
 }
@@ -33,9 +33,15 @@
     font-weight: 500;
 }
 
+.flight-header {
+    padding: 5px;
+}
+
 .dateLabel {
-    padding-right: 10px;
-    text-align: right;
+    text-align: left;
+    float: left;
+    width: 85%;
+    height: 38px;
 }
 
 .label {
