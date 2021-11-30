@@ -9,18 +9,15 @@
           <div class="flight-header">
             <div class="dateLabel">
               <p class="label">BOOKING DATE</p>
-              <p class="date">{{ depFl.depDate }}</p>
+              <p class="date">{{ depFl.depDate }}</p>              
             </div>
             <div class="cancel">
-              <app-cancel-booking
-                [bookingID]="depFl.$key"
-                [twoWayFl]="depFl"
-              ></app-cancel-booking>
+              <button disabled mat-button class="blank-cancel">Cancel</button>
             </div>
           </div>
   
           <div class="flightDet">
-            <p>Flight Details</p>
+            <p>Flight Details</p>                        
           </div>
   
           <div class="flight-content">
@@ -103,8 +100,9 @@
             <div class="rfDateLabel"></div>
             <div class="cancel">
               <app-cancel-booking
-                [bookingID]="twoWayRet[i].$key"
-                [twoWayFl]="twoWayRet[i]"
+                [bookingID]="depFl.$key"
+                [bookingDate]="depFl.bookDate"
+                [depDate]="depFl.depDate"
               ></app-cancel-booking>
             </div>
           </div>

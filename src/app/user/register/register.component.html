@@ -15,6 +15,8 @@
                         type="text">
                     <mat-error *ngIf="rf.firstName.errors?.required">Please enter your first name.</mat-error>
                 </mat-form-field>
+
+                <div id="space"></div>
     
                 <mat-form-field class="inpField" appearance="outline">
                     <mat-label>
@@ -26,6 +28,8 @@
                         type="text">
                     <mat-error *ngIf="rf.lastName.errors?.required">Please enter your last name.</mat-error>
                 </mat-form-field>
+
+                <div id="space"></div>
                 
                 <mat-form-field class="inpField" appearance="outline">
                     <mat-label>
@@ -38,12 +42,12 @@
                         (input)="checkUsername()">
                     <mat-error *ngIf="rf.username.errors?.required">Please enter a username</mat-error>
                     <mat-error *ngIf="rf.username.errors?.minlength">Must contain at least 5 characters.</mat-error>
-             
                 </mat-form-field>
+
                 <div id="space">
                     <mat-error class="userExists custError" *ngIf="usernameExists">Username already exists.</mat-error>
-                </div>
-                
+                </div>                
+            
                 <mat-form-field class="inpField" appearance="outline">
                     <mat-label>
                         Email Address
@@ -56,6 +60,7 @@
     
                     <mat-error *ngIf="rf.email.errors?.required">Please enter your email.</mat-error>
                     <mat-error *ngIf="rf.email.errors?.email">Invalid email.</mat-error> 
+                    
                 </mat-form-field>
     
                 <div id="space">
@@ -93,15 +98,13 @@
                 <div id="space"></div>
                 
                 <div class="reg">
-                    <button mat-raised-button color="primary" [disabled]="!regForm.valid || emailaddExists || usernameExists" (click)="onRegister()">REGISTER YOUR ACCOUNT</button>
+                    <button mat-raised-button color="primary" [disabled]="!regForm.valid || emailaddExists || usernameExists || registered">REGISTER YOUR ACCOUNT</button>
                 </div>
             </form>
             <div class="alert-success" *ngIf="registered">
                 <h3>You have successfully registered an account.</h3>
-                <button class="btn btn-secondary" routerLink="/">Go back to login page</button>
             </div>
         </mat-card-content>
     </mat-card>
-    
     <router-outlet></router-outlet>
 </ng-template>

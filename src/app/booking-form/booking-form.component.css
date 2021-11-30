@@ -30,8 +30,13 @@
 }
 
 .inpField {
+    height: 20px;
     font-size: 20px;
     display: grid;
+}
+
+mat-label {
+    font-size: 20px;
 }
 
 .confirm {

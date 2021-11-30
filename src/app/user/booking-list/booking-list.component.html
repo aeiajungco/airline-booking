@@ -8,7 +8,13 @@
     </mat-form-field>
 </div>
 
-<div id="notExisting" *ngIf="oneWay.length == 0 && twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice != '' ">
+<div id="notExisting" *ngIf="oneWay.length == 0 && twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'Both'">
+    <h2>- No existing bookings -</h2> 
+</div>
+<div id="notExisting" *ngIf="oneWay.length == 0 && filterChoice == 'One-Way'">
+    <h2>- No existing bookings -</h2> 
+</div>
+<div id="notExisting" *ngIf="twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'Two-Way'">
     <h2>- No existing bookings -</h2> 
 </div>
 

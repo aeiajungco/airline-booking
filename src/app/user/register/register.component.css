@@ -1,7 +1,8 @@
 .registerForm {
-  width: 600px;
+  width: 450px;
   margin: 0 auto;
   margin-top: 5%;
+  margin-bottom: 5%;
   background-color: rgba(174, 174, 243, 0.5);
 }
 
@@ -20,8 +21,8 @@
 .inpField {
   display: grid;
   height: 55px;
-  margin-bottom: 30px;
-  color: blueviolet;
+  margin-bottom: 2px;
+  color: blueviolet;  
 }
 
 .reg {
@@ -48,6 +49,41 @@ h3 {
   font-style: italic;
 }
 
+#space {
+  height: 20px;
+  padding-top: 10px;
+  padding-left: 20px;
+  font-size: 11px;
+}
+
+#space .custError {
+  opacity: 1;
+	animation-name: fadeInOpacity, slide-down;
+	animation-timing-function: ease-in-out;
+	animation-duration: .25s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes slide-down {
+  from {
+    margin-top: -.8%;
+    height: 100%; 
+  }
+
+  to {
+    margin-top: 0%;
+    height: 20px;
+  }
+}
+
 a {
   color: blueviolet;
 }
@@ -55,8 +91,4 @@ a {
 .regBtn {
   margin-bottom: 30px;
   font-size: 20px;
-}
-
-#template {
-    width: 1000px;
 }
