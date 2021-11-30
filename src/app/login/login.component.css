@@ -6,12 +6,12 @@
 }
 
 .login-page {
-    height: 100%;
-    margin: 0 auto;
-    background-image: url("src/assets/images/planee.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 100%;
+  margin: 0 auto;
+  background-image: url("src/assets/images/planee.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 mat-card {
@@ -26,6 +26,7 @@ mat-card {
 }
 
 .login {
+  font-family: "myFont";
   margin: 0 auto;
   float: center;
   text-align: center;
@@ -33,24 +34,45 @@ mat-card {
   background-color: rgba(251, 247, 255, 0.959);
 }
 
-.form {
-  margin-top: 10px;
-  background-color: rgb(0, 0, 0);
-}
-
-mat-form-field {
-  padding: 10px;
-}
-
-button {
-  background-color: rgba(208, 158, 255, 0.24);
-  border: solid 0.5px;
-  width: 50%;
-  height: 35px;
-  margin-bottom: 25px;
+input, mat-option, mat-label {
+  font-family: 'myFont';
   font-size: 20px;
 }
 
-mat-form-field label {
-  font-size: 50px;
+.creds {
+  width: 78%;
+}
+
+.loginBtn {
+  width: 75%;
+  height: 50px;
+  border: none;
+  font-weight: bold;
+  font-size: 25px;
+  background-color: rgb(109, 28, 185);
+  color: white;
+  letter-spacing: 5px;
+}
+
+.loginBtn:disabled {
+  background-color: rgb(190, 190, 190);
+  color: rgb(235, 235, 235);
+}
+
+.role {
+  width: 20%;
+}
+
+.select {
+  font-style: italic;
+  font-size: 15px;
+}
+
+a {
+  color: blueviolet;
+}
+
+.reg {
+  margin-bottom: 30px;
+  font-size: 20px;
 }

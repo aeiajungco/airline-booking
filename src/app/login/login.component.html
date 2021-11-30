@@ -1,35 +1,35 @@
-<div class="login-page" *ngIf="variable.getLoggedIn() == 0 && isUser == 1">
+<div class="login-page" *ngIf="varLogin.getLoggedIn() == 0 && isUser == 1">
   <div class="login-card">
     <mat-card>
       <mat-card-content class="login">
         <form [formGroup]="form">
-          <mat-form-field>
+          <mat-form-field class="role">
+            <mat-label class="select">Select Role</mat-label>  
             <mat-select [(value)]="role" (selectionChange)="setRole()">
               <mat-option value="Admin" >Admin</mat-option>
               <mat-option value="User">User</mat-option>
             </mat-select>
           </mat-form-field>
           <br>
-          <mat-form-field>
+          <mat-form-field class="creds">
             <mat-label>Username</mat-label>
             <input matInput type="text" formControlName="username" required />
           </mat-form-field>
     
-          <mat-form-field>
+          <mat-form-field class="creds">
             <mat-label>Password</mat-label>
             <input matInput type="password" formControlName="password" required />
           </mat-form-field>
           
-          <button *ngIf="!variable.getAdmin() && !variable.getUser()" disabled>LOGIN</button>
-          <button *ngIf="variable.getAdmin()" (click)="login()" routerLink="admin">LOGIN</button>
-          <button *ngIf="variable.getUser()" (click)="login()" routerLink="user">LOGIN</button>
-         
+          <button class="loginBtn" *ngIf="!varLogin.getAdmin() && !varLogin.getUser()" disabled>LOGIN</button>
+          <button class="loginBtn" *ngIf="varLogin.getAdmin()" (click)="login()" routerLink="admin">LOGIN</button>
+          <button class="loginBtn" *ngIf="varLogin.getUser()" (click)="login()" routerLink="user">LOGIN</button>
+          <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
+          <app-register *ngIf="varLogin.getUser()"></app-register>
         </form>
-        <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
-        <div>Don't have an account? <a (click)="register()" routerLink="register">Register Now</a></div>
-      </mat-card-content>
+        </mat-card-content>
     </mat-card>
   </div>
 </div>
 
-<router-outlet *ngIf="(variable.getLoggedIn() == 1 || isUser == 0)"></router-outlet>
+<router-outlet *ngIf="(varLogin.getLoggedIn() == 1 || isUser == 0)"></router-outlet>

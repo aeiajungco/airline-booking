@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand">BON VOYAGE 101</a>
+    <a class="navbar-brand" routerLink="/user">BON VOYAGE 101</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,27 +13,28 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a
-            class="nav-link active"
-            routerLinkActive="active"
-            aria-current="page"
-            routerLink="/user"
+          class="nav-link active"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          aria-current="page"
+          routerLink="/user"
             >Home</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="book">Book Flight</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="book">Book Flight</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="flights">View Flights</a>
-        </li>
-        <li class="nav-item">        
-          <a class="nav-link" routerLink="bookings">View Bookings</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="flights">View Flights</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">Logout</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="bookings">View Bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" href="/">Logout</a>
         </li>
       </ul>
     </div>

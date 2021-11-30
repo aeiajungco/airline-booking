@@ -57,7 +57,7 @@ export class CreateFlightComponent implements OnInit {
       }
       
     this.showConfirm(template)
-    // this.flights.addFlight(flightInfo);
+    this.flights.addFlight(flightInfo);
   
   }
 

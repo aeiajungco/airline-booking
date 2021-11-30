@@ -7,6 +7,7 @@ import { CreateFlightComponent } from './create-flight/create-flight.component';
 import { ViewBookingsComponent } from './view-bookings/view-bookings.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { CancelFlightComponent } from './cancel-flight/cancel-flight.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CancelFlightComponent } from './cancel-flight/cancel-flight.component';
     CreateFlightComponent,
     ViewBookingsComponent,
     UserListComponent,
-    CancelFlightComponent
+    CancelFlightComponent,
+    ViewUsersComponent
   ],
   imports: [
     CommonModule,

@@ -7,6 +7,8 @@ export interface User {
   $key: string;
   username: string;
   email: string;
+  firstName: string;
+  lastName: string;
   password: string;
 }
 

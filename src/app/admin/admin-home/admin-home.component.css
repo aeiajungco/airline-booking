@@ -11,8 +11,9 @@
     font-size: 20px;
 }
 
-.nav-item:hover {
+.nav-item > a:hover {
     text-decoration: underline;
+    color: blueviolet;
 }   
 
 .nav-item > a.active{

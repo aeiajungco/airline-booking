@@ -1,54 +1,62 @@
 .registerForm {
-    width: 600px;
-    margin: 0 auto;
-    margin-top: 5%;
-    background-color: rgba(174, 174, 243, 0.5);
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 5%;
+  background-color: rgba(174, 174, 243, 0.5);
 }
 
 .regTitle {
-    letter-spacing: 2px;
-    padding: 5px;
-    font-weight: 800;
-    text-align: center;
-    color: rgb(122, 59, 158);
+  letter-spacing: 2px;
+  padding: 5px;
+  font-weight: 800;
+  text-align: center;
+  color: rgb(122, 59, 158);
 }
 
 .regContent {
-    padding: 1em;
+  padding: 1em;
 }
 
 .inpField {
-    display: grid;
-    height: 55px;
+  display: grid;
+  height: 55px;
+  margin-bottom: 30px;
+  color: blueviolet;
 }
 
 .reg {
-    text-align: center;
+  text-align: center;
 }
 
 .reg button {
-    margin-top: 10px;
-    margin-bottom: 15px;
-    letter-spacing: 3px;
-    height: 50px;
-    width: 300px;
-}
-
-#space {
-    height: 20px;
-    padding-top: 3px;
-    padding-left: 10px;
-    font-size: 11px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  letter-spacing: 3px;
+  height: 50px;
+  width: 300px;
 }
 
 .alert-success {
-    border-radius: 5px;
-    margin: 0 auto;
-    text-align: center;
-    height: 50px;
-    padding-top: 10.5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  text-align: center;
+  height: 50px;
+  padding-top: 10.5px;
 }
 
 h3 {
-    font-style: italic;
+  font-style: italic;
+}
+
+a {
+  color: blueviolet;
+}
+
+.regBtn {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+#template {
+    width: 1000px;
 }
