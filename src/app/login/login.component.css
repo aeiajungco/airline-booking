@@ -34,6 +34,45 @@ mat-card {
   background-color: rgba(251, 247, 255, 0.959);
 }
 
-input, mat-option {
+input, mat-option, mat-label {
   font-family: 'myFont';
+  font-size: 20px;
+}
+
+.creds {
+  width: 78%;
+}
+
+.loginBtn {
+  width: 75%;
+  height: 50px;
+  border: none;
+  font-weight: bold;
+  font-size: 25px;
+  background-color: rgb(109, 28, 185);
+  color: white;
+  letter-spacing: 5px;
+}
+
+.loginBtn:disabled {
+  background-color: rgb(190, 190, 190);
+  color: rgb(235, 235, 235);
+}
+
+.role {
+  width: 20%;
+}
+
+.select {
+  font-style: italic;
+  font-size: 15px;
+}
+
+a {
+  color: blueviolet;
+}
+
+.reg {
+  margin-bottom: 30px;
+  font-size: 20px;
 }

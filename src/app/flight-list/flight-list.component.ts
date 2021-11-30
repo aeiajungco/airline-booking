@@ -19,7 +19,7 @@ export class FlightListComponent implements OnInit {
   public flightStat: any = [];
   public airlines: any = [];
   
-  constructor(private flight: FlightsService, private airline: OrigDestAirService, public variable: LoginVarService) {}
+  constructor(private flight: FlightsService, private airline: OrigDestAirService, public varLogin: LoginVarService) {}
 
   flightCode = '';
 
@@ -35,7 +35,7 @@ export class FlightListComponent implements OnInit {
   }
 
   onChange() {
-    console.log(this.variable.getAdmin());
+    console.log(this.varLogin.getAdmin());
     this.filteredList.length = 0;
 
     if (this.filterChoice == "All") {

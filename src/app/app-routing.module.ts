@@ -1,3 +1,5 @@
+import { ViewBookingsComponent } from './admin/view-bookings/view-bookings.component';
+import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { RegisterComponent } from './user/register/register.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -38,6 +40,16 @@ const routes: Routes = [
       {
         path: 'flights',
         component: FlightListComponent,
+      },
+      {
+        path: 'users',
+        component: ViewUsersComponent,
+        children: [
+          {
+            path: 'bookings',
+            component: BookingListComponent,
+          },
+        ],
       },
     ],
   },

@@ -1,0 +1,89 @@
+<div class="users">
+  <mat-card class="container" *ngFor="let user of userList$">
+    <mat-card-content>
+      <table>
+        <tr>
+          <td>
+            <label for="fName">First Name</label>
+            <p>{{ user.firstName }}</p>
+          </td>
+          <td>
+            <label for="lName">Last Name</label>
+            <p>{{ user.lastName }}</p>
+          </td>
+          <td>
+            <label for="un">Username</label>
+            <p>{{ user.username }}</p>
+          </td>
+          <td>
+            <label for="email">Email</label>
+            <p>{{ user.email }}</p>
+          </td>
+          <td>
+            <button mat-raised-button color="primary" class="btn btn-primary" type="button" (click)="showBookings(user.username)">View Bookings</button>
+          </td>
+          </tr>
+      </table>
+      <table *ngIf="empty">
+        <tr>
+          <td colspan="5" style="text-align: center;">NO BOOKINGS</td>
+        </tr>
+      </table>
+          <div class="flights" *ngFor="let flight of userFlights">
+                <table *ngIf="show" >
+                  <tr>
+                    <td class="airline">
+                      <label for="aLine">AIRLINE</label>
+                      <p>{{ flight.airline }}</p>
+                    </td>
+                    <td class="code">
+                      <label for="fCode">Flight Code</label>
+                      <p>{{ flight.flightCode }}</p>
+                    </td>
+                    <td class="ori">
+                      <label for="dest">Origin</label>
+                      <p>{{ flight.origin }}</p>
+                    </td>
+                    <td class="dest">
+                      <label for="dest">Destination</label>
+                      <p>{{ flight.destination }}</p>
+                    </td>
+                    <td class="dep">
+                      <label for="depDate">Departure Date</label>
+                      <p>{{ flight.depDate }}</p>
+                    </td>
+                    <td class="dep">
+                      <label for="depTime">Departure Time</label>
+                      <p>{{ flight.depTime }}</p>
+                    </td>
+                    <td class="arr">
+                      <label for="arrTime">Arrival Time</label>
+                      <p>{{ flight.arrTime }}</p>
+                    </td>
+                    <td class="type">
+                      <label for="type">Type</label>
+                      <p>{{ flight.type }}</p>
+                    </td>
+                    <td class="prc">
+                      <label for="fPrice">Flight Price</label>
+                      <p>{{ flight.flightPrice }}</p>
+                    </td>
+                    <td class="stat">
+                      <label for="status">Status</label>
+                      <p>{{ flight.status }}</p>
+                    </td>
+                    <!-- <td class="cancel" *ngIf="varLogin.getAdmin()">
+                      <app-cancel-flight
+                        [flightCode]="flight.flightCode"
+                        [status]="flight.status"
+                        >Cancel Flight</app-cancel-flight
+                      >
+                    </td> -->
+                  </tr>
+                </table>
+          </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<router-outlet></router-outlet>

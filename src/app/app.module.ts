@@ -1,3 +1,5 @@
+import { ViewBookingsComponent } from './admin/view-bookings/view-bookings.component';
+import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { CancelFlightComponent } from './admin/cancel-flight/cancel-flight.component';
 import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
 import { NgModule } from '@angular/core';
@@ -57,6 +59,7 @@ import { BookingListComponent } from './user/booking-list/booking-list.component
 import { OnewayBookingListComponent } from './oneway-booking-list/oneway-booking-list.component';
 import { TwowayBookingListComponent } from './twoway-booking-list/twoway-booking-list.component';
 import { CancelBookingComponent } from './cancel-booking/cancel-booking.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +77,9 @@ import { CancelBookingComponent } from './cancel-booking/cancel-booking.componen
     RegisterComponent,
     OnewayBookingListComponent,
     TwowayBookingListComponent,
-    CancelBookingComponent
+    CancelBookingComponent,
+    ViewUsersComponent,
+    ViewBookingsComponent
   ],
   imports: [
     BrowserModule,

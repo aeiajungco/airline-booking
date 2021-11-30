@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder, private admins: AdminService, private users: UserService, public variable: LoginVarService) { }
+  constructor(private fb: FormBuilder, private admins: AdminService, private users: UserService, public varLogin: LoginVarService) { }
 
   ngOnInit(): void {
     this.admins.getAdmins().subscribe((val) => {
@@ -44,16 +44,16 @@ export class LoginComponent implements OnInit {
 
   setRole() {
     if (this.role == 'Admin') {
-      this.variable.setAdmin(1);
-      this.variable.setUser(0);
-      this.variable.setLoggedIn(0);    
-      console.log("admin = " + this.variable.getAdmin())
+      this.varLogin.setAdmin(1);
+      this.varLogin.setUser(0);
+      this.varLogin.setLoggedIn(0);    
+      console.log("admin = " + this.varLogin.getAdmin())
     }
     else {
-      this.variable.setAdmin(0);
-      this.variable.setUser(1);
-      this.variable.setLoggedIn(0);
-      console.log("user = " + this.variable.getUser())
+      this.varLogin.setAdmin(0);
+      this.varLogin.setUser(1);
+      this.varLogin.setLoggedIn(0);
+      console.log("user = " + this.varLogin.getUser())
     }
   }
 
@@ -62,30 +62,30 @@ export class LoginComponent implements OnInit {
   }
 
   login () {    
-    this.variable.setLoggedIn(0);
-    if (this.variable.getUser() == 1) {
-      this.variable.setUserName(this.info.username.value);
+    this.varLogin.setLoggedIn(0);
+    if (this.varLogin.getUser() == 1) {
+      this.varLogin.setUserName(this.info.username.value);
       for (let x of this.users$) {
         if (x.username != this.info.username.value || !bcrypt.compareSync(this.info.password.value, x.password)) {
           console.log("Incorrect");
           this.incorrect = 1;
         }
         else if (x.username == this.info.username.value && bcrypt.compareSync(this.info.password.value, x.password)) {
-          this.variable.setLoggedIn(1);
+          this.varLogin.setLoggedIn(1);
           console.log("Succesfully logged in.")
           break;
         }
       }
     }
 
-    else if (this.variable.getAdmin() == 1) {
+    else if (this.varLogin.getAdmin() == 1) {
       for (let x of this.admins$) {
         if (x.username != this.info.username.value || !bcrypt.compareSync(this.info.password.value, x.password)) {
           console.log("Incorrect");
           this.incorrect = 1;
         }
         else if (x.username == this.info.username.value && bcrypt.compareSync(this.info.password.value, x.password)){
-          this.variable.setLoggedIn(1);
+          this.varLogin.setLoggedIn(1);
         console.log("Succesfully logged in.")
         break;
         }
@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       
     }
 
-    console.log(this.variable.getLoggedIn())
+    console.log(this.varLogin.getLoggedIn())
   }
 
   get info () {

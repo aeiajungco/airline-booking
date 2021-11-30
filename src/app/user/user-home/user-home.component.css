@@ -1,0 +1,22 @@
+.navbar {
+    background-color: transparent;
+    font-family: 'myFont';
+}
+.container-fluid {
+    border: 2px solid rgb(243, 230, 255);
+    height: 40px;
+}
+
+.nav-item {
+    font-size: 20px;
+}
+
+.nav-item > a:hover {
+    text-decoration: underline;
+    color: blueviolet;
+}   
+
+.nav-item > a.active{
+    color: blueviolet;
+    background-color: rgb(244, 233, 255);
+}

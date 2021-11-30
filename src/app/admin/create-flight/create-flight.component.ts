@@ -4,7 +4,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
 import { Flight } from 'src/app/services/flight';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-flight',
@@ -58,7 +57,7 @@ export class CreateFlightComponent implements OnInit {
       }
       
     this.showConfirm(template)
-    // this.flights.addFlight(flightInfo);
+    this.flights.addFlight(flightInfo);
   
   }
 

@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-    font-family: myFont;
-    src: url(assets/fonts/FivoSans-Regular.otf);
-  }
+  font-family: myFont;
+  src: url(assets/fonts/FivoSans-Regular.otf);
+}
+
+@font-face {
+  font-family: fontBold;
+  src: url(assets/fonts/FivoSans-Bold.otf);
+}
 
 html,
 body {
   height: 100%;
-  font-family: 'myFont';
+  font-family: "myFont";
   background-color: rgb(255, 248, 248);
 }
 
@@ -24,14 +29,13 @@ mat-form-field {
 button {
   background-color: rgba(208, 158, 255, 0.24);
   border: solid 0.5px;
-  width: 50%;
   height: 35px;
   margin-bottom: 25px;
   font-size: 20px;
 }
 
-mat-label, mat-select {
+mat-label,
+mat-select {
   font-family: "myFont";
   font-size: 15px;
 }
-

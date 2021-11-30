@@ -10,9 +10,10 @@ import { FlightsService } from 'src/app/services/flights.service';
 export class CancelFlightComponent implements OnInit {
 
   @Input() flightCode: any; 
+  @Input() status: any;
 
   flights$: any = [];
-  
+    
 
   constructor(private flight: FlightsService) { }
 
@@ -20,6 +21,7 @@ export class CancelFlightComponent implements OnInit {
     this.flight.getFlights().subscribe((val) => {
       this.flights$ = val;
     });
+
   }
 
   cancelFlight() {
