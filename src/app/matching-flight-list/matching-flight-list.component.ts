@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FlightsService } from '../services/flights.service';
-import * as $ from "jquery";
 
 @Component({
   selector: 'app-matching-flight-list',

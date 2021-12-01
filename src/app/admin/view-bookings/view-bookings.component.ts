@@ -39,9 +39,4 @@ export class ViewBookingsComponent implements OnInit {
       }
     }
   }
-
-  showBookings() {
-    this.show = !this.show;
-    
-  }
 }

@@ -5,6 +5,7 @@ table {
 
 .container {
     width: 1500px;
+    margin-bottom: 40px;
 }
 
 label {
@@ -14,6 +15,10 @@ label {
 p {
     font-family: 'myFont';
     width: 100px;
+}
+
+tr {
+    margin-bottom: 20px;
 }
 
 td {

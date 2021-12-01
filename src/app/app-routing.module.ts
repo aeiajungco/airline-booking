@@ -14,10 +14,6 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: AppComponent,
-  },
-  {
     path: 'register',
     component: RegisterComponent,
   },
@@ -25,10 +21,6 @@ const routes: Routes = [
     path: 'admin',
     component: AdminHomeComponent,
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'admin',
-      // },
       {
         path: 'book',
         component: BookFlightComponent,
@@ -73,11 +65,11 @@ const routes: Routes = [
         path: 'bookings',
         component: BookingListComponent,
       },
-      {
-        path: 'logout',
-        component: AppComponent,
-      },
     ],
+  },
+  {
+    path: '',
+    component: AppComponent,
   },
 ];
 
