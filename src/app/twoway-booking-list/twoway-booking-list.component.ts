@@ -13,6 +13,7 @@ export class TwowayBookingListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

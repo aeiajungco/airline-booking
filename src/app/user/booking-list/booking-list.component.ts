@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
 import { LoginVarService } from 'src/app/services/login-var.service';
 import { UserService } from 'src/app/services/user.service';
+import * as $ from 'jquery';
 
 interface AllFlightDetails {
   $key: any;
@@ -108,7 +109,7 @@ export class BookingListComponent implements OnInit {
                   passNum: y.passNum,
                   seatClass: y.seatClass,
                 }                   
-                this.twoWayRet.push(retDet);
+                this.twoWayRet.push(retDet);              
                 this.twoWayDep.push(depDet);            
               }
             }              

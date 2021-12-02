@@ -1,7 +1,7 @@
 <div class="heading">
     <h1 class="book-heading">One-Way Bookings</h1>
 </div>
-    <table class="tick-container" *ngFor="let depFl of oneWay">
+    <table class="tick-container" *ngFor="let depFl of oneWay" [class.isCancelled]="depFl.status === 'Cancelled'">
         <tr>
             <td>
                 <div class="container">
@@ -13,8 +13,13 @@
                     </div>
 
                     <div class="cancel">
-                        <app-cancel-booking [bookingID]="depFl.$key" [bookingDate]="depFl.bookDate" [depDate]="depFl.depDate"></app-cancel-booking>                       
-                    </div>
+                        <app-cancel-booking *ngIf=" depFl.status != 'Cancelled'"
+                          [bookingID]="depFl.$key"
+                          [bookingDate]="depFl.bookDate"
+                          [depDate]="depFl.depDate"
+                        ></app-cancel-booking>
+                        <button *ngIf=" depFl.status == 'Cancelled'" disabled mat-button class="blank-cancel">Cancel</button>
+                      </div>
                 </div>
 
                 <div class="flightDet">
@@ -22,7 +27,12 @@
                 </div>
                 
                 <div class="flight-content">
-
+                    <div class="flight-status">
+                        <p class="flightStatus">
+                          <label class="statusLabel">Status: </label>
+                          {{ depFl.status }}
+                        </p>
+                      </div>
                     <div class="contentHeader">
                         <div class="icon">
                             <img class="airplane" src="assets/images/airplane.png" alt="image">

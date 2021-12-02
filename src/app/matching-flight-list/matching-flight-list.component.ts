@@ -13,6 +13,7 @@ export class MatchingFlightListComponent implements OnInit {
   @Input() returningFlight: any = [];
   depFlight = '';
   retFlight = '';
+  depIsSelected: boolean = false;
   retIsSelected: boolean = false;  
 
   constructor(private flight: FlightsService) {}
@@ -20,12 +21,21 @@ export class MatchingFlightListComponent implements OnInit {
   ngOnInit(): void {    
   } 
 
-  getDepart(flight: any) {    
+  getDepart(flight: any, i: any) {
+    $(".dep-container").eq(i).toggleClass('selected');
+    $('button[id^="dep-btn"]').eq(i).text(function(i, text) {
+      return text === "UNSELECT" ? "SELECT" : "UNSELECT";
+    });
+
     this.depFlight = flight;
     this.flight.setDepartingFlight(flight);
   }
 
-  getReturn(flight: any) {
+  getReturn(flight: any, ind: any) {
+    $(".ret-container").eq(ind).toggleClass('selected');
+    $('button[id^="ret-btn"]').eq(ind).text(function(i, text) {
+      return text === "UNSELECT" ? "SELECT" : "UNSELECT";
+    });
     this.retFlight = flight;
     this.flight.setReturningFlight(flight);
   }

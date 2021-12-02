@@ -30,6 +30,7 @@ export class ViewBookingsComponent implements OnInit {
     });
     for (let x of this.bookingList$) {
       if (x.username == this.user) {
+        console.log(this.user);
         for (let z of this.flightList$) {
           if (x.flightCode[0] == z.flightCode) {
             this.userFlights.push(z);

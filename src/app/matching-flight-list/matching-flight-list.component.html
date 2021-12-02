@@ -1,4 +1,4 @@
-<mat-card class="container" *ngFor="let matched of departingFlight">
+<mat-card class="dep-container" *ngFor="let matched of departingFlight; let i = index">
   <mat-card-content>
     <table>
       <tr>
@@ -42,13 +42,13 @@
         </td>
       </tr>
     </table>
-    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="sel-btn" (click)="getDepart(matched.flightCode)">
+    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'dep-btn' + i }}" (click)="getDepart(matched.flightCode, i)">
       SELECT
     </button>
   </mat-card-content>
 </mat-card>
 
-<mat-card class="container" *ngFor="let matched of returningFlight">
+<mat-card class="ret-container" *ngFor="let matched of returningFlight; let ind = index">
   <mat-card-content>
     <table>
       <tr>
@@ -92,7 +92,7 @@
         </td>
       </tr>
     </table>
-    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="sel-btn" (click)="getReturn(matched.flightCode)">
+    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'ret-btn' + ind }}" (click)="getReturn(matched.flightCode, ind)">
       SELECT
     </button>
   </mat-card-content>
@@ -100,6 +100,4 @@
 <div class="btn-container" *ngIf="depFlight != ''">
   <app-booking-form class="book" (click)="display()"></app-booking-form>
 </div>
-
-
 
