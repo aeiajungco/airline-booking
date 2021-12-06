@@ -22,6 +22,7 @@ export class FlightListComponent implements OnInit {
   constructor(private flight: FlightsService, private airline: OrigDestAirService, public varLogin: LoginVarService) {}
 
   flightCode = '';
+  loggedInAdmin: any;
 
   ngOnInit(): void {
     this.flight.getFlights().subscribe((val)=> {
@@ -32,10 +33,11 @@ export class FlightListComponent implements OnInit {
     this.airlines = this.airline.getAirLineFilter();
     this.filterChoice = "All";
     this.filterStatus = "All";
+
+    this.loggedInAdmin = localStorage.getItem('admin');
   }
 
   onChange() {
-    console.log(this.varLogin.getAdmin());
     this.filteredList.length = 0;
 
     if (this.filterChoice == "All") {

@@ -12,13 +12,14 @@ import { variable } from '@angular/compiler/src/output/output_ast';
 export class AppComponent {
   title = 'airline-booking';
   loggedIn: any;
-  constructor (public login: LoginVarService) {}
+  constructor (public varLogin: LoginVarService) {}
 
   ngOnInit () {
-    localStorage.setItem('val', this.login.getLoggedIn().toString())
-    this.loggedIn = localStorage.getItem('val');
+    if (localStorage.getItem('admin') == 'false' && localStorage.getItem('user') == 'false') 
+      this.loggedIn = false;
   }
 
   ngOnChange () {
+    
   }
 }

@@ -1,3 +1,4 @@
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { ViewBookingsComponent } from './admin/view-bookings/view-bookings.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { RegisterComponent } from './user/register/register.component';
@@ -13,6 +14,10 @@ import { BookingListComponent } from './user/booking-list/booking-list.component
 import { UserHomeComponent } from './user/user-home/user-home.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent,
+  },
   {
     path: 'register',
     component: RegisterComponent,
@@ -68,8 +73,12 @@ const routes: Routes = [
     ],
   },
   {
-    path: '',
-    component: AppComponent,
+    path: '**',
+    component: ErrorPageComponent
+  },
+  {
+    path: 'error',
+    component: ErrorPageComponent
   },
 ];
 

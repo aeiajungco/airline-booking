@@ -11,9 +11,10 @@ import { UserBooking, UserService } from 'src/app/services/user.service';
 export class ViewBookingsComponent implements OnInit {
   @Input() user: any;
   show = false;
+  empty: any;
   bookingList$: any = [];
   flightList$: any = [];
-  public userFlights: any = [];
+  userFlights: any = [];
 
   constructor(
     private bookings: UserService,
@@ -21,22 +22,27 @@ export class ViewBookingsComponent implements OnInit {
     public varLogin: LoginVarService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.bookings.getUserBookings().subscribe((val) => {
       this.bookingList$ = val;
     });
     this.flights.getFlights().subscribe((val) => {
       this.flightList$ = val;
     });
+  }
+
+  onChange () {
+    this.userFlights.length = 0
     for (let x of this.bookingList$) {
       if (x.username == this.user) {
         for (let z of this.flightList$) {
           if (x.flightCode[0] == z.flightCode) {
             this.userFlights.push(z);
-            console.log(z.flightCode);
           }
         }
       }
     }
+    if (this.userFlights.length == 0) 
+      this.empty = true;
   }
 }

@@ -59,6 +59,7 @@ import { BookingListComponent } from './user/booking-list/booking-list.component
 import { OnewayBookingListComponent } from './oneway-booking-list/oneway-booking-list.component';
 import { TwowayBookingListComponent } from './twoway-booking-list/twoway-booking-list.component';
 import { CancelBookingComponent } from './cancel-booking/cancel-booking.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { CancelBookingComponent } from './cancel-booking/cancel-booking.componen
     TwowayBookingListComponent,
     CancelBookingComponent,
     ViewUsersComponent,
-    ViewBookingsComponent
+    ViewBookingsComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

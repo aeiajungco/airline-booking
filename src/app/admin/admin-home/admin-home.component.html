@@ -12,8 +12,9 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="myNavBar">
+      <ul class="nav navbar-nav ml-auto">
+        
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -25,8 +26,8 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="book"
-            >Book Flight</a
+          <a class="nav-link" routerLinkActive="active" routerLink="create"
+            >Create Flight</a
           >
         </li>
         <li class="nav-item">
@@ -35,8 +36,8 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="create"
-            >Create Flight</a
+          <a class="nav-link" routerLinkActive="active" routerLink="book"
+            >Book Flight</a
           >
         </li>
         <li class="nav-item">
@@ -52,7 +53,59 @@
   </div>
 </nav>
 
-<div>
-  <h1>Hello {{username}}!</h1>  
+<div class="home-content" *ngIf="router.url == '/admin'">
+  <p>
+    Hello <i>{{ username }}!</i>
+  </p>
+  <table>
+    <tr>
+      <td>
+        <button
+          routerLink="create"
+          mat-raised-button
+          color="primary"
+          class="btn btn-primary"
+        >
+          Create Flight
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button
+          routerLink="flights"
+          mat-raised-button
+          color="primary"
+          class="btn btn-primary"
+        >
+          View Flights
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button
+          routerLink="book"
+          mat-raised-button
+          color="primary"
+          class="btn btn-primary"
+        >
+          Book Flight
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button
+          routerLink="users"
+          mat-raised-button
+          color="primary"
+          class="btn btn-primary"
+        >
+          View Users
+        </button>
+      </td>
+    </tr>
+  </table>
 </div>
 <router-outlet></router-outlet>

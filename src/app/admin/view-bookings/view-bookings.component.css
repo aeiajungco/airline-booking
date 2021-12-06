@@ -1,0 +1,38 @@
+table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  width: 1500px;
+  margin-bottom: 40px;
+}
+
+label {
+  font-family: 'fontBold';
+}
+
+p {
+  font-family: 'myFont';
+  width: 100px;
+}
+
+tr {
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+
+.airline {
+  min-width: 120px;
+  max-width: 120px;
+}
+
+.ori {
+  min-width: 70px;
+  max-width: 70px;
+}
+
+.dest {
+  min-width: 80px;
+  max-width: 80px;
+}

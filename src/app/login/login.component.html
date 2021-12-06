@@ -1,6 +1,4 @@
-<base href="/" />
-
-<div class="login-page" *ngIf="varLogin.getLoggedIn() == 0 && isUser == 1">
+<div class="login-page" *ngIf="varLogin.getLoggedIn() == 0">
   <div class="login-card">
     <mat-card>
       <mat-card-content class="login">
@@ -16,11 +14,13 @@
           <mat-form-field class="creds">
             <mat-label>Username</mat-label>
             <input matInput type="text" formControlName="username" required />
+            <mat-error *ngIf="info.username.errors?.required">Username is required.</mat-error>
           </mat-form-field>
     
           <mat-form-field class="creds">
             <mat-label>Password</mat-label>
             <input matInput type="password" formControlName="password" required />
+            <mat-error *ngIf="info.password.errors?.required">Password is required.</mat-error>
           </mat-form-field>
           
           <button class="loginBtn" *ngIf="!varLogin.getAdmin() && !varLogin.getUser()" disabled>LOGIN</button>
@@ -34,4 +34,4 @@
   </div>
 </div>
 
-<router-outlet *ngIf="(varLogin.getLoggedIn() == 1 || isUser == 0)"></router-outlet>
+<router-outlet *ngIf="varLogin.getLoggedIn() == 1"></router-outlet>

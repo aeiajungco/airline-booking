@@ -1,5 +1,5 @@
 <div class="users">
-  <mat-card class="container" *ngFor="let user of userList$">
+  <mat-card class="container" *ngFor="let user of userList$; let i = index">
     <mat-card-content>
       <table>
         <tr>
@@ -19,27 +19,39 @@
             <label for="email">Email</label>
             <p>{{ user.email }}</p>
           </td>
-          <td>
+          <td class="viewBtn">
             <button
+            *ngIf="!show || user.username != un"
+              mat-raised-button
+              color="primary"
+              class="btn btn-primary"
+              type="button"
+              data-toggle="collapse" data-target="#bookings" aria-expanded="false" aria-controls="bookings"
+              (click)="showBookings(user.username)"
+            >
+              View Bookings
+            </button>
+            <button
+            *ngIf="show && user.username == un"
               mat-raised-button
               color="primary"
               class="btn btn-primary"
               type="button"
               (click)="showBookings(user.username)"
             >
-              View Bookings
+              Hide Bookings
             </button>
           </td>
         </tr>
-        <tr *ngIf="show">
+        <tr *ngIf="show && user.username == un && empty">
+          <td>
+            <h1>No Bookings Found</h1>
+          </td>
+        </tr>
+        <tr *ngIf="show && user.username == un">
           <td colspan="5">
             <app-view-bookings [user]="user.username"></app-view-bookings>
           </td>
-        </tr>
-      </table>
-      <table *ngIf="empty">
-        <tr>
-          <td colspan="5" style="text-align: center">NO BOOKINGS</td>
         </tr>
       </table>
 
