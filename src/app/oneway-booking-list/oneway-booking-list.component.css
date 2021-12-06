@@ -17,11 +17,24 @@
     width: 550px;
 }
 
+.blank-cancel {
+    height: 38px;
+    width: 15%;
+    text-align: center; 
+    background-color: transparent;
+    color: transparent !important;
+}
+
+.isCancelled {
+    opacity: 0.5;
+}
+
 .container {
     margin-top: 20px;
     width: 550px;
     padding: 0;
-    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    background-color: white;
 }
 
 .flightDet {
@@ -36,8 +49,9 @@
 }
 
 .dateLabel {
-    text-align: left;
     float: left;
+    text-align: left;
+    padding-left: 5px;
     width: 85%;
     height: 38px;
 }
@@ -62,12 +76,12 @@
     font-size: 13px;
 }
 
-.flightCode {
+.flightCode, .flightStatus {
     font-style: italic;
     font-weight: 500;
 }
 
-.codeLabel {
+.codeLabel, .statusLabel {
     font-style: normal;
     font-weight: 400;
 }
@@ -77,13 +91,20 @@ p {
 }
 
 .flight-content {
-    height: 170px;
+    height: 200px;
+}
+
+.flight-status {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 8px;
 }
 
 .contentHeader {
     padding: 10px;
+    padding-top: 0;
+    height: 55px;
 }
-
 .icon {
     float: left;
     height: 40px;

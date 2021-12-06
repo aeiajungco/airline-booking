@@ -10,13 +10,20 @@ td {
     padding: 1.5em;
 }
 
-.container {
+.ret-container, .dep-container {
     width: 900px;
+    margin: 0 auto;
     margin-top: 15px;
 }
 
-.border {
-    border: 10px solid skyblue;
+.selected {
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(168, 85, 189);
+}
+
+.butSelected {
+    content: 'Selected';
 }
 
 label {

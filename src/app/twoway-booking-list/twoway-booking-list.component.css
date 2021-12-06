@@ -1,3 +1,7 @@
+.cancelled {
+    opacity: 0.5;
+}
+
 .heading {
     width: 1100px;
     margin: 0 auto;
@@ -11,6 +15,14 @@
 .tick-container {
     margin: 0 auto;
     width: 1100px;
+}
+
+.isCancelled {
+    opacity: 0.5;
+}
+
+.dep-container {
+    margin-bottom: 25px;
 }
 
 td {
@@ -42,6 +54,7 @@ td {
 .dateLabel, .rfDateLabel {
     float: left;
     text-align: left;
+    padding-left: 5px;
     width: 85%;
     height: 38px;
 }
@@ -66,12 +79,12 @@ td {
     font-size: 13px;
 }
 
-.flightCode {
+.flightCode, .flightStatus {
     font-style: italic;
     font-weight: 500;
 }
 
-.codeLabel {
+.codeLabel, .statusLabel {
     font-style: normal;
     font-weight: 400;
 }
@@ -81,11 +94,19 @@ p {
 }
 
 .flight-content {
-    height: 170px;
+    height: 200px;
+}
+
+.flight-status {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 8px;
 }
 
 .contentHeader {
     padding: 10px;
+    padding-top: 0;
+    height: 55px;
 }
 
 .icon {
@@ -125,7 +146,6 @@ p {
 }
 
 .destination {
-    
     width: 45%;
     float: right;
 }

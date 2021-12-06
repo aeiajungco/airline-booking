@@ -1,15 +1,15 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService, User } from 'src/app/services/user.service';
 import { ConfirmedValidator } from 'src/app/confirmed.validator';
 import * as bcrypt from 'bcryptjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class RegisterComponent implements OnInit {
 
@@ -24,21 +24,21 @@ export class RegisterComponent implements OnInit {
     this.user.getUsers().subscribe((val) => {
       this.users$ = val;
     });
-    
   }
 
-  regForm= this.fb.group ({
+  regForm = this.fb.group ({
     $key: [''],
     firstName: ['', { validators: [Validators.required]}],
-    lastName: ['', { validators: [Validators.required]}],
-    username: ['', { validators: [Validators.required, Validators.minLength(5)]}],        
+    lastName: ['', { validators: [Validators.required]}], 
+    username: ['', { validators: [Validators.required, Validators.minLength(5)]}],      
     email: ['', { validators: [Validators.required, Validators.email]}],
     password: ['', { validators: [Validators.required, Validators.minLength(8)]}],
     verifpass: ['', Validators.required],
   }, {
       validators: ConfirmedValidator('password', 'verifpass'),
-    });
-
+    },
+  );
+ 
   onSubmit() {
     const payload: User = {
       $key: '',
@@ -50,24 +50,24 @@ export class RegisterComponent implements OnInit {
     };
 
     // this.user.addUser(payload);  
+    this.registered = true;
     this.regForm.reset();
+    this.rf['firstName'].setErrors(null);
+    this.rf['lastName'].setErrors(null);
     this.rf['username'].setErrors(null);
     this.rf['email'].setErrors(null);
     this.rf['password'].setErrors(null);
     this.rf['verifpass'].setErrors(null);
   }
-
-  onRegister() {
-    this.registered = true;
-  }
-
+  
   checkUsername() {
     this.usernameExists = false;
     for (let val of this.users$) {
       if (val.username === this.regForm.value.username) {
         this.usernameExists = true;
+        break;
       }
-    }
+    }  
   }
 
   checkEmail() {
@@ -75,8 +75,9 @@ export class RegisterComponent implements OnInit {
     for (let val of this.users$) {
       if (val.email === this.regForm.value.email) {
         this.emailaddExists = true;
+        break;
       }
-    }
+    } 
   }
 
   hashAndSalt(pass: any) {
@@ -90,6 +91,8 @@ export class RegisterComponent implements OnInit {
   }
   
   register (template: TemplateRef<any>) {
+    this.registered = false;
     this.modalRef = this.modalService.show(template);
   }
+
 }

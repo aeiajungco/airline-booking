@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
 import { LoginVarService } from 'src/app/services/login-var.service';
 import { UserService } from 'src/app/services/user.service';
+import * as $ from 'jquery';
 
 interface AllFlightDetails {
   $key: any;
@@ -14,6 +15,7 @@ interface AllFlightDetails {
   depTime: any;
   arrTime: any;
   airline: string;  
+  status: string;
   username: string;
   firstName: string;
   lastName: string;
@@ -49,7 +51,7 @@ export class BookingListComponent implements OnInit {
         if (x.username === this.userLoggedIn) {
           this.userFlights.push(x);
         }
-      }    
+      }         
     });
 
     this.flights.getFlights().subscribe((val:any)=> {
@@ -59,7 +61,7 @@ export class BookingListComponent implements OnInit {
     this.userLoggedIn = this.variable.getUserName();
     console.log(this.userFlights); 
   }
-     
+  
   onChange() {    
     this.oneWay.length = 0;
     this.twoWayDep.length = 0;
@@ -68,7 +70,7 @@ export class BookingListComponent implements OnInit {
     for (let x of this.flights$) {
       for (let y of this.userFlights) { 
 
-        if (x.flightCode == y.flightCode[0] && x.status == 'Available') {
+        if (x.flightCode == y.flightCode[0]) {
           if (y.flightCode[1] != null) {             
             const depDet: AllFlightDetails = {
               $key: y.$key,
@@ -79,7 +81,8 @@ export class BookingListComponent implements OnInit {
               depDate: x.depDate,
               depTime: x.depTime,
               arrTime: x.arrTime,
-              airline: x.airline,                
+              airline: x.airline,   
+              status: x.status,             
               username: y.username,
               firstName: y.firstName,
               lastName: y.lastName,
@@ -88,7 +91,7 @@ export class BookingListComponent implements OnInit {
             }           
                            
             for (let z of this.flights$) {
-              if (z.flightCode == y.flightCode[1] && z.status == 'Available') {
+              if (z.flightCode == y.flightCode[1]) {
                 const retDet: AllFlightDetails = {
                   $key: y.$key,
                   bookDate: y.bookDate,
@@ -98,14 +101,15 @@ export class BookingListComponent implements OnInit {
                   depDate: z.depDate,
                   depTime: z.depTime,
                   arrTime: z.arrTime,
-                  airline: z.airline,                
+                  airline: z.airline,        
+                  status: z.status,        
                   username: y.username,
                   firstName: y.firstName,
                   lastName: y.lastName,
                   passNum: y.passNum,
                   seatClass: y.seatClass,
                 }                   
-                this.twoWayRet.push(retDet);
+                this.twoWayRet.push(retDet);              
                 this.twoWayDep.push(depDet);            
               }
             }              
@@ -120,7 +124,8 @@ export class BookingListComponent implements OnInit {
               depDate: x.depDate,
               depTime: x.depTime,
               arrTime: x.arrTime,
-              airline: x.airline,                
+              airline: x.airline,   
+              status: x.status,             
               username: y.username,
               firstName: y.firstName,
               lastName: y.lastName,
