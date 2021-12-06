@@ -1,5 +1,11 @@
 .filter-bar {
+    margin-top: 25px;
     text-align: center;
+}
+
+mat-form-field {
+    font-size: 20px;
+    width: 250px;
 }
 
 .inpField {

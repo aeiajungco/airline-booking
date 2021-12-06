@@ -32,7 +32,7 @@ interface AllFlightDetails {
 export class BookingListComponent implements OnInit {
   userBookings$: any = [];
   flights$: any = [];
-  userLoggedIn = '';
+  userLoggedIn: any;
   filterChoice = '';
   isBoth!: boolean;
   isOneWay!: boolean;
@@ -58,7 +58,7 @@ export class BookingListComponent implements OnInit {
       this.flights$ = val;      
     });
 
-    this.userLoggedIn = this.variable.getUserName();
+    this.userLoggedIn = localStorage.getItem('username');
     console.log(this.userFlights); 
   }
   

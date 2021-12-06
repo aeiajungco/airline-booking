@@ -32,7 +32,7 @@ td {
 }
 
 .flightDet {
-    background-color: rgb(247, 224, 94);
+    background-color: rgb(186, 142, 204);
     height: 40px;
     padding: 10px;
     font-weight: 500;
@@ -40,7 +40,6 @@ td {
 
 .flight-header {
     padding: 5px;
-    background-color: blanchedalmond;
 }
 
 .blank-cancel {
@@ -173,7 +172,7 @@ p {
 }
 
 .guestDet {
-    background-color: rgb(247, 224, 94);
+    background-color: rgb(186, 142, 204);
     height: 40px;
     padding: 10px;
     font-weight: 500;

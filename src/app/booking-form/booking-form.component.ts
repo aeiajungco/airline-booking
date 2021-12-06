@@ -5,6 +5,7 @@ import { FlightsService } from '../services/flights.service';
 import { LoginVarService } from '../services/login-var.service';
 import { UserBooking, UserService } from '../services/user.service';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-booking-form',
@@ -17,7 +18,7 @@ export class BookingFormComponent implements OnInit {
   confirmed = false;
   modalRef!: BsModalRef;
   userBookings$: any = [];
-  userLoggedIn = "";
+  userLoggedIn: any;
   usernames: any = [];
   isAdmin: any;
   currentDate: any;
@@ -30,7 +31,7 @@ export class BookingFormComponent implements OnInit {
     seatClass: ['', Validators.required],
   });
 
-  constructor(private bForm: FormBuilder, private modalService: BsModalService, private users: UserService, private variable: LoginVarService, private flight: FlightsService, public datepipe: DatePipe ) { }
+  constructor(private bForm: FormBuilder, private modalService: BsModalService, private users: UserService, private variable: LoginVarService, private flight: FlightsService, public datepipe: DatePipe, private router: Router, private route: ActivatedRoute ) { }
    
   ngOnInit(): void {
     this.users.getUsers().subscribe((val:any)=> {
@@ -38,7 +39,7 @@ export class BookingFormComponent implements OnInit {
     });
 
     this.isAdmin = this.variable.getAdmin();
-    this.userLoggedIn = this.variable.getUserName();
+    this.userLoggedIn = localStorage.getItem('username');
   }
 
   getUsernames() {
@@ -89,6 +90,10 @@ export class BookingFormComponent implements OnInit {
     this.bfInfo.lName.setErrors(null);
     this.bfInfo.passNum.setErrors(null);
     this.bfInfo.seatClass.setErrors(null);
+    setTimeout(()=> {
+      this.modalRef?.hide(),
+      this.reload();
+    },600);  
   }
 
   openModal(template: TemplateRef<any>) {
@@ -102,6 +107,12 @@ export class BookingFormComponent implements OnInit {
     this.bookingForm.reset();
     this.modalRef?.hide();
  }
+
+ reload() {
+  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], { relativeTo: this.route });
+}
 
   get bfInfo() {
     return this.bookingForm.controls;
