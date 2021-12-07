@@ -3,11 +3,6 @@ table {
   margin: 0 auto;
 }
 
-.container {
-  width: 1500px;
-  margin-bottom: 40px;
-}
-
 label {
   font-family: 'fontBold';
 }

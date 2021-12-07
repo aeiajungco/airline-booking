@@ -12,7 +12,6 @@ table {
 
 .container-fluid {
     background-color: rgba(255, 255, 255, 0.3);
-    border: 2px double rgb(236, 219, 255);
     width: 100%;
     margin-top: 15px;
 }
@@ -38,5 +37,20 @@ td {
 
 .btn {
     float: right;
-    border-radius: 0px;
+    width: 135px;
+    height: 45px;
+    border-radius: 10px;
+    border: 2px solid rgb(84, 17, 209);
+    font-size: 15px;
+    background-color: transparent;
+    color: rgb(84, 17, 209);
 }
+
+.btn:hover {
+    background-color: rgba(84, 17, 209, 0.144);
+}
+
+button:focus, button:active:focus, button.active:focus {
+    outline: none !important;
+    outline-style: none !important;
+    }

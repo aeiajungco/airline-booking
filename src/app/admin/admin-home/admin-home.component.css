@@ -29,12 +29,13 @@
 
 .ml-auto > .nav-item > a {
     color: white;
+    font-size: 20px;
 }
 
 .ml-auto > .nav-item > a.name {
     color: white;
     font-size: 20px;
-    margin-right: 30px;
+    margin-right: 25px;
 }
 
 .ml-auto > .nav-item > a.active{
@@ -75,25 +76,71 @@ i {
 }
 
 .home-content {
-    width: 50%;
+    width: 70%;
     text-align: center;
     margin: 0 auto;
     margin-top: 100px;
     font-size: 40px;
 }
 
+.home-content > div {
+    margin-bottom: 70px;
+}
+
 .btn {
     height: 50px;
     width: 250px;
     border-radius: 0px;
-    font-size: 20px;
+    font-size: 40px;
+    font-weight: 900 ;
+    color: rgb(51, 16, 148);
+    letter-spacing: 2px;
 }
 
-table {
-    margin: 0 auto;
-    margin-top: 70px;
+div.create {
+    background-image: url("src/assets/images/skyplane.jpg");
+    background-position: center;
+    border-radius: 10px;
+    background-size: cover;
+    height: 175px;
+    width: 100%;
 }
 
-td {
-    padding: 10px;
+div.flights {
+    background-image: url("src/assets/images/flights.png");
+    background-position: center;
+    border-radius: 10px;
+    background-size: cover;
+    height: 175px;
+    width: 100%;
+}
+
+div.book {
+    background-image: url("src/assets/images/book.jpg");
+    background-position: center;
+    border-radius: 10px;
+    background-size: cover;
+    height: 175px;
+    width: 100%;
+}
+
+div.users {
+    background-image: url("src/assets/images/passport.jpg");
+    background-position: center;
+    border-radius: 10px;
+    background-size: cover;
+    height: 175px;
+    width: 100%;
+}
+
+button.create, button.flights, button.book, button.users{
+    background-color: rgba(224, 202, 255, 0.568);
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+button.create:hover, button.flights:hover, button.book:hover, button.users:hover {
+    background-color: rgba(21, 3, 63, 0.575);
+    color: rgb(213, 183, 255);
 }

@@ -6,22 +6,24 @@
             <mat-option value="Two-Way">Two-Way</mat-option>
         </mat-select>
     </mat-form-field>
-</div>
-
-<div id="notExisting" *ngIf="oneWay.length == 0 && twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'All'">
+  </div>
+  
+  <div id="notExisting" *ngIf="oneWay.length == 0 && twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'All'">
     <h2>- No existing bookings -</h2> 
-</div>
-<div id="notExisting" *ngIf="oneWay.length == 0 && filterChoice == 'One-Way'">
+  </div>
+  <div id="notExisting" *ngIf="oneWay.length == 0 && filterChoice == 'One-Way'">
     <h2>- No existing bookings -</h2> 
-</div>
-<div id="notExisting" *ngIf="twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'Two-Way'">
+  </div>
+  <div id="notExisting" *ngIf="twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'Two-Way'">
     <h2>- No existing bookings -</h2> 
-</div>
-
-<ng-container *ngIf="isAll || isOneWay">
+  </div>
+  
+  <ng-container *ngIf="filterChoice == 'All'"></ng-container>
+  
+  <ng-container *ngIf="isAll || isOneWay">
     <app-oneway-booking-list [oneWay]="oneWay"></app-oneway-booking-list>
-</ng-container>
-
-<ng-container *ngIf="isAll || isTwoWay">
+  </ng-container>
+  
+  <ng-container *ngIf="isAll || isTwoWay">
     <app-twoway-booking-list [twoWayDep]="twoWayDep" [twoWayRet]="twoWayRet"></app-twoway-booking-list>
-</ng-container>
+  </ng-container>

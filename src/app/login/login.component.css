@@ -99,12 +99,9 @@ mat-error {
   color: #c70000;
   font-size: 15px;
 }
-.mat-input-invalid .mat-input-placeholder {
-  color: #c70000;
-}
 
-.mat-input-invalid .mat-input-ripple {
-  background-color: #c70000;
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: #c70000!important;
 }
 
 p {

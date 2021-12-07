@@ -63,55 +63,45 @@
 </nav>
 
 <div class="home-content" *ngIf="router.url == '/admin'">
-  <table>
-    <tr>
-      <td>
-        <button
-          routerLink="create"
-          mat-raised-button
-          color="primary"
-          class="btn btn-primary"
-        >
-          Create Flight
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button
-          routerLink="flights"
-          mat-raised-button
-          color="primary"
-          class="btn btn-primary"
-        >
-          View Flights
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button
-          routerLink="book"
-          mat-raised-button
-          color="primary"
-          class="btn btn-primary"
-        >
-          Book Flight
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button
-          routerLink="users"
-          mat-raised-button
-          color="primary"
-          class="btn btn-primary"
-        >
-          View Users
-        </button>
-      </td>
-    </tr>
-  </table>
+  <div class="create">
+    <button
+      routerLink="create"
+      mat-raised-button
+      color="primary"
+      class="btn btn-primary flights"
+    >
+      Create Flight
+    </button>
+  </div>
+  <div class="flights">
+    <button
+      routerLink="flights"
+      mat-raised-button
+      color="primary"
+      class="btn btn-primary flights"
+    >
+      View Flights
+    </button>
+  </div>
+  <div class="book">
+    <button
+    routerLink="book"
+    mat-raised-button
+    color="primary"
+    class="btn btn-primary book"
+  >
+    Book Flight
+  </button>
+  </div>
+  <div class="users">
+    <button
+      routerLink="users"
+      mat-raised-button
+      color="primary"
+      class="btn btn-primary users"
+    >
+      View Users
+    </button>
+  </div>
 </div>
 <router-outlet></router-outlet>
