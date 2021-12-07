@@ -2,8 +2,7 @@ import { LoginVarService } from './../services/login-var.service';
 import { UserService } from './../services/user.service';
 import { AdminService } from './../services/admin.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, EventEmitter, Input } from '@angular/core';
-import { collection, query, where } from 'firebase/firestore';
+import { Component, OnInit } from '@angular/core';
 import * as bcrypt from 'bcryptjs';
 
 interface Login {

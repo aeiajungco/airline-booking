@@ -35,11 +35,16 @@ export class CancelBookingComponent implements OnInit {
     if(this.dateDiff >= 7) {
       this.confirmed == true;
       this.users.removeBooking(this.bookingID);
-      this.closeModal();
-      this.reload();      
+      setTimeout(()=> {
+        this.closeModal(),
+        this.reload();  
+      }, 500);          
     }
     else {
       this.confirmed = false;
+      setTimeout(()=> {
+        this.closeModal();
+      }, 500);
     }
   }
 
