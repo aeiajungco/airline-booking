@@ -30,7 +30,7 @@
 </div>
 
 <div class="flights">
-  <mat-card class="container" *ngFor="let flight of filteredList">
+  <mat-card class="container-fluid" *ngFor="let flight of filteredList">
     <mat-card-content>
       <table>
         <tr>
@@ -78,7 +78,7 @@
             <app-cancel-flight
               [flightCode]="flight.flightCode"
               [status]="flight.status"
-              >Cancel Flight</app-cancel-flight
+              ></app-cancel-flight
             >
           </td>
         </tr>

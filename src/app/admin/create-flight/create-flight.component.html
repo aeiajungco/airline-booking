@@ -1,9 +1,9 @@
 <mat-card class="createFlight">
-  <mat-card-title class="title">Create Flight</mat-card-title>
+  <mat-card-title class="title">CREATE FLIGHT</mat-card-title>
   <mat-card-content>
     <form (ngSubmit)="onSubmit(template)" [formGroup]="form">
       <div class="form-group">
-        <mat-form-field class="airline-field">
+        <mat-form-field class="field">
           <mat-label>
             <mat-icon>flight</mat-icon>
             Airline
@@ -53,42 +53,60 @@
             >Please select destination.</mat-error
           >
         </mat-form-field>
+        <mat-form-field class="field">
+          <mat-label>Departure Date</mat-label>
+          <input matInput type="date" formControlName="depDate" />
+          <mat-error *ngIf="info.depDate.errors?.required"
+            >Please input departure date.</mat-error
+          >
+        </mat-form-field>
 
         <mat-form-field class="field">
-          <label for="depDate">Departure Date</label>
-          <input matInput type="Date" formControlName="depDate" />
-          <mat-error *ngIf="info.depDate.errors?.required">Please select departure date.</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
           <mat-label>Departure Time</mat-label>
-          <input matInput type="time" formControlName="depTime" required  (input)="validateTime()"/>
-          <mat-error *ngIf="info.depTime.errors?.required">Please input departure time.</mat-error>
+          <input
+            matInput
+            type="time"
+            value="#ffffff"
+            formControlName="depTime"
+            (input)="validateTime()"
+          />
+          <mat-error *ngIf="info.depTime.errors?.required"
+            >Please input departure time.</mat-error
+          >
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="field">
           <mat-label>Arrival Time</mat-label>
-          <input matInput type="time" formControlName="arrTime" required (input)="validateTime()"/>
-          <mat-error *ngIf="info.arrTime.errors?.required">Please input arrival time.</mat-error>
+          <input
+            matInput
+            type="time"
+            formControlName="arrTime"
+            (input)="validateTime()"
+          />
+          <mat-error *ngIf="info.arrTime.errors?.required"
+            >Please input arrival time.</mat-error
+          >
         </mat-form-field>
         <mat-error *ngIf="invalid">Invalid time.</mat-error>
-      </div>
-      <div class="form-group">
-        <mat-form-field>
-        <mat-label>Type</mat-label>
-        <mat-select formControlName="type">
-          <mat-option value="Connecting">Connecting</mat-option>
-          <mat-option value="Direct">Direct</mat-option>
-          <mat-option value="Nonstop">Nonstop</mat-option>
-        </mat-select>
-        <mat-error *ngIf="info.type.errors?.required">Please input flight type.</mat-error>
-      </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="field">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option value="Connecting">Connecting</mat-option>
+            <mat-option value="Direct">Direct</mat-option>
+            <mat-option value="Nonstop">Nonstop</mat-option>
+          </mat-select>
+          <mat-error *ngIf="info.type.errors?.required"
+            >Please input flight type.</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="field">
           <mat-label>Flight Code</mat-label>
           <input matInput type="text" formControlName="flightCode" required />
-          <mat-error *ngIf="info.flightCode.errors?.required">Please input flight code.</mat-error>
+          <mat-error *ngIf="info.flightCode.errors?.required"
+            >Please input flight code.</mat-error
+          >
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="field">
           <mat-label>Flight Price</mat-label>
           <input
             matInput
@@ -96,22 +114,30 @@
             formControlName="flightPrice"
             required
           />
-          <mat-error *ngIf="info.flightPrice.errors?.required">Please input flight price.</mat-error>
+          <mat-error *ngIf="info.flightPrice.errors?.required"
+            >Please input flight price.</mat-error
+          >
         </mat-form-field>
       </div>
-      <button type="submit" class="btn btn-secondary" [disabled]="!form.valid || invalid == 1" >
+      <br>
+      <button
+        type="submit"
+        class="btn btn-secondary submit"
+        [disabled]="!form.valid || invalid == 1"
+      >
         ENTER
       </button>
 
       <ng-template #template>
         <mat-card class="confirmation">
           <mat-card-content>
-            <mat-card-title><p>Flight has been added successfully!</p>
-              </mat-card-title>
-              <button class="closebtn" (click)="close()">OK</button>
+            <mat-card-title
+              ><p>Flight has been added successfully!</p>
+            </mat-card-title>
+            <button class="closebtn" (click)="close()">OK</button>
           </mat-card-content>
         </mat-card>
       </ng-template>
     </form>
   </mat-card-content>
-</mat-card> 
+</mat-card>

@@ -14,7 +14,6 @@ label {
 
 p {
   font-family: 'myFont';
-  width: 100px;
 }
 
 tr {
@@ -23,8 +22,8 @@ tr {
 }
 
 .airline {
-  min-width: 120px;
-  max-width: 120px;
+  min-width: 100px;
+  max-width: 100px;
 }
 
 .ori {

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light upperNav">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/user">BON VOYAGE 101</a>
+    <a class="navbar-brand" routerLink="/user">VOYAG'AIR</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -12,33 +12,82 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="myNavBar">
+      <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <a
-          class="nav-link active"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          aria-current="page"
-          routerLink="user"
-            >Home</a
+          <a class="nav-link name" disabled
+            >Hello, <i>{{ username }}!</i></a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="book">Book Flight</a>
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            aria-current="page"
+            routerLink="/user"
+            >HOME</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="flights">View Flights</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="bookings">View Bookings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" href="/">Logout</a>
+        <li class="nav-item logout">
+          <a class="nav-link" href="/">LOGOUT</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<nav
+  class="navbar navbar-expand-lg navbar-light lowerNav"
+  *ngIf="router.url != '/user'"
+>
+  <div class="container-fluid">
+    <ul class="nav navbar-nav mx-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="flights"
+          >Flights</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="bookings"
+          >My Bookings</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="home-content" *ngIf="router.url == '/user'">
+  <div class="flights">
+    <button
+      routerLink="flights"
+      mat-raised-button
+      color="primary"
+      class="btn btn-primary flights"
+    >
+      View Flights
+    </button>
+  </div>
+  <div class="book">
+    <button
+    routerLink="book"
+    mat-raised-button
+    color="primary"
+    class="btn btn-primary book"
+  >
+    Book Flight
+  </button>
+  </div>
+  <div class="bookings">
+    <button
+      routerLink="bookings"
+      mat-raised-button
+      color="primary"
+      class="btn btn-primary bookings"
+    >
+      View Bookings
+    </button>
+  </div>
+  </div>
 
 <router-outlet></router-outlet>

@@ -13,7 +13,9 @@ html,
 body {
   height: 100%;
   font-family: "myFont";
-  background-color: rgb(255, 248, 248);
+  background-image: linear-gradient(#382768, #ded2ff);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .form {

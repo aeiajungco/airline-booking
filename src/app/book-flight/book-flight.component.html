@@ -1,5 +1,5 @@
 <mat-card class="bookflight">
-    <mat-card-title class="title">Flight Booking</mat-card-title>
+    <mat-card-title class="title">BOOK FLIGHT</mat-card-title>
     <mat-card-content>
         <form class="flight-form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="airline-field">
@@ -56,18 +56,18 @@
             <br>
 
             <mat-form-field class="field" *ngIf="selectedTrip == 'trip1' || selectedTrip == 'trip2'">
-                <label for="depDate">Departure Date</label>
+                <mat-label>Departure Date</mat-label>
                 <input matInput
-                    type="Date"
+                    type="date"
                     formControlName="depDate"
                     >
                 <mat-error *ngIf="bf.depDate.errors?.required">Please select departure date.</mat-error>
             </mat-form-field>
 
             <mat-form-field class="field" *ngIf="selectedTrip == 'trip2'">
-                <label for="retDate">Return Date</label>
+                <mat-label>Return Date</mat-label>
                 <input matInput
-                    type="Date"
+                    type="date"
                     formControlName="retDate"
                     >
                 

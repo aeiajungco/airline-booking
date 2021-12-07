@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light upperNav">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/admin">VOYAGER</a>
+    <a class="navbar-brand" routerLink="/admin">VOYAG'AIR</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,49 +14,55 @@
     </button>
     <div class="collapse navbar-collapse" id="myNavBar">
       <ul class="nav navbar-nav ml-auto">
-        
+        <li class="nav-item">
+          <a class="nav-link name" disabled>Hello, <i>{{ username }}!</i></a>
+        </li>
         <li class="nav-item">
           <a
-            class="nav-link active"
+            class="nav-link"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             aria-current="page"
             routerLink="/admin"
-            >Home</a
+            >HOME</a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="create"
-            >Create Flight</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="flights"
-            >View Flights</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="book"
-            >Book Flight</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="users"
-            >View Users</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Logout</a>
+        <li class="nav-item logout">
+          <a class="nav-link" href="/">LOGOUT</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<nav class="navbar navbar-expand-lg navbar-light lowerNav"  *ngIf="router.url != '/admin'">
+  <div class="container-fluid">
+      <ul class="nav navbar-nav mx-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="flights"
+            >Flights</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="users"
+            >Users</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="book"
+            >Book</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="create"
+            >Create</a
+          >
+        </li>
+      </ul>
+  </div>
+</nav>
 
 <div class="home-content" *ngIf="router.url == '/admin'">
-  <p>
-    Hello <i>{{ username }}!</i>
-  </p>
   <table>
     <tr>
       <td>

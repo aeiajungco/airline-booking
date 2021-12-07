@@ -3,8 +3,9 @@ table {
     border-radius: 15px;
 }
 
-.container {
-    background-color: rgb(235, 221, 255);
+.container-fluid {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 2px double rgb(236, 219, 255);
     width: 100%;
     margin-top: 15px;
 }
@@ -46,9 +47,7 @@ table {
 
 .flights {
     margin: 0 auto;
-    background-color: rgba(104, 48, 156, 0.774);
-    width: 1200px;
-    padding: 15px 30px 30px 30px;
+    width: 95%;
 }
 
 td {
@@ -91,4 +90,22 @@ mat-form-field {
     width: 250px;
     font-size: 20px;
     margin-top: 3%;
+}
+
+::ng-deep .mat-select-arrow {
+    color: white!important;
+}
+
+::ng-deep .mat-form-field-label {
+    color: rgb(255, 255, 255)!important;
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: #ffffff!important;
+}
+
+
+::ng-deep .mat-select-value, input{    
+    color: #e5d5ff!important;  
+    font-size: 20px;
 }

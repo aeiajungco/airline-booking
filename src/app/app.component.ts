@@ -18,8 +18,4 @@ export class AppComponent {
     if (localStorage.getItem('admin') == 'false' && localStorage.getItem('user') == 'false') 
       this.loggedIn = false;
   }
-
-  ngOnChange () {
-    
-  }
 }

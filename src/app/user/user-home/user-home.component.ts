@@ -10,7 +10,7 @@ import { LoginVarService } from 'src/app/services/login-var.service';
 export class UserHomeComponent implements OnInit {
   loggedInUser: any;
   username: any;
-  constructor(public varLogin: LoginVarService, private router: Router) { }
+  constructor(public varLogin: LoginVarService, public router: Router) { }
 
   ngOnInit(): void {
     this.loggedInUser = localStorage.getItem('user');

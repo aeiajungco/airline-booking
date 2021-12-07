@@ -2,32 +2,76 @@
     background-color: transparent;
     font-family: 'myFont';
 }
-.container-fluid {
-    border: 2px solid rgb(243, 230, 255);
-    height: 40px;
-}
 
-.nav-item {
-    font-size: 20px;
-}
-
-.nav-item > a:hover {
-    text-decoration: underline;
-    color: blueviolet;
-}   
-
-.nav-item > a.active{
-    color: blueviolet;
-    background-color: rgb(244, 233, 255);
-}
-
-p {
-    font-family: 'myFont';
+.navbar-brand {
+    font-size: 40px;
+    color: white;
     font-weight: bold;
 }
 
+.navbar-brand:hover {
+    color: white;
+}
+
+.upperNav > .container-fluid {
+    height: 70px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+
+.lowerNav > .container-fluid{
+    font-size: 20px;
+}
+
+.ml-auto > .nav-item > a:hover {
+    color: rgb(192, 192, 192);
+}   
+
+.ml-auto > .nav-item > a {
+    color: white;
+}
+
+.ml-auto > .nav-item > a.name {
+    color: white;
+    font-size: 20px;
+    margin-right: 30px;
+}
+
+.ml-auto > .nav-item > a.active{
+    color: white;
+    border-bottom: 2px solid white;
+    padding-bottom: 1px;
+}
+
+.mx-auto {
+    width: 70%;
+}
+
+.mx-auto > .nav-item {
+    margin: 0 auto;
+    width: 25%;
+    text-align: center;
+}
+
+.mx-auto > .nav-item > a {
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.356);
+}
+
+.mx-auto > .nav-item > a:hover {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
+
+.mx-auto > .nav-item > a.active {
+    color: white;
+    border-bottom: 3px solid white;
+    padding-bottom: 20px;
+    box-shadow: 0px 15px 10px -15px white; 
+}
+
 i {
-    color: blueviolet;
+    color: #b88cff;
 }
 
 .home-content {

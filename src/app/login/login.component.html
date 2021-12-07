@@ -22,16 +22,23 @@
             <input matInput type="password" formControlName="password" required />
             <mat-error *ngIf="info.password.errors?.required">Password is required.</mat-error>
           </mat-form-field>
-          
-          <button class="loginBtn" *ngIf="!varLogin.getAdmin() && !varLogin.getUser()" disabled>LOGIN</button>
-          <button class="loginBtn" *ngIf="varLogin.getAdmin()" (click)="login()" routerLink="admin">LOGIN</button>
-          <button class="loginBtn" *ngIf="varLogin.getUser()" (click)="login()" routerLink="user">LOGIN</button>
           <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
+          <button class="loginBtn" *ngIf="!varLogin.getAdmin() && !varLogin.getUser()" disabled>LOGIN</button>
+          <button class="loginBtn" *ngIf="varLogin.getAdmin()" (click)="login()" routerLink="/admin">LOGIN</button>
+          <button class="loginBtn" *ngIf="varLogin.getUser()" (click)="login()" routerLink="/user">LOGIN</button>
+          
           <app-register *ngIf="varLogin.getUser()"></app-register>
         </form>
         </mat-card-content>
     </mat-card>
   </div>
+  <div class="login-container">
+    <div class="login-text">
+      <p>VOYAG'AIR</p>
+      <h1>Lorem ipsum blah blah blah diri ibutang unsa nga mga text para sa landing page kunohay</h1>
+    </div>
+    
+  </div>
 </div>
 
-<router-outlet *ngIf="varLogin.getLoggedIn() == 1"></router-outlet>
+<router-outlet *ngIf="loggedIn == '1'"></router-outlet>

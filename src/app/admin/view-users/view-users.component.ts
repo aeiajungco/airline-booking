@@ -43,9 +43,5 @@ export class ViewUsersComponent implements OnInit {
         break;
       }
     }
-    if (this.show == false)
-      this.button = 'View'
-    else if (this.show == true)
-      this.button = 'Hide'
   }
 }

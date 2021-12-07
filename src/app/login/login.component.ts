@@ -45,12 +45,10 @@ export class LoginComponent implements OnInit {
     this.users.getUsers().subscribe((val) => {
       this.users$ = val;
     });
-    console.log(this.varLogin.getLoggedIn());
+    console.log("login = "+this.varLogin.getLoggedIn());
     localStorage.setItem('user', 'false');
     localStorage.setItem('admin', 'false');
     localStorage.removeItem('username')
-    console.log(localStorage.getItem('admin'))
-    console.log(localStorage.getItem('user'))
   }
 
   setRole() {
@@ -100,8 +98,10 @@ export class LoginComponent implements OnInit {
         }
       }
     }
+    localStorage.setItem('login', this.varLogin.getLoggedIn().toString())
+    this.loggedIn = localStorage.getItem('login')
     localStorage.setItem('username', this.varLogin.getUserName())
-    console.log(this.varLogin.getLoggedIn());
+    console.log("login = "+this.varLogin.getLoggedIn());
   }
 
   get info() {

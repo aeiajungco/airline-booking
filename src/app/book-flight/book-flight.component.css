@@ -1,68 +1,121 @@
+.users {
+  margin-bottom: 100px;
+}
+
 .bookflight {
-    width: 700px;
-    margin: 0 auto;
-    margin-top:5%;
+  padding: 50px;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 100px;
+  background-color: rgba(36, 36, 36, 0.3);
 }
 
 .title {
-    text-align: center;
-    font-family: 'myFont';
-    font-weight: 800;
+  color: white;
+  text-align: center;
+  font-family: "myFont";
+  font-weight: 800;
+  padding: 10px;
+  padding-bottom: 15px;
 }
 
 .field {
-    width: 324px;
-    margin-top: 2%;
-    margin-right: 5px;
-    margin-left: 5px;
-    padding: 5px;
-    border-radius: 15px;
+  width: 324px;
+  margin-top: 2%;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 5px;
+  border-radius: 15px;
 }
 
 .airline-field {
-    margin-right: 5px;
-    margin-left: 5px;
-    padding: 5px;
-    display: grid;
-    border-radius: 15px;
+  margin: 0 auto;
+  padding: 5px;
+  display: grid;
+  border-radius: 15px;
+  width: 25%;
 }
 
 .select-user {
-    width: 300px;
-    margin: 2px;
+  width: 300px;
+  margin: 2px;
 }
 
 mat-select {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 mat-label {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 input {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .search {
-    height: 50px;
-    font-size: 20px;
-    margin-top: 2%;
-    margin-left: 75%;
-    width: 25%;
+  height: 50px;
+  font-size: 20px;
+  margin-top: 2%;
+  margin-left: 75%;
+  width: 25%;
 }
 
 #noMatches {
-    margin-top: 50px;
-    text-align: center;
+  margin-top: 50px;
+  text-align: center;
 }
 
 h2 {
-    font-style: italic;
+  font-style: italic;
 }
 
 mat-option {
-    font-family: 'myFont';
-  }
+  font-family: "myFont";
+}
+
+.form-group {
+  display: inline;
+  flex-direction: column;
+}
+
+::ng-deep .mat-select-arrow {
+  color: white !important;
+}
+
+::ng-deep .mat-form-field-label {
+  color: rgb(255, 255, 255) !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  color: rgb(98, 0, 255) !important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #640000 !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  background-color: #ffffff !important;
+}
+
+::ng-deep .mat-select-value,
+input {
+  color: #e5d5ff !important;
+  font-size: 20px;
+}
 
 
+
+mat-error {
+  color: #640000;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert();
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert();
+}

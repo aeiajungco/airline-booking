@@ -84,8 +84,14 @@ h3 {
   }
 }
 
-a {
-  color: blueviolet;
+.regText {
+  color: rgb(70, 49, 128);
+}
+
+.regText:hover {
+  color: #7b4bff;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .regBtn {

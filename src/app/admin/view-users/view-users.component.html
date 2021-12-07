@@ -1,5 +1,5 @@
 <div class="users">
-  <mat-card class="container" *ngFor="let user of userList$; let i = index">
+  <mat-card class="container-fluid" *ngFor="let user of userList$; let i = index">
     <mat-card-content>
       <table>
         <tr>
@@ -43,18 +43,9 @@
             </button>
           </td>
         </tr>
-        <tr *ngIf="show && user.username == un && empty">
-          <td>
-            <h1>No Bookings Found</h1>
-          </td>
-        </tr>
-        <tr *ngIf="show && user.username == un">
-          <td colspan="5">
-            <app-view-bookings [user]="user.username"></app-view-bookings>
-          </td>
-        </tr>
       </table>
-
+      <h1 *ngIf="show && user.username == un && empty">No Bookings Found</h1>
+      <app-view-bookings *ngIf="show && user.username == un" [user]="user.username"></app-view-bookings>
     </mat-card-content>
   </mat-card>
 </div>

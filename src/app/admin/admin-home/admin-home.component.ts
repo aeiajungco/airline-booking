@@ -19,8 +19,11 @@ export class AdminHomeComponent implements OnInit {
     this.loggedInAdmin = localStorage.getItem('admin');
     this.username = localStorage.getItem('username');
     console.log(this.username);
-    if (this.loggedInAdmin != 'true') 
-      this.router.navigate(['/error']);
+    if (this.loggedInAdmin != 'true') {
+      this.router.navigate(['/']);
+      localStorage.setItem('admin', 'false')
+      localStorage.removeItem('username')
+    }
     console.log("login = "+this.loggedInAdmin)
   }
 }

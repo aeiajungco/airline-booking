@@ -34,7 +34,7 @@ export class BookingListComponent implements OnInit {
   flights$: any = [];
   userLoggedIn = '';
   filterChoice = '';
-  isBoth!: boolean;
+  isAll!: boolean;
   isOneWay!: boolean;
   isTwoWay!: boolean;
   userFlights: any = [];
@@ -60,6 +60,8 @@ export class BookingListComponent implements OnInit {
 
     this.userLoggedIn = this.variable.getUserName();
     console.log(this.userFlights); 
+
+    this.filterChoice = 'All'
   }
   
   onChange() {    
@@ -140,39 +142,39 @@ export class BookingListComponent implements OnInit {
     }
     
     switch(this.filterChoice) {
-      case 'Both':
+      case 'All':
         if (this.oneWay.length != 0 && this.twoWayDep != 0 && this.twoWayRet != 0)
-          this.isBoth = true;     
+          this.isAll = true;     
         else if (this.oneWay.length != 0)
           this.isOneWay = true;
         else if (this.twoWayDep.length != 0 && this.twoWayRet.length != 0)
           this.isTwoWay = true;
         else 
-          this.isBoth = false;   
+          this.isAll = false;   
 
         break;
       case 'One-Way':
         if (this.oneWay.length != 0) {
-          this.isBoth = false;
+          this.isAll = false;
           this.isOneWay = true;
           this.isTwoWay = false;
         }
         else 
           this.isOneWay = false;
           this.isTwoWay = false;
-          this.isBoth = false;
+          this.isAll = false;
         
         break;
       case 'Two-Way':
         if (this.twoWayDep.length != 0 && this.twoWayRet.length != 0) {
-          this.isBoth = false;
+          this.isAll = false;
           this.isOneWay = false;
           this.isTwoWay = true;
         }
         else 
           this.isTwoWay = false;
           this.isOneWay = false;
-          this.isBoth = false;
+          this.isAll = false;
 
         break;
     }
