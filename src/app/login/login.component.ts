@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     console.log("login = "+this.varLogin.getLoggedIn());
     localStorage.setItem('user', 'false');
     localStorage.setItem('admin', 'false');
-    localStorage.removeItem('username')
+    localStorage.removeItem('username');
   }
 
   setRole() {

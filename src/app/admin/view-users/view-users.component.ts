@@ -18,7 +18,7 @@ export class ViewUsersComponent implements OnInit {
   noBookingUser = '';
   empty: any;
   userWithBookings: any = [];
-  viewClick = 0;
+  isActive!: boolean;
 
   constructor(
     private users: UserService,
@@ -39,11 +39,11 @@ export class ViewUsersComponent implements OnInit {
     this.un = ''
     this.show = !this.show;
 
-    $('button[id^="view-btn"]').eq(index).text(function(i, text) {
-      return text === "Hide Bookings" ? "View Bookings" : "Hide Bookings";
-    });
-
-    $('button[id^="view-btn"]').not('#view-btn'+index).text("View Bookings");
+      $('button[id^="view-btn"]').eq(index).text(function(i, text) {
+        return text === "Hide Bookings" ? "View Bookings" : "Hide Bookings";
+      });
+      
+      $('button[id^="view-btn"]').not('#view-btn'+index).text("View Bookings");
 
     for (let x of this.bookingList$) {
       if (username == x.username) {
