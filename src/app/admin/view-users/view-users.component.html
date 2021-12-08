@@ -21,30 +21,19 @@
           </td>
           <td class="viewBtn">
             <button
-            *ngIf="!show || user.username != un"
               mat-raised-button
               color="primary"
               class="btn btn-primary"
               type="button"
-              data-toggle="collapse" data-target="#bookings" aria-expanded="false" aria-controls="bookings"
-              (click)="showBookings(user.username)"
+              id="{{ 'view-btn' + i }}"              
+              (click)="showBookings(user.username, i)"
             >
               View Bookings
-            </button>
-            <button
-            *ngIf="show && user.username == un"
-              mat-raised-button
-              color="primary"
-              class="btn btn-primary"
-              type="button"
-              (click)="showBookings(user.username)"
-            >
-              Hide Bookings
             </button>
           </td>
         </tr>
       </table>
-      <h1 *ngIf="show && user.username == un && empty">No Bookings Found</h1>
+      <h1 *ngIf="show && user.username == noBookingUser && empty">No Bookings Found</h1>
       <app-view-bookings *ngIf="show && user.username == un" [user]="user.username"></app-view-bookings>
     </mat-card-content>
   </mat-card>

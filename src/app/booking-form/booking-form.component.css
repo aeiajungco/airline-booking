@@ -1,12 +1,13 @@
 .bookForm {
-    width: 400px;
+    width: 430px;
     margin: 0 auto;
-    margin-top:5%; 
+    margin-top: 5%;
     margin-bottom: 5%;
+    background-color: rgba(36, 36, 36, 0.1);
 }
 
-.modal-header {
-    height: 50px;
+.booking-form {
+    text-align: center;
 }
 
 .close {
@@ -43,6 +44,7 @@ mat-label {
     display: inline;
     margin-left: 75%;
     width: 100px;
+    height: 40px;
     font-size: 15px;
 }
 

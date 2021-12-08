@@ -24,8 +24,8 @@
           </mat-form-field>
           <mat-error *ngIf="incorrect">Incorrect username or password.</mat-error>
           <button class="loginBtn" *ngIf="!varLogin.getAdmin() && !varLogin.getUser()" disabled>LOGIN</button>
-          <button class="loginBtn" *ngIf="varLogin.getAdmin()" (click)="login()" routerLink="/admin">LOGIN</button>
-          <button class="loginBtn" *ngIf="varLogin.getUser()" (click)="login()" routerLink="/user">LOGIN</button>
+          <button class="loginBtn" *ngIf="varLogin.getAdmin()" (click)="login()" [disabled]="!form.valid" routerLink="/admin">LOGIN</button>
+          <button class="loginBtn" *ngIf="varLogin.getUser()" (click)="login()" [disabled]="!form.valid" routerLink="/user">LOGIN</button>
           
           <app-register *ngIf="varLogin.getUser()"></app-register>
         </form>

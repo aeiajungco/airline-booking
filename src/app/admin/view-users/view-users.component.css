@@ -38,5 +38,6 @@ td {
 
 .btn {
     float: right;
-    border-radius: 0px;
+    width: 135px;
+    border-radius: 5px;
 }

@@ -1,8 +1,7 @@
-import { BookingListComponent } from './../../user/booking-list/booking-list.component';
 import { LoginVarService } from './../../services/login-var.service';
-import { FlightsService } from './../../services/flights.service';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-view-users',
@@ -15,8 +14,11 @@ export class ViewUsersComponent implements OnInit {
   button = 'View'
   show = false;
   flightList$: any = [];
-  un = ''
+  un = '';
+  noBookingUser = '';
   empty: any;
+  userWithBookings: any = [];
+  viewClick = 0;
 
   constructor(
     private users: UserService,
@@ -33,15 +35,42 @@ export class ViewUsersComponent implements OnInit {
 
   }
 
-  showBookings(username: any) {
+  showBookings(username: any, index: any) {
     this.un = ''
     this.show = !this.show;
+
+    $('button[id^="view-btn"]').eq(index).text(function(i, text) {
+      return text === "Hide Bookings" ? "View Bookings" : "Hide Bookings";
+    });
+
+    $('button[id^="view-btn"]').not('#view-btn'+index).text("View Bookings");
+
     for (let x of this.bookingList$) {
       if (username == x.username) {
-        this.un = x.username
-        this.empty = false
+        this.un = x.username;
+        this.empty = false;
         break;
       }
     }
+    console.log(this.un);
+
+    if (this.un == '') {
+      console.log("EMPTY");
+      this.empty = true;
+      for (let i = 0; i <= this.userWithBookings.length; i++) {
+        if(this.userWithBookings.length == 0) {
+          this.userWithBookings.push(username);
+          console.log("PASSED BY");
+        }
+        else if (username != this.userWithBookings[i] && i+1 == this.userWithBookings.length) {
+          this.userWithBookings.push(username);
+          console.log("PASSED BY");
+        }
+        if (username == this.userWithBookings[i]) {
+          this.noBookingUser = this.userWithBookings[i];
+          console.log("PASSED BY");
+        }
+      }
+   }
   }
 }

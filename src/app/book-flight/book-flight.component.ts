@@ -5,6 +5,7 @@ import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
 import { DateValidator } from '../date.validator';
 import { LoginVarService } from '../services/login-var.service';
+import { OrigDestValidator } from '../orig-dest.validator';
 
 @Component({
   selector: 'app-book-flight',
@@ -36,7 +37,7 @@ export class BookFlightComponent implements OnInit {
     depDate: ['', Validators.required],
     retDate: [''],
   }, {
-      validator: DateValidator('depDate', 'retDate')
+      validator: [DateValidator('depDate', 'retDate'), OrigDestValidator('orig','dest')]
     });
 
   public locations: any = [];

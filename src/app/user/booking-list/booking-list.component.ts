@@ -4,6 +4,7 @@ import { FlightsService } from 'src/app/services/flights.service';
 import { LoginVarService } from 'src/app/services/login-var.service';
 import { UserService } from 'src/app/services/user.service';
 import * as $ from 'jquery';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface AllFlightDetails {
   $key: any;
@@ -34,6 +35,7 @@ export class BookingListComponent implements OnInit {
   flights$: any = [];
   userLoggedIn: any;
   filterChoice = '';
+  filterInit: any;
   isAll!: boolean;
   isOneWay!: boolean;
   isTwoWay!: boolean;
@@ -42,7 +44,7 @@ export class BookingListComponent implements OnInit {
   twoWayDep: any = [];
   twoWayRet: any = [];
 
-  constructor(private users: UserService, private flights: FlightsService, private variable: LoginVarService, public datepipe: DatePipe) { }
+  constructor(private users: UserService, private flights: FlightsService, private variable: LoginVarService, public datepipe: DatePipe,  private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.users.getUserBookings().subscribe((val:any)=> {
@@ -61,7 +63,7 @@ export class BookingListComponent implements OnInit {
     this.userLoggedIn = localStorage.getItem('username');
     console.log(this.userFlights); 
 
-    this.filterChoice = 'All'
+    this.filterChoice = 'All';
   }
   
   onChange() {    
@@ -149,9 +151,10 @@ export class BookingListComponent implements OnInit {
           this.isOneWay = true;
         else if (this.twoWayDep.length != 0 && this.twoWayRet.length != 0)
           this.isTwoWay = true;
-        else 
+        else {
           this.isAll = false;   
-
+          this.filterInit = '';
+        }
         break;
       case 'One-Way':
         if (this.oneWay.length != 0) {
@@ -178,10 +181,5 @@ export class BookingListComponent implements OnInit {
 
         break;
     }
-
-    console.log(this.oneWay);
-    console.log(this.twoWayDep);
-    console.log(this.twoWayRet);  
   }    
-
 }

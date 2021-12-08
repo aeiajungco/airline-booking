@@ -39,6 +39,7 @@
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="bf.dest.errors?.required">Please select destination.</mat-error>
+                <mat-error *ngIf="bf.dest.errors?.confirmedValidator">Invalid destination choice.</mat-error>
             </mat-form-field>
 
             <mat-form-field class="field">
@@ -69,9 +70,8 @@
                 <input matInput
                     type="date"
                     formControlName="retDate"
-                    >
-                
-                    <mat-error *ngIf="bf.retDate.errors?.confirmedValidator">Invalid return date.</mat-error>
+                    >                
+                <mat-error *ngIf="bf.retDate.errors?.confirmedValidator">Invalid return date.</mat-error>
             </mat-form-field>          
             
             <button mat-raised-button color="primary" class="search" [disabled]="!bookForm.valid">Search Flights</button>

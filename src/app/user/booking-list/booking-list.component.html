@@ -1,3 +1,5 @@
+{{onChange()}}
+
 <div class="filter-bar">
     <mat-form-field>
         <mat-select class="inpField" placeholder="Choose Booking Type" [(value)]="filterChoice" (valueChange)="onChange()">
@@ -8,7 +10,7 @@
     </mat-form-field>
 </div>
 
-<div id="notExisting" *ngIf="oneWay.length == 0 && twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'All'">
+<div id="notExisting" *ngIf="oneWay.length == 0 && twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'All' && filterInit == ''">
     <h2>- No existing bookings -</h2> 
 </div>
 <div id="notExisting" *ngIf="oneWay.length == 0 && filterChoice == 'One-Way'">

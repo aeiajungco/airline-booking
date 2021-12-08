@@ -1,76 +1,76 @@
 <button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="openModal(template)">Book Now</button>
 
-<ng-template #template id="bookFormModal">
+<ng-template #template>
     <div class="modal-header">
         <button mat-button class="close" (click)="closeModal()">X</button>
     </div>
     <mat-card class="modal-body bookForm">
         <mat-card-content>
             <mat-card-title class="bf-title">Booking Form</mat-card-title>
-            <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
-            
-            <mat-form-field *ngIf="isAdmin" class="field">
-                <mat-label>Username</mat-label>
-                <mat-select formControlName="user" [(value)]="selectedUser">
-                    <mat-option *ngFor="let username of usernames" [value]="username.value">
-                        {{username.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-                <mat-form-field class="field">
-                    <mat-label>
-                        <mat-icon>person</mat-icon>
-                        First Name
-                    </mat-label>
-                    <input matInput
-                        class="inpField" 
-                        type="text"
-                        formControlName="fName">
-
-                    <mat-error *ngIf="bfInfo.fName.errors?.required">Please enter first name.</mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="field">
-                    <mat-label>
-                        <mat-icon>person</mat-icon>
-                        Last Name
-                    </mat-label>
-                    <input matInput
-                        class="inpField" 
-                        type="text"
-                        formControlName="lName">
-
-                    <mat-error *ngIf="bfInfo.lName.errors?.required">Please enter last name.</mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="field">
-                    <mat-label>
-                        <mat-icon>group</mat-icon>
-                        No. of Passengers
-                    </mat-label>
-                    <input matInput
-                        class="inpField" 
-                        type="number"
-                        formControlName="passNum">
-
-                    <mat-error *ngIf="bfInfo.passNum.errors?.required">Please enter no. of passengers.</mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="field">
-                    <mat-label>
-                        <mat-icon>airline_seat_recline_extra</mat-icon>
-                        Seat Class
-                    </mat-label>
-                    <mat-select class="inpField" formControlName="seatClass" [(value)]="selectedSeat">
-                        <mat-option value="Economy">Economy</mat-option>
-                        <mat-option value="Business">Business</mat-option>
-                        <mat-option value="First Class">First Class</mat-option>
+            <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+            <div class="booking-form">
+                <mat-form-field *ngIf="isAdmin" class="field">
+                    <mat-label>Username</mat-label>
+                    <mat-select formControlName="user" [(value)]="selectedUser">
+                        <mat-option *ngFor="let username of usernames" [value]="username.value">
+                            {{username.viewValue}}
+                        </mat-option>
                     </mat-select>
-
-                    <mat-error *ngIf="bfInfo.seatClass.errors?.required">Please select seat class.</mat-error>
                 </mat-form-field>
 
+                    <mat-form-field class="field">
+                        <mat-label>
+                            <mat-icon>person</mat-icon>
+                            First Name
+                        </mat-label>
+                        <input matInput
+                            class="inpField" 
+                            type="text"
+                            formControlName="fName">
+
+                        <mat-error *ngIf="bfInfo.fName.errors?.required">Please enter first name.</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="field">
+                        <mat-label>
+                            <mat-icon>person</mat-icon>
+                            Last Name
+                        </mat-label>
+                        <input matInput
+                            class="inpField" 
+                            type="text"
+                            formControlName="lName">
+
+                        <mat-error *ngIf="bfInfo.lName.errors?.required">Please enter last name.</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="field">
+                        <mat-label>
+                            <mat-icon>group</mat-icon>
+                            No. of Passengers
+                        </mat-label>
+                        <input matInput
+                            class="inpField" 
+                            type="number"
+                            formControlName="passNum">
+
+                        <mat-error *ngIf="bfInfo.passNum.errors?.required">Please enter no. of passengers.</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="field">
+                        <mat-label>
+                            <mat-icon>airline_seat_recline_extra</mat-icon>
+                            Seat Class
+                        </mat-label>
+                        <mat-select class="inpField" formControlName="seatClass" [(value)]="selectedSeat">
+                            <mat-option value="Economy">Economy</mat-option>
+                            <mat-option value="Business">Business</mat-option>
+                            <mat-option value="First Class">First Class</mat-option>
+                        </mat-select>
+
+                        <mat-error *ngIf="bfInfo.seatClass.errors?.required">Please select seat class.</mat-error>
+                    </mat-form-field>
+                </div>
                 <button mat-raised-button color="primary" class="confirm" [disabled]="!bookingForm.valid || confirmed">Confirm</button>
             </form>
             <h3 class="alert alert-success" *ngIf="confirmed">You have successfully booked a ticket.</h3>
