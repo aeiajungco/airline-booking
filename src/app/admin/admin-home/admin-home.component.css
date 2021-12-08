@@ -15,7 +15,7 @@
 
 .upperNav > .container-fluid {
     height: 70px;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #8dd2ff;
     padding-bottom: 10px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 i {
-    color: #b8d7ff;
+    color: #8dd2ff;
     font-weight: bold;
 }
 

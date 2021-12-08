@@ -80,7 +80,7 @@ mat-form-field {
 }
 
 ::ng-deep .mat-select-value, input{    
-    color: #b8d7ff!important;  
+    color: #8dd2ff!important;  
     font-size: 20px;
 }
 
@@ -90,6 +90,10 @@ mat-form-field {
 
 ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
     background-color: #8a2727!important;
+}
+
+.mat-form-field.mat-form-field-invalid input {
+  color: white!important;
 }
 
 mat-error {
