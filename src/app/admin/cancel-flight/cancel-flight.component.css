@@ -1,7 +1,21 @@
 .btn {
     float: right;
-    border-radius: 0px;
-    background-color: rgb(161, 0, 0);
+    height: 45px;
+    width: 100px;
+    border-radius: 10px;
+    border: 3px solid rgb(161, 0, 0);
+    color: rgb(161, 0, 0);
+    background-color: transparent;
     font-size: 18px;
     font-weight: bold;
+}
+
+.btn:hover {
+    background-color: rgba(212, 32, 32, 0.2)
+}
+
+.btn:disabled {
+    border: none;
+    color: transparent;
+    background-color: transparent;
 }

@@ -22,3 +22,26 @@ mat-form-field {
     text-align: center;
 }
 
+::ng-deep .mat-select-arrow {
+    color: white!important;
+}
+
+::ng-deep .mat-form-field-label {
+    color: rgb(255, 255, 255)!important;
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: #ffffff!important;
+}
+
+
+::ng-deep .mat-select-value, input{    
+    color: #e5d5ff!important;  
+    font-size: 20px;
+}
+
+h2 {
+    color: white;
+    font-family: 'myFont';
+    font-weight: bold;
+}

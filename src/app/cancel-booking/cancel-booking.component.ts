@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class CancelBookingComponent implements OnInit {
 
   @Input() bookingID: string = '';
+  @Input() admin: string = '';
   @Input() bookingDate: any;
   @Input() depDate: any;
   dateDiff: any;
@@ -32,19 +33,23 @@ export class CancelBookingComponent implements OnInit {
     const diffDays = (date: any, otherDate: any) => Math.ceil(Math.abs(date - otherDate) / (1000 * 60 * 60 * 24));
     this.dateDiff = diffDays(new Date(this.depDate), new Date(this.bookingDate)); 
 
-    if(this.dateDiff >= 7) {
-      this.confirmed == true;
+    if(this.admin == 'true')
       this.users.removeBooking(this.bookingID);
-      setTimeout(()=> {
-        this.closeModal(),
-        this.reload();  
-      }, 500);          
-    }
     else {
-      this.confirmed = false;
-      setTimeout(()=> {
-        this.closeModal();
-      }, 500);
+      if(this.dateDiff >= 7) {
+        this.confirmed == true;
+        this.users.removeBooking(this.bookingID);
+        setTimeout(()=> {
+          this.closeModal(),
+          this.reload();  
+        }, 500);          
+      }
+      else {
+        this.confirmed = false;
+        setTimeout(()=> {
+          this.closeModal();
+        }, 500);
+      }
     }
   }
 

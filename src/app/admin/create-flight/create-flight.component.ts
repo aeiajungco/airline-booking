@@ -41,7 +41,6 @@ export class CreateFlightComponent implements OnInit {
 
   onSubmit (template: TemplateRef<any>) {
     
-      this.invalid = 0;
       const flightInfo: Flight = {
         $key: '',
         destination: this.info.destination.value,

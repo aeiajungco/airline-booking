@@ -1,7 +1,7 @@
 .login-page {
   height: 100%;
   margin: 0 auto;
-  background-image: url("src/assets/images/planee.jpg");
+  background-image: url("src/assets/images/skyplane.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,14 +26,14 @@
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: rgba(59, 59, 59, 0.699);
+  background-color: rgba(128, 128, 128, 0.356);
 }
 
 mat-card {
   height: 100%;
   width: 35%;
   float: right;
-  background-color: rgba(255, 255, 255, 0.664);
+  background-color: rgba(255, 255, 255, 0.774);
 }
 
 .login {
@@ -57,8 +57,8 @@ input, mat-option, mat-label {
   font-weight: bold;
   font-size: 25px;
   background-color: transparent;
-  color: #463180;
-  border: 3px solid #463180;
+  color: #00009c;
+  border: 3px solid #00009c;
   letter-spacing: 5px;
   margin-top: 20px;
 }
@@ -70,7 +70,7 @@ input, mat-option, mat-label {
 }
 
 .loginBtn:hover:enabled {
-  background-color: rgba(70, 49, 128, 0.171)
+  background-color: #00009c2d
 }
 
 .role {
@@ -85,26 +85,9 @@ input, mat-option, mat-label {
   font-size: 15px;
 }
 
-a {
-  color: rgba(151, 94, 156, 1);
-}
-
 .reg {
   margin-bottom: 30px;
   font-size: 20px;
-}
-
-mat-error {
-  float: right;
-  color: #c70000;
-  font-size: 15px;
-}
-.mat-input-invalid .mat-input-placeholder {
-  color: #c70000;
-}
-
-.mat-input-invalid .mat-input-ripple {
-  background-color: #c70000;
 }
 
 p {
@@ -120,4 +103,33 @@ h1 {
   margin: 0 auto;
   color: white;
   font-family: 'myFont';
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    color: #00009c!important;
+}
+
+::ng-deep .mat-focused .mat-select-arrow {
+  color: #00009c!important;
+}
+
+::ng-deep .mat-form-field-ripple {
+    background-color: #00009c!important;
+}
+
+::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: rgb(176, 79, 255);
+}
+
+mat-error {
+  float: right;
+  font-size: 15px;
+}
+
+mat-error, ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label, .mat-form-field-required-marker {
+    color: #c70000!important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: #c70000!important;
 }

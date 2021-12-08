@@ -15,6 +15,7 @@ export class ViewBookingsComponent implements OnInit {
   bookingList$: any = [];
   flightList$: any = [];
   userFlights: any = [];
+  admin = 'true'
 
   constructor(
     private bookings: UserService,

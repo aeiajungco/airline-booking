@@ -11,25 +11,31 @@ table {
 }
 
 .container-fluid {
-    background-color: rgba(255, 255, 255, 0.3);
-    border: 2px double rgb(236, 219, 255);
+    background-color: rgba(255, 255, 255, 0.459);
     width: 100%;
     margin-top: 15px;
 }
 
 label {
     font-family: 'fontBold';
+    font-style: italic;
 }
 
 p {
     font-family: 'myFont';
     font-size: 20px;
-    color: rgb(58, 0, 167);
+    color: #0000c0;
     width: 100px;
 }
 
-tr {
-    margin-bottom: 20px;
+tr.empty > td{
+    margin-top: 70px;
+    text-align: center;
+}
+
+h1 {
+    font-weight: bold;
+    font-family: 'myFont';
 }
 
 td {
@@ -39,5 +45,19 @@ td {
 .btn {
     float: right;
     width: 135px;
-    border-radius: 5px;
+    height: 45px;
+    border-radius: 10px;
+    border: 2px solid #0000c0;
+    font-size: 15px;
+    background-color: transparent;
+    color: #0000c0;
 }
+
+.btn:hover {
+    background-color: rgba(0, 0, 255, 0.13);
+}
+
+button:focus, button:active:focus, button.active:focus {
+    outline: none !important;
+    outline-style: none !important;
+    }
