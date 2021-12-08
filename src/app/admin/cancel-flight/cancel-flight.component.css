@@ -16,4 +16,6 @@
 
 .btn:disabled {
     border: none;
+    color: transparent;
+    background-color: transparent;
 }

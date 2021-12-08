@@ -72,14 +72,15 @@
 }
 
 i {
-    color: #b88cff;
+    color: #b8d7ff;
+    font-weight: bold;
 }
 
 .home-content {
     width: 70%;
     text-align: center;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 70px;
     font-size: 40px;
 }
 
@@ -93,7 +94,7 @@ i {
     border-radius: 0px;
     font-size: 40px;
     font-weight: 900 ;
-    color: rgb(51, 16, 148);
+    color: #00009c;
     letter-spacing: 2px;
 }
 
@@ -125,13 +126,13 @@ div.bookings {
 }
 
 button.flights, button.bookings, button.book {
-    background-color: rgba(213, 183, 255, 0.596);
+    background-color: rgba(204, 230, 255, 0.685);
     border-radius: 10px;
     height: 100%;
     width: 100%;
 }
 
 button.flights:hover, button.book:hover, button.bookings:hover {
-    background-color: rgba(21, 3, 63, 0.575);
-    color: rgb(213, 183, 255);
+    background-color: rgba(3, 19, 63, 0.575);
+    color: #b8d7ff;
 }

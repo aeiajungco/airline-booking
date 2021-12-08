@@ -1,91 +1,121 @@
 <div class="heading">
-    <h1 class="book-heading">One-Way Bookings</h1>
+  <h1 class="book-heading">One-Way Bookings</h1>
 </div>
-    <table class="tick-container" *ngFor="let depFl of oneWay" [class.isCancelled]="depFl.status === 'Cancelled'">
-        <tr>
-            <td>
-                <div class="container">
-                    
-                <div class="flight-header">
-                    <div class="dateLabel">
-                        <p class="label">BOOKING DATE</p>
-                        <p class="date">{{depFl.bookDate}}</p>
-                    </div>
+<table
+  class="tick-container"
+  *ngFor="let depFl of oneWay"
+  [class.isCancelled]="depFl.status === 'Cancelled'"
+>
+  <tr>
+    <td>
+      <div class="container">
+        <div class="flight-header">
+          <div class="dateLabel">
+            <p class="label">BOOKING DATE</p>
+            <p class="date">{{ depFl.bookDate }}</p>
+          </div>
 
-                    <div class="cancel">
-                        <app-cancel-booking *ngIf=" depFl.status != 'Cancelled'"
-                          [bookingID]="depFl.$key"
-                          [bookingDate]="depFl.bookDate"
-                          [depDate]="depFl.depDate"
-                        ></app-cancel-booking>
-                        <button *ngIf=" depFl.status == 'Cancelled'" disabled mat-button class="blank-cancel">Cancel</button>
-                      </div>
-                </div>
+          <div class="cancel">
+            <app-cancel-booking
+              *ngIf="depFl.status != 'Cancelled'"
+              [bookingID]="depFl.$key"
+              [bookingDate]="depFl.bookDate"
+              [depDate]="depFl.depDate"
+            ></app-cancel-booking>
+            <button
+              *ngIf="depFl.status == 'Cancelled'"
+              disabled
+              mat-button
+              class="blank-cancel"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
 
-                <div class="flightDet">
-                    <p>Flight Details</p>
-                </div>
-                
-                <div class="flight-content">
-                    <div class="flight-status">
-                        <p class="flightStatus">
-                          <label class="statusLabel">Status: </label>
-                          {{ depFl.status }}
-                        </p>
-                      </div>
-                    <div class="contentHeader">
-                        <div class="icon">
-                            <img class="airplane" src="assets/images/airplane.png" alt="image">
-                        </div>
-                        <div class="departure">
-                            <p class="depLabel">DEPARTURE</p> 
-                            <p class="depDate">{{depFl.depDate}}</p>
-                        </div>        
-                        <div class="code-air">
-                            <p>{{depFl.airline}}</p>
-                            <p class="flightCode"> <label class="codeLabel">Flight Code:</label>{{depFl.flightCode}}</p>
-                        </div>
-                    </div>
+        <div class="flightDet">
+          <p>Flight Details</p>
+        </div>
 
-                    <div class="origin">
-                        <h1 class="flight-location">{{depFl.origin}}</h1>
-                        <div class="time">
-                            <p>{{depFl.depTime}}</p>
-                        </div>        
-                        <div class="loc-det">
-                            <p>Depart {{depFl.origin}}</p>
-                        <p>Philippines</p>
-                        </div>
-                    </div>
+        <div class="flight-content">
+          <div class="flight-status">
+            <p class="flightStatus">
+              <label class="statusLabel">Status: </label>
+              {{ depFl.status }}
+            </p>
+          </div>
+          <div class="contentHeader">
+            <div class="icon">
+              <img
+                class="airplane"
+                src="assets/images/airplane.png"
+                alt="image"
+              />
+            </div>
+            <div class="departure">
+              <p class="depLabel">DEPARTURE</p>
+              <p class="depDate">{{ depFl.depDate }}</p>
+            </div>
+            <div class="code-air">
+              <p>{{ depFl.airline }}</p>
+              <p class="flightCode">
+                <label class="codeLabel">Flight Code:</label
+                >{{ depFl.flightCode }}
+              </p>
+            </div>
+          </div>
 
-                    <div class="icon-to">
-                        <img class="paperplane" src="assets/images/paperplane.png" alt="image">
-                    </div>
+          <div class="origin">
+            <h1 class="flight-location">{{ depFl.origin }}</h1>
+            <div class="time">
+              <p>{{ depFl.depTime }}</p>
+            </div>
+            <div class="loc-det">
+              <p>Depart {{ depFl.origin }}</p>
+              <p>Philippines</p>
+            </div>
+          </div>
 
-                    <div class="destination">
-                        <h1 class="flight-location">{{depFl.destination}}</h1>
-                        <div class="time">
-                            <p>{{depFl.arrTime}}</p>
-                        </div>        
-                        <div class="loc-det">
-                            <p>Arrival {{depFl.destination}}</p>
-                            <p>Philippines</p>
-                        </div>
-                    </div>
-                </div>
+          <div class="icon-to">
+            <img
+              class="paperplane"
+              src="assets/images/paperplane.png"
+              alt="image"
+            />
+          </div>
 
-                    <div class="guestDet">
-                        <p>Guest Details</p>
-                    </div>
+          <div class="destination">
+            <h1 class="flight-location">{{ depFl.destination }}</h1>
+            <div class="time">
+              <p>{{ depFl.arrTime }}</p>
+            </div>
+            <div class="loc-det">
+              <p>Arrival {{ depFl.destination }}</p>
+              <p>Philippines</p>
+            </div>
+          </div>
+        </div>
 
-                    <div class="guest-content">
-                        <div class="guest-info">
-                            <p class="guestP"> <label class="guest">Name:</label> {{depFl.firstName}} {{depFl.lastName}}</p>
-                            <p class="guestP"> <label class="guest">No. of Passengers:</label> {{depFl.passNum}}</p>
-                            <p class="guestP"> <label class="guest">Seat Class:</label> {{depFl.seatClass}}</p>
-                        </div>        
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
+        <div class="guestDet">
+          <p>Guest Details</p>
+        </div>
+
+        <div class="guest-content">
+          <div class="guest-info">
+            <p class="guestP">
+              <label class="guest">Name:</label> {{ depFl.firstName }}
+              {{ depFl.lastName }}
+            </p>
+            <p class="guestP">
+              <label class="guest">No. of Passengers:</label>
+              {{ depFl.passNum }}
+            </p>
+            <p class="guestP">
+              <label class="guest">Seat Class:</label> {{ depFl.seatClass }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

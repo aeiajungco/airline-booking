@@ -40,4 +40,8 @@ mat-form-field {
     font-size: 20px;
 }
 
-
+h2 {
+    color: white;
+    font-family: 'myFont';
+    font-weight: bold;
+}

@@ -1,6 +1,8 @@
 table {
   width: 100%;
   margin: 0 auto;
+  background-color: #b1d3ffa1;
+  border-top: 2px double black;
 }
 
 label {
@@ -11,14 +13,17 @@ p {
   font-family: 'myFont';
 }
 
-tr {
-  margin-bottom: 20px;
-  border: 1px solid black;
+td {
+  padding: 10px;
+}
+
+div {
+  padding: 15px;
 }
 
 .airline {
-  min-width: 100px;
-  max-width: 100px;
+  min-width: 120px;
+  max-width: 120px;
 }
 
 .ori {
@@ -26,7 +31,18 @@ tr {
   max-width: 70px;
 }
 
-.dest {
+.dest, .arr, .type, .stat, .code {
   min-width: 80px;
   max-width: 80px;
+}
+
+.dep {
+  min-width: 100px;
+  max-width: 100px;
+}
+
+td.cancel {
+  min-width: 80px;
+  max-width: 80px;
+  border: 1px;
 }

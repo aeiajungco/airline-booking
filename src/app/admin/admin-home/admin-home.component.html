@@ -63,16 +63,6 @@
 </nav>
 
 <div class="home-content" *ngIf="router.url == '/admin'">
-  <div class="create">
-    <button
-      routerLink="create"
-      mat-raised-button
-      color="primary"
-      class="btn btn-primary flights"
-    >
-      Create Flight
-    </button>
-  </div>
   <div class="flights">
     <button
       routerLink="flights"
@@ -81,6 +71,16 @@
       class="btn btn-primary flights"
     >
       View Flights
+    </button>
+  </div>
+  <div class="users">
+    <button
+      routerLink="users"
+      mat-raised-button
+      color="primary"
+      class="btn btn-primary users"
+    >
+      View Users
     </button>
   </div>
   <div class="book">
@@ -93,14 +93,14 @@
     Book Flight
   </button>
   </div>
-  <div class="users">
+  <div class="create">
     <button
-      routerLink="users"
+      routerLink="create"
       mat-raised-button
       color="primary"
-      class="btn btn-primary users"
+      class="btn btn-primary flights"
     >
-      View Users
+      Create Flight
     </button>
   </div>
 </div>

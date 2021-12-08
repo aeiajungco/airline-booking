@@ -1,8 +1,7 @@
 {{ onChange() }}
 
 <div>
-  <h1 *ngIf="!empty">No Bookings Found</h1>
-  <table *ngFor="let flight of userFlights">
+  <table *ngFor="let flight of userFlights; ">
     <tr>
       <td class="airline">
         <label for="aLine">AIRLINE</label>
@@ -40,12 +39,8 @@
         <label for="status">Status</label>
         <p>{{ flight.status }}</p>
       </td>
-      <td class="cancel" *ngIf="">
-        <app-cancel-flight
-          [flightCode]="flight.flightCode"
-          [status]="flight.status"
-          >Cancel Flight</app-cancel-flight
-        >
+      <td class="cancel">
+        <app-cancel-booking [bookingID]="flight.$key" [admin]="admin" [depDate]="flight.depDate"></app-cancel-booking>
       </td>
     </tr>
   </table>
