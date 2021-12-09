@@ -16,7 +16,6 @@ export class UserHomeComponent implements OnInit {
     this.loggedInUser = localStorage.getItem('user');
     this.username = localStorage.getItem('username');
     if (this.loggedInUser != 'true') {
-      this.router.navigate(['/']);
       localStorage.setItem('user', 'false')
       localStorage.removeItem('username')
     }
