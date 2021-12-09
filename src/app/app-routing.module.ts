@@ -1,17 +1,16 @@
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { ViewBookingsComponent } from './admin/view-bookings/view-bookings.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { RegisterComponent } from './user/register/register.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CreateFlightComponent } from './admin/create-flight/create-flight.component';
-import { AppComponent } from './app.component';
 import { BookFlightComponent } from './book-flight/book-flight.component';
 import { FlightListComponent } from './flight-list/flight-list.component';
 import { LoginComponent } from './login/login.component';
 import { BookingListComponent } from './user/booking-list/booking-list.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,6 +24,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminHomeComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'book',
@@ -53,6 +53,7 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserHomeComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
