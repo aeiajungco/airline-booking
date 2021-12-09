@@ -44,7 +44,7 @@ export class BookingListComponent implements OnInit {
   twoWayDep: any = [];
   twoWayRet: any = [];
 
-  constructor(private users: UserService, private flights: FlightsService, private variable: LoginVarService, public datepipe: DatePipe,  private router: Router, private route: ActivatedRoute) { }
+  constructor(private users: UserService, private flights: FlightsService, public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.users.getUserBookings().subscribe((val:any)=> {

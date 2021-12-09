@@ -20,7 +20,7 @@ td {
     padding: 1.5em;
 }
 
-.ret-container, .dep-container {
+.ret-container, .dep-container, .close-ret-container, .close-dep-container {
     width: 900px;
     margin: 0 auto;
     margin-top: 15px;
