@@ -23,10 +23,13 @@ export class BookFlightComponent implements OnInit {
   userList$: any = [];
   matchingList: any = [];
   departingFlight: any = [];
+  closeDepFlight: any = [];
   returningFlight: any = [];
+  closeRetFlight: any = [];
   submitted!: boolean;
   matched!: boolean;
   retDateMatched!: boolean;
+  dateDiff: any;
 
 
   bookForm = this.fb.group ({
@@ -55,17 +58,21 @@ export class BookFlightComponent implements OnInit {
     })
 
     this.locations = this.locair.getLocations();
-    this.airlines = this.locair.getAirLine();
+    this.airlines = this.locair.getAirLine();    
   }
 
   onSubmit() {
+    const diffDays = (date: any, otherDate: any) => Math.ceil(Math.abs(date - otherDate) / (1000 * 60 * 60 * 24));     
+
     this.flight.setDepartingFlight(null);
     this.flight.setReturningFlight(null);
     this.submitted = true;
     this.matched = false;
     this.retDateMatched = false;
     this.departingFlight.length = 0;
+    this.closeDepFlight.length = 0;
     this.returningFlight.length = 0;
+    this.closeRetFlight.length = 0;
 
     if (this.selectedTrip == 'trip2' && this.bookForm.value.retDate == null) {
       this.matched = false;
@@ -73,19 +80,31 @@ export class BookFlightComponent implements OnInit {
       this.matchingList.length = 0;
     }
     else {
-        for (let val of this.flightList$) {
-          if (val.airline == this.selectedAir && val.origin == this.selectedOri && val.destination == this.selectedDes && val.depDate == this.bookForm.value.depDate && val.status == 'Available') {
-            this.departingFlight.push(val);
-            this.matched = true;
+        for (let val of this.flightList$) { 
+          this.dateDiff = diffDays(new Date(val.depDate), new Date(this.bookForm.value.depDate));
+          if (val.airline == this.bookForm.value.airLine && val.origin == this.bookForm.value.orig && val.destination == this.bookForm.value.dest && val.status == 'Available') {
+            if (val.depDate == this.bookForm.value.depDate) {
+              this.departingFlight.push(val);
+              this.matched = true;
+            }                        
+            else if (this.dateDiff >= -7 && this.dateDiff <= 7 && this.dateDiff != 0) 
+              this.closeDepFlight.push(val);
           }
+          
         }      
 
       if (this.bookForm.value.retDate != null) {
         for (let val of this.flightList$) {
-          if (val.airline == this.selectedAir && val.origin == this.selectedDes && val.destination == this.selectedOri && val.depDate == this.bookForm.value.retDate && val.status == 'Available') {
-            this.returningFlight.push(val);
-            this.retDateMatched = true;
+          this.dateDiff = diffDays(new Date(val.depDate), new Date(this.bookForm.value.retDate));
+          if (val.airline == this.bookForm.value.airLine && val.origin == this.bookForm.value.dest && val.destination == this.bookForm.value.orig && val.status == 'Available') {
+            if (val.depDate == this.bookForm.value.retDate) {              
+              this.returningFlight.push(val);
+              this.retDateMatched = true;
+            }
+            else if (this.dateDiff >= -7 && this.dateDiff <= 7 && this.dateDiff != 0)  
+              this.closeRetFlight.push(val);
           }
+          
         }
         if (this.retDateMatched == false) 
           this.matched = false;
@@ -102,10 +121,8 @@ export class BookFlightComponent implements OnInit {
       this.retDateMatched = false;
     }
 
-    console.log("BOOKING");
-    console.log(this.retDateMatched);
-    console.log(this.matched);
-    console.log(this.submitted);
+    console.log(this.closeDepFlight);
+    console.log(this.closeRetFlight);
   }
 
   onChange() {
