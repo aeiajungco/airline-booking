@@ -34,7 +34,7 @@ export class ViewUsersComponent implements OnInit {
 
   }
 
-  showBookings(username: any, index: any) {
+  showBookings(username: any) {
     this.un = ''
     this.show = !this.show;
 

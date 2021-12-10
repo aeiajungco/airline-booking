@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
 import { DatePipe } from '@angular/common';
 import { LoginVarService } from '../services/login-var.service';
-import { query, where, orderBy, limit } from 'firebase/firestore';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-flight-list',
@@ -20,17 +20,20 @@ export class FlightListComponent implements OnInit {
   flightStat: any = [];
   airlines: any = [];
   orderedFlights: any = [];
+  modalRef!: BsModalRef;
+  isAdmin: any;
 
   constructor(
     private flight: FlightsService,
     private airline: OrigDestAirService,
-    public varLogin: LoginVarService
+    public varLogin: LoginVarService, private modalService: BsModalService
   ) {}
 
   flightCode = '';
   loggedInAdmin: any;
 
   ngOnInit(): void {
+    this.isAdmin = localStorage.getItem('admin');
     this.flight.getFlights().subscribe((val) => {
       this.flights$ = val;
     });
@@ -57,7 +60,12 @@ export class FlightListComponent implements OnInit {
 
   }
 
-  getFlightCode(flight: any) {
-    console.log(flight);
+  openModal (template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  getDepart(flight: any) {
+    this.flight.setDepartingFlight(flight);
+    console.log(this.flight.getDepartingFlight())
   }
 }

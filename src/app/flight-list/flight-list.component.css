@@ -9,7 +9,7 @@ table {
     margin-top: 15px;
 }
 
-.airline {
+.container > .airline {
     min-width: 60px;
     max-width: 60px;
     text-align: center;
@@ -129,5 +129,27 @@ mat-form-field {
 
 ::ng-deep .mat-select-value, input{    
     color: #8dd2ff!important;  
+    font-size: 20px;
+}
+
+mat-card.modal {
+    width: 700px;
+    top: 150%;
+    transform: translateX(-14.5%);
+}
+
+.flights > mat-card:hover {
+    background-color: rgba(255, 255, 255, 0.692);
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.airlineModal {
+    min-width: 30px;
+    max-width: 30px;
+}
+
+.airlineModal > p {
+    font-weight: bold;
     font-size: 20px;
 }

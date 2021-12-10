@@ -33,7 +33,7 @@ export class BookFlightComponent implements OnInit {
 
 
   bookForm = this.fb.group ({
-    airLine: ['', Validators.required],
+    airLine: [''],
     orig: ['', Validators.required],
     dest: ['', Validators.required],
     trip: ['', Validators.required],
@@ -82,7 +82,7 @@ export class BookFlightComponent implements OnInit {
     else {
         for (let val of this.flightList$) { 
           this.dateDiff = diffDays(new Date(val.depDate), new Date(this.bookForm.value.depDate));
-          if (val.airline == this.bookForm.value.airLine && val.origin == this.bookForm.value.orig && val.destination == this.bookForm.value.dest && val.status == 'Available') {
+          if (val.origin == this.bookForm.value.orig && val.destination == this.bookForm.value.dest && val.status == 'Available') {
             if (val.depDate == this.bookForm.value.depDate) {
               this.departingFlight.push(val);
               this.matched = true;
@@ -96,7 +96,7 @@ export class BookFlightComponent implements OnInit {
       if (this.bookForm.value.retDate != null) {
         for (let val of this.flightList$) {
           this.dateDiff = diffDays(new Date(val.depDate), new Date(this.bookForm.value.retDate));
-          if (val.airline == this.bookForm.value.airLine && val.origin == this.bookForm.value.dest && val.destination == this.bookForm.value.orig && val.status == 'Available') {
+          if (val.origin == this.bookForm.value.dest && val.destination == this.bookForm.value.orig && val.status == 'Available') {
             if (val.depDate == this.bookForm.value.retDate) {              
               this.returningFlight.push(val);
               this.retDateMatched = true;

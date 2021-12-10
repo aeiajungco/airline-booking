@@ -40,7 +40,7 @@
         <p>{{ flight.status }}</p>
       </td>
       <td class="cancel">
-        <app-cancel-booking [bookingID]="flight.$key" [admin]="admin" [depDate]="flight.depDate"></app-cancel-booking>
+        <app-cancel-booking [bookingID]="flight.$key" [depDate]="flight.depDate"></app-cancel-booking>
       </td>
     </tr>
   </table>

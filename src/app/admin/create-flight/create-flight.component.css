@@ -93,7 +93,7 @@ mat-form-field {
 }
 
 .mat-form-field.mat-form-field-invalid input {
-  color: white!important;
+  color: rgb(255, 64, 64)!important;
 }
 
 mat-error {

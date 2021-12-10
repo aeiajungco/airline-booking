@@ -30,10 +30,10 @@
 </div>
 
 <div class="flights">
-  <mat-card class="container-fluid" *ngFor="let flight of filteredList">
+  <mat-card class="container-fluid" *ngFor="let flight of filteredList" (click)="openModal(template)">
     <mat-card-content>
       <table>
-        <tr>
+        <tr class="container">
           <td class="airline">
             <label for="aLine">AIRLINE</label>
             <p>{{ flight.airline }}</p>
@@ -84,5 +84,66 @@
         </tr>
       </table>
     </mat-card-content>
+    <ng-template #template>
+      <mat-card class="modal">
+        <mat-card-content>
+          <mat-card-title>
+            <p>Flight Details</p>
+          </mat-card-title>
+          <table>
+            <tr>
+              <td class="airlineModal">
+                <label for="aLine">AIRLINE</label>
+                <p>{{ flight.airline }}</p>
+              </td>
+              <td class="code">
+                <label for="fCode">Flight Code</label>
+                <p>{{ flight.flightCode }}</p>
+              </td>
+              <td class="ori">
+                <label for="dest">Origin</label>
+                <p>{{ flight.origin }}</p>
+              </td>
+              <td class="dest">
+                <label for="dest">Destination</label>
+                <p>{{ flight.destination }}</p>
+              </td>
+              <td class="dep">
+                <label for="depDate">Departure Date</label>
+                <p>{{ flight.depDate }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="dep">
+                <label for="depTime">Departure Time</label>
+                <p>{{ flight.depTime }}</p>
+              </td>
+              <td class="arr">
+                <label for="arrTime">Arrival Time</label>
+                <p>{{ flight.arrTime }}</p>
+              </td>
+              <td class="type">
+                <label for="type">Type</label>
+                <p>{{ flight.type }}</p>
+              </td>
+              <td class="prc">
+                <label for="fPrice">Flight Price</label>
+                <p>{{ flight.flightPrice }}</p>
+              </td>
+              <td class="stat">
+                <label for="status">Status</label>
+                <p>{{ flight.status }}</p>
+              </td>
+            </tr>
+            <tr *ngIf="flight.status == 'Available'">
+              <td colspan="5">
+                <app-booking-form (click)="getDepart(flight.flightCode)"></app-booking-form>
+              </td>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </ng-template>
   </mat-card>
 </div>
+

@@ -10,11 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',
-  styleUrls: ['./booking-form.component.css']
+  styleUrls: ['./booking-form.component.css'],
 })
 export class BookingFormComponent implements OnInit {
-  selectedSeat = "";
-  selectedUser = "";
+  userFName = '';
+  userLName = '';
+  selectedSeat = '';
+  selectedUser = '';
   confirmed = false;
   modalRef!: BsModalRef;
   userBookings$: any = [];
@@ -23,28 +25,37 @@ export class BookingFormComponent implements OnInit {
   isAdmin: any;
   currentDate: any;
 
-  bookingForm = this.bForm.group ({
-    user: ['',],
-    fName: ['', Validators.required],
-    lName: ['', Validators.required],
+  bookingForm = this.bForm.group({
+    user: [''],
+    fName: [''],
+    lName: [''],
     passNum: ['', Validators.required],
     seatClass: ['', Validators.required],
   });
 
-  constructor(private bForm: FormBuilder, private modalService: BsModalService, private users: UserService, private variable: LoginVarService, private flight: FlightsService, public datepipe: DatePipe, private router: Router, private route: ActivatedRoute ) { }
-   
+  constructor(
+    private bForm: FormBuilder,
+    private modalService: BsModalService,
+    private users: UserService,
+    private variable: LoginVarService,
+    private flight: FlightsService,
+    public datepipe: DatePipe,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
   ngOnInit(): void {
-    this.users.getUsers().subscribe((val:any)=> {
+    this.users.getUsers().subscribe((val: any) => {
       this.userBookings$ = val;
     });
 
-    this.isAdmin = this.variable.getAdmin();
+    this.isAdmin = localStorage.getItem('admin');
     this.userLoggedIn = localStorage.getItem('username');
   }
 
   getUsernames() {
-    for (let val of this.userBookings$) {         
-      this.usernames.push({value: val.username, viewValue: val.username});
+    for (let val of this.userBookings$) {
+      this.usernames.push({ value: val.username, viewValue: val.username });
     }
   }
 
@@ -54,46 +65,58 @@ export class BookingFormComponent implements OnInit {
     return bookDate;
   }
 
-  onSubmit() {    
+  onSubmit() {
     this.confirmed = true;
 
-      if (this.isAdmin) {
-        const bookingInfo: UserBooking = {
-          $key: '',
-          bookDate: this.getCurrentDate(),
-          flightCode: [this.flight.getDepartingFlight(), this.flight.getReturningFlight()],
-          username: this.bfInfo.user.value,
-          firstName: this.bfInfo.fName.value,
-          lastName: this.bfInfo.lName.value,
-          passNum: this.bfInfo.passNum.value,
-          seatClass: this.bfInfo.seatClass.value,
+    if (this.isAdmin == 'true') {
+      for (let val of this.userBookings$) {
+        if (val.username == this.bfInfo.user.value) {
+          this.userFName = val.firstName
+          this.userLName = val.lastName
         }
-          this.users.addUserBooking(bookingInfo);
-        }
-        else {
-          const bookingInfo: UserBooking = {
-            $key: '',
-            bookDate: this.getCurrentDate(),
-            flightCode: [this.flight.getDepartingFlight(), this.flight.getReturningFlight()],
-            username: this.userLoggedIn,
-            firstName: this.bfInfo.fName.value,
-            lastName: this.bfInfo.lName.value,
-            passNum: this.bfInfo.passNum.value,
-            seatClass: this.bfInfo.seatClass.value,
-          }
-            console.log(this.getCurrentDate());
-            this.users.addUserBooking(bookingInfo);
-        }    
-    
+      }
+      console.log(this.userFName+" "+this.userLName)
+      this.flight.setReturningFlight(null)
+      const bookingInfo: UserBooking = {
+        $key: '',
+        bookDate: this.getCurrentDate(),
+        flightCode: [
+          this.flight.getDepartingFlight(),
+          this.flight.getReturningFlight(),
+        ],
+        username: this.bfInfo.user.value,
+        firstName: this.userFName,
+        lastName: this.userLName,
+        passNum: this.bfInfo.passNum.value,
+        seatClass: this.bfInfo.seatClass.value,
+      };
+      this.users.addUserBooking(bookingInfo);
+    } else {
+      const bookingInfo: UserBooking = {
+        $key: '',
+        bookDate: this.getCurrentDate(),
+        flightCode: [
+          this.flight.getDepartingFlight(),
+          this.flight.getReturningFlight(),
+        ],
+        username: this.userLoggedIn,
+        firstName: this.bfInfo.fName.value,
+        lastName: this.bfInfo.lName.value,
+        passNum: this.bfInfo.passNum.value,
+        seatClass: this.bfInfo.seatClass.value,
+      };
+      console.log(this.getCurrentDate());
+      this.users.addUserBooking(bookingInfo);
+    }
+
     this.bookingForm.reset();
     this.bfInfo.fName.setErrors(null);
     this.bfInfo.lName.setErrors(null);
     this.bfInfo.passNum.setErrors(null);
     this.bfInfo.seatClass.setErrors(null);
-    setTimeout(()=> {
-      this.modalRef?.hide(),
-      this.reload();
-    },600);  
+    setTimeout(() => {
+      this.modalRef?.hide(), this.reload();
+    }, 600);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -106,16 +129,15 @@ export class BookingFormComponent implements OnInit {
   closeModal() {
     this.bookingForm.reset();
     this.modalRef?.hide();
- }
+  }
 
- reload() {
-  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  this.router.onSameUrlNavigation = 'reload';
-  this.router.navigate(['./'], { relativeTo: this.route });
-}
+  reload() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['./'], { relativeTo: this.route });
+  }
 
   get bfInfo() {
     return this.bookingForm.controls;
   }
 }
-

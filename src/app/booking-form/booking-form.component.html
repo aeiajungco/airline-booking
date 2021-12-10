@@ -9,7 +9,7 @@
             <mat-card-title class="bf-title">Booking Form</mat-card-title>
             <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
             <div class="booking-form">
-                <mat-form-field *ngIf="isAdmin" class="field">
+                <mat-form-field *ngIf="isAdmin == 'true'" class="field">
                     <mat-label>Username</mat-label>
                     <mat-select formControlName="user" [(value)]="selectedUser">
                         <mat-option *ngFor="let username of usernames" [value]="username.value">
@@ -18,7 +18,7 @@
                     </mat-select>
                 </mat-form-field>
 
-                    <mat-form-field class="field">
+                    <mat-form-field *ngIf="isAdmin == 'false'" class="field">
                         <mat-label>
                             <mat-icon>person</mat-icon>
                             First Name
@@ -31,7 +31,7 @@
                         <mat-error *ngIf="bfInfo.fName.errors?.required">Please enter first name.</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field class="field">
+                    <mat-form-field *ngIf="isAdmin == 'false'" class="field">
                         <mat-label>
                             <mat-icon>person</mat-icon>
                             Last Name
