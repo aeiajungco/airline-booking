@@ -1,218 +1,233 @@
-<div class="flight-heading" *ngIf="departingFlight != 0">
-  <h1 class="heading">Departing Flights</h1>
-</div>
+<table class="flights-container">
+  <tr>
+    <td class="flights-column">
+      <div class="flight-heading" *ngIf="departingFlight != 0">
+        <h1 class="heading">Departing Flights</h1>
+      </div>
+      
+      <mat-card class="dep-container" *ngFor="let matched of departingFlight; let i = index">
+        <mat-card-content>
+          <table>
+            <tr>
+              <td>
+                <label for="fCode">Flight Code</label>
+                <p>{{ matched.flightCode }}</p>
+              </td>
+              <td>
+                <label for="dest">Origin</label>
+                <p>{{ matched.origin }}</p>
+              </td>
+              <td>
+                <label for="dest">Destination</label>
+                <p>{{ matched.destination }}</p>
+              </td>
+              <td>
+                <label for="depTime">Departure Time</label>
+                <p>{{ matched.depTime }}</p>
+              </td>
+              <td>
+                <label for="arrTime">Arrival Time</label>
+                <p>{{ matched.arrTime }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="airLine">Airline</label>
+                <p>{{ matched.airline }}</p>
+              </td>
+              <td>
+                <label for="depDate">Departure Date</label>
+                <p>{{ matched.depDate }}</p>
+              </td>
+              <td>
+                <label for="type">Type</label>
+                <p>{{ matched.type }}</p>
+              </td>
+              <td>
+                <label for="fPrice">Flight Price</label>
+                <p>{{ matched.flightPrice }}</p>
+              </td>
+            </tr>
+          </table>
+          <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'dep-btn' + i }}" (click)="getDepart(matched.flightCode, i)">
+            SELECT
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </td>
+    <td class="flights-column">
+      <div class="flight-heading" *ngIf="closeDepFlight !=0">
+        <h1 class="heading">Close Departing Flights</h1>
+      </div>
+      
+      <mat-card class="close-dep-container" *ngFor="let matched of closeDepFlight; let i = index">
+        <mat-card-content>
+          <table>
+            <tr>
+              <td>
+                <label for="fCode">Flight Code</label>
+                <p>{{ matched.flightCode }}</p>
+              </td>
+              <td>
+                <label for="dest">Origin</label>
+                <p>{{ matched.origin }}</p>
+              </td>
+              <td>
+                <label for="dest">Destination</label>
+                <p>{{ matched.destination }}</p>
+              </td>
+              <td>
+                <label for="depTime">Departure Time</label>
+                <p>{{ matched.depTime }}</p>
+              </td>
+              <td>
+                <label for="arrTime">Arrival Time</label>
+                <p>{{ matched.arrTime }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="airLine">Airline</label>
+                <p>{{ matched.airline }}</p>
+              </td>
+              <td>
+                <label for="depDate">Departure Date</label>
+                <p>{{ matched.depDate }}</p>
+              </td>
+              <td>
+                <label for="type">Type</label>
+                <p>{{ matched.type }}</p>
+              </td>
+              <td>
+                <label for="fPrice">Flight Price</label>
+                <p>{{ matched.flightPrice }}</p>
+              </td>
+            </tr>
+          </table>
+          <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'close-dep-btn' + i }}" (click)="getCloseDepart(matched.flightCode, i)">
+            SELECT
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </td>
+  </tr>
+</table>
 
-<mat-card class="dep-container" *ngFor="let matched of departingFlight; let i = index">
-  <mat-card-content>
-    <table>
-      <tr>
-        <td>
-          <label for="fCode">Flight Code</label>
-          <p>{{ matched.flightCode }}</p>
-        </td>
-        <td>
-          <label for="dest">Origin</label>
-          <p>{{ matched.origin }}</p>
-        </td>
-        <td>
-          <label for="dest">Destination</label>
-          <p>{{ matched.destination }}</p>
-        </td>
-        <td>
-          <label for="depTime">Departure Time</label>
-          <p>{{ matched.depTime }}</p>
-        </td>
-        <td>
-          <label for="arrTime">Arrival Time</label>
-          <p>{{ matched.arrTime }}</p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="airLine">Airline</label>
-          <p>{{ matched.airline }}</p>
-        </td>
-        <td>
-          <label for="depDate">Departure Date</label>
-          <p>{{ matched.depDate }}</p>
-        </td>
-        <td>
-          <label for="type">Type</label>
-          <p>{{ matched.type }}</p>
-        </td>
-        <td>
-          <label for="fPrice">Flight Price</label>
-          <p>{{ matched.flightPrice }}</p>
-        </td>
-      </tr>
-    </table>
-    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'dep-btn' + i }}" (click)="getDepart(matched.flightCode, i)">
-      SELECT
-    </button>
-  </mat-card-content>
-</mat-card>
-
-<div class="flight-heading" *ngIf="closeDepFlight !=0">
-  <h1 class="heading">Close Departing Flights</h1>
-</div>
-
-<mat-card class="close-dep-container" *ngFor="let matched of closeDepFlight; let i = index">
-  <mat-card-content>
-    <table>
-      <tr>
-        <td>
-          <label for="fCode">Flight Code</label>
-          <p>{{ matched.flightCode }}</p>
-        </td>
-        <td>
-          <label for="dest">Origin</label>
-          <p>{{ matched.origin }}</p>
-        </td>
-        <td>
-          <label for="dest">Destination</label>
-          <p>{{ matched.destination }}</p>
-        </td>
-        <td>
-          <label for="depTime">Departure Time</label>
-          <p>{{ matched.depTime }}</p>
-        </td>
-        <td>
-          <label for="arrTime">Arrival Time</label>
-          <p>{{ matched.arrTime }}</p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="airLine">Airline</label>
-          <p>{{ matched.airline }}</p>
-        </td>
-        <td>
-          <label for="depDate">Departure Date</label>
-          <p>{{ matched.depDate }}</p>
-        </td>
-        <td>
-          <label for="type">Type</label>
-          <p>{{ matched.type }}</p>
-        </td>
-        <td>
-          <label for="fPrice">Flight Price</label>
-          <p>{{ matched.flightPrice }}</p>
-        </td>
-      </tr>
-    </table>
-    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'close-dep-btn' + i }}" (click)="getCloseDepart(matched.flightCode, i)">
-      SELECT
-    </button>
-  </mat-card-content>
-</mat-card>
-
-<div class="flight-heading" *ngIf="returningFlight != 0">
-  <h1 class="heading">Returning Flights</h1>
-</div>
-
-<mat-card class="ret-container" *ngFor="let matched of returningFlight; let ind = index">
-  <mat-card-content>
-    <table>
-      <tr>
-        <td>
-          <label for="fCode">Flight Code</label>
-          <p>{{ matched.flightCode }}</p>
-        </td>
-        <td>
-          <label for="dest">Origin</label>
-          <p>{{ matched.origin }}</p>
-        </td>
-        <td>
-          <label for="dest">Destination</label>
-          <p>{{ matched.destination }}</p>
-        </td>
-        <td>
-          <label for="depTime">Departure Time</label>
-          <p>{{ matched.depTime }}</p>
-        </td>
-        <td>
-          <label for="arrTime">Arrival Time</label>
-          <p>{{ matched.arrTime }}</p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="airLine">Airline</label>
-          <p>{{ matched.airline }}</p>
-        </td>
-        <td>
-          <label for="depDate">Departure Date</label>
-          <p>{{ matched.depDate }}</p>
-        </td>
-        <td>
-          <label for="type">Type</label>
-          <p>{{ matched.type }}</p>
-        </td>
-        <td>
-          <label for="fPrice">Flight Price</label>
-          <p>{{ matched.flightPrice }}</p>
-        </td>
-      </tr>
-    </table>
-    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'ret-btn' + ind }}" (click)="getReturn(matched.flightCode, ind)">
-      SELECT
-    </button>
-  </mat-card-content>
-</mat-card>
-
-<div class="flight-heading" *ngIf="closeRetFlight !=0">
-  <h1 class="heading">Close Returning Flights</h1>
-</div>
-
-<mat-card class="close-ret-container" *ngFor="let matched of closeRetFlight; let ind = index">
-  <mat-card-content>
-    <table>
-      <tr>
-        <td>
-          <label for="fCode">Flight Code</label>
-          <p>{{ matched.flightCode }}</p>
-        </td>
-        <td>
-          <label for="dest">Origin</label>
-          <p>{{ matched.origin }}</p>
-        </td>
-        <td>
-          <label for="dest">Destination</label>
-          <p>{{ matched.destination }}</p>
-        </td>
-        <td>
-          <label for="depTime">Departure Time</label>
-          <p>{{ matched.depTime }}</p>
-        </td>
-        <td>
-          <label for="arrTime">Arrival Time</label>
-          <p>{{ matched.arrTime }}</p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="airLine">Airline</label>
-          <p>{{ matched.airline }}</p>
-        </td>
-        <td>
-          <label for="depDate">Departure Date</label>
-          <p>{{ matched.depDate }}</p>
-        </td>
-        <td>
-          <label for="type">Type</label>
-          <p>{{ matched.type }}</p>
-        </td>
-        <td>
-          <label for="fPrice">Flight Price</label>
-          <p>{{ matched.flightPrice }}</p>
-        </td>
-      </tr>
-    </table>
-    <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'close-ret-btn' + ind }}" (click)="getCloseReturn(matched.flightCode, ind)">
-      SELECT
-    </button>
-  </mat-card-content>
-</mat-card>
+<table class="flights-container">
+  <tr>
+    <td class="flights-column">
+      <div class="flight-heading" *ngIf="returningFlight != 0">
+        <h1 class="heading">Returning Flights</h1>
+      </div>
+      
+      <mat-card class="ret-container" *ngFor="let matched of returningFlight; let ind = index">
+        <mat-card-content>
+          <table>
+            <tr>
+              <td>
+                <label for="fCode">Flight Code</label>
+                <p>{{ matched.flightCode }}</p>
+              </td>
+              <td>
+                <label for="dest">Origin</label>
+                <p>{{ matched.origin }}</p>
+              </td>
+              <td>
+                <label for="dest">Destination</label>
+                <p>{{ matched.destination }}</p>
+              </td>
+              <td>
+                <label for="depTime">Departure Time</label>
+                <p>{{ matched.depTime }}</p>
+              </td>
+              <td>
+                <label for="arrTime">Arrival Time</label>
+                <p>{{ matched.arrTime }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="airLine">Airline</label>
+                <p>{{ matched.airline }}</p>
+              </td>
+              <td>
+                <label for="depDate">Departure Date</label>
+                <p>{{ matched.depDate }}</p>
+              </td>
+              <td>
+                <label for="type">Type</label>
+                <p>{{ matched.type }}</p>
+              </td>
+              <td>
+                <label for="fPrice">Flight Price</label>
+                <p>{{ matched.flightPrice }}</p>
+              </td>
+            </tr>
+          </table>
+          <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'ret-btn' + ind }}" (click)="getReturn(matched.flightCode, ind)">
+            SELECT
+          </button>
+        </mat-card-content>
+      </mat-card>
+      
+    </td>
+    <td class="flights-column">
+      <div class="flight-heading" *ngIf="closeRetFlight !=0">
+        <h1 class="heading">Close Returning Flights</h1>
+      </div>
+      
+      <mat-card class="close-ret-container" *ngFor="let matched of closeRetFlight; let ind = index">
+        <mat-card-content>
+          <table>
+            <tr>
+              <td>
+                <label for="fCode">Flight Code</label>
+                <p>{{ matched.flightCode }}</p>
+              </td>
+              <td>
+                <label for="dest">Origin</label>
+                <p>{{ matched.origin }}</p>
+              </td>
+              <td>
+                <label for="dest">Destination</label>
+                <p>{{ matched.destination }}</p>
+              </td>
+              <td>
+                <label for="depTime">Departure Time</label>
+                <p>{{ matched.depTime }}</p>
+              </td>
+              <td>
+                <label for="arrTime">Arrival Time</label>
+                <p>{{ matched.arrTime }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="airLine">Airline</label>
+                <p>{{ matched.airline }}</p>
+              </td>
+              <td>
+                <label for="depDate">Departure Date</label>
+                <p>{{ matched.depDate }}</p>
+              </td>
+              <td>
+                <label for="type">Type</label>
+                <p>{{ matched.type }}</p>
+              </td>
+              <td>
+                <label for="fPrice">Flight Price</label>
+                <p>{{ matched.flightPrice }}</p>
+              </td>
+            </tr>
+          </table>
+          <button mat-raised-button color="primary" type="button" class="btn btn-primary" id="{{ 'close-ret-btn' + ind }}" (click)="getCloseReturn(matched.flightCode, ind)">
+            SELECT
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </td>
+  </tr>
+</table>
 
 <div class="btn-container" *ngIf="depFlight != null && trip">
   <app-booking-form [fromFlightList]=false class="book" (click)="display()"></app-booking-form>

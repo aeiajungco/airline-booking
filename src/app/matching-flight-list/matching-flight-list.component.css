@@ -1,5 +1,5 @@
 .flight-heading {
-    width: 900px;
+    width: 700px;
     margin: 0 auto;
     margin-top: 25px;
 }
@@ -12,25 +12,37 @@ table {
     width: 100%;
     background-color: rgba(165, 195, 252, 0.726);
     margin-bottom: 10px;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 td {
     width: 20%;
-    padding: 1.5em;
+    padding: .5em;
 }
 
+.flights-container {
+    width: 700px;
+    margin: 0 auto;
+    background: none;
+}
+
+.flights-column {
+    padding: 1em;
+}
+
+
 .ret-container, .dep-container, .close-ret-container, .close-dep-container {
-    width: 900px;
+    width: 700px;
     margin: 0 auto;
     margin-top: 15px;
     border: 3px solid transparent;
 }
 
 .selected {
-    border-width: 3px;
+    border-width: 4px;
+    border-radius: 5px;
     border-style: solid;
-    border-color: rgb(168, 85, 189);
+    border-color: rgb(122, 114, 240);
 }
 
 .butSelected {
@@ -46,19 +58,12 @@ p {
 }
 
 .btn {
-    margin-left: 85%;
-    width: 15%;
+    margin-left: 80%;
+    width: 130px;
     text-align: center;
 }
 
 .book {
     margin-left: 45%;
-    margin-right: 45%;
-}
-
-.btn-container {
-    width: 900px;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-right: 45%
 }

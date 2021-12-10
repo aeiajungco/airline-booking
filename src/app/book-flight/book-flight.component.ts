@@ -86,8 +86,10 @@ export class BookFlightComponent implements OnInit {
               this.departingFlight.push(val);
               this.matched = true;
             }                        
-            else if (this.dateDiff >= -7 && this.dateDiff <= 7 && this.dateDiff != 0) 
+            else if (this.dateDiff >= -7 && this.dateDiff <= 7 && this.dateDiff != 0) {
               this.closeDepFlight.push(val);
+              this.matched = true;
+            }
           }
           
         }      
@@ -100,8 +102,10 @@ export class BookFlightComponent implements OnInit {
               this.returningFlight.push(val);
               this.retDateMatched = true;
             }
-            else if (this.dateDiff >= -7 && this.dateDiff <= 7 && this.dateDiff != 0)  
+            else if (this.dateDiff >= -7 && this.dateDiff <= 7 && this.dateDiff != 0) { 
               this.closeRetFlight.push(val);
+              this.retDateMatched = true;
+            }
           }
           
         }
@@ -120,8 +124,7 @@ export class BookFlightComponent implements OnInit {
       this.retDateMatched = false;
     }
 
-    console.log(this.closeDepFlight);
-    console.log(this.closeRetFlight);
+
   }
 
   onChange() {

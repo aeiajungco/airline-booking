@@ -79,8 +79,8 @@
     </mat-card-content>
 </mat-card>
 
-<app-matching-flight-list *ngIf="matched" [departingFlight]="departingFlight" [closeDepFlight]="closeDepFlight" [returningFlight]="returningFlight" [closeRetFlight]="closeRetFlight" [selectedTrip]="selectedTrip"></app-matching-flight-list>
+<app-matching-flight-list *ngIf="matched" [departingFlight]="departingFlight" [closeDepFlight]="closeDepFlight" [returningFlight]="returningFlight" [closeRetFlight]="closeRetFlight" [selectedTrip]="bf.trip.value"></app-matching-flight-list>
 <div id="noMatches" *ngIf="!matched && submitted && !retDateMatched">
-    <h2>- No matches found -</h2>
+    <h2>- No Available Flights -</h2>
 </div>
 
