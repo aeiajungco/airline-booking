@@ -1,9 +1,17 @@
+.btn {
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    margin-bottom: 1.5em;
+    margin-top: .5em;
+}
+
 .bookForm {
     width: 430px;
     margin: 0 auto;
     margin-top: 5%;
     margin-bottom: 5%;
-    background-color: rgba(165, 195, 252, 0.6);
+    background-color: #74acf5;
 }
 
 .booking-form {
@@ -18,6 +26,7 @@
 
 .bf-title {
     text-align: center;
+    color: white;
 }
 
 .field {
@@ -52,4 +61,3 @@ mat-label {
     margin-top: 15px;
     text-align: center;
 }
-
