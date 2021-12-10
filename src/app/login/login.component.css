@@ -121,7 +121,7 @@ h1 {
   color: rgb(176, 79, 255);
 }
 
-mat-error {
+.creds > mat-error {
   float: right;
   font-size: 15px;
 }

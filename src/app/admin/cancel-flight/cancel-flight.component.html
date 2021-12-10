@@ -1,1 +1,18 @@
-<button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="cancelFlight()" [disabled]="status == 'Cancelled'">Cancel</button>
+<button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="openModal(template)" [disabled]="status == 'Cancelled'">Cancel</button>
+
+<ng-template #template>
+  <div class="modal-header">
+      <button mat-button class="close" (click)="closeModal()">X</button>
+  </div>
+  <div class="modal-body">
+      <div class="msg">
+          <p>
+              Do you want to cancel selected flight booking?
+          </p>
+      </div>
+      <div class="option">
+          <button mat-button class="choice" (click)="cancelFlight()">Yes</button>
+          <button mat-button class="choice" (click)="closeModal()">No</button>
+      </div>
+  </div>
+</ng-template>

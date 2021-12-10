@@ -8,6 +8,7 @@ import { UserBooking, UserService } from 'src/app/services/user.service';
   templateUrl: './view-bookings.component.html',
   styleUrls: ['./view-bookings.component.css'],
 })
+
 export class ViewBookingsComponent implements OnInit {
   @Input() user: any;
   show = false;

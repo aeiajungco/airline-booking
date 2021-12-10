@@ -63,45 +63,59 @@
 </nav>
 
 <div class="home-content" *ngIf="router.url == '/admin'">
-  <div class="flights">
-    <button
-      routerLink="flights"
-      mat-raised-button
-      color="primary"
-      class="btn btn-primary flights"
-    >
-      View Flights
-    </button>
-  </div>
-  <div class="users">
-    <button
-      routerLink="users"
-      mat-raised-button
-      color="primary"
-      class="btn btn-primary users"
-    >
-      View Users
-    </button>
-  </div>
-  <div class="book">
-    <button
-    routerLink="book"
-    mat-raised-button
-    color="primary"
-    class="btn btn-primary book"
-  >
-    Book Flight
-  </button>
-  </div>
-  <div class="create">
-    <button
-      routerLink="create"
-      mat-raised-button
-      color="primary"
-      class="btn btn-primary flights"
-    >
-      Create Flight
-    </button>
-  </div>
+  <table>
+    <tr>
+      <td>
+        <div class="flights">
+          <button
+            routerLink="flights"
+            mat-raised-button
+            color="primary"
+            class="btn btn-primary flights"
+          >
+            View Flights
+          </button>
+        </div>
+      </td>
+      <td>
+        <div class="users">
+          <button
+            routerLink="users"
+            mat-raised-button
+            color="primary"
+            class="btn btn-primary users"
+          >
+            View Users
+          </button>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="book">
+          <button
+          routerLink="book"
+          mat-raised-button
+          color="primary"
+          class="btn btn-primary book"
+        >
+          Book Flight
+        </button>
+        </div>
+      </td>
+      <td>
+        <div class="create">
+          <button
+            routerLink="create"
+            mat-raised-button
+            color="primary"
+            class="btn btn-primary flights"
+          >
+            Create Flight
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
 <router-outlet></router-outlet>

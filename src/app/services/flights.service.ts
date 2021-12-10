@@ -1,3 +1,4 @@
+import { orderBy } from 'firebase/firestore';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
@@ -14,7 +15,7 @@ export class FlightsService {
   retFlight: any;
 
   constructor(private afs: AngularFirestore) {
-    this.flightsCollection = this.afs.collection<Flight>('flights')
+    this.flightsCollection = this.afs.collection<Flight>('flights', ref => ref.orderBy('depDate'))
     this.flight$ = this.flightsCollection.valueChanges();
   }
 

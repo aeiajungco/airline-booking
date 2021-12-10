@@ -1,7 +1,6 @@
 import { LoginVarService } from './../../services/login-var.service';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import * as $ from "jquery";
 
 @Component({
   selector: 'app-view-users',
@@ -38,12 +37,6 @@ export class ViewUsersComponent implements OnInit {
   showBookings(username: any, index: any) {
     this.un = ''
     this.show = !this.show;
-
-      $('button[id^="view-btn"]').eq(index).text(function(i, text) {
-        return text === "Hide Bookings" ? "View Bookings" : "Hide Bookings";
-      });
-      
-      $('button[id^="view-btn"]').not('#view-btn'+index).text("View Bookings");
 
     for (let x of this.bookingList$) {
       if (username == x.username) {

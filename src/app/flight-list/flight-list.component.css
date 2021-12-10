@@ -56,14 +56,14 @@ td {
 
 label {
     font-family: 'fontBold';
-    color: #0000c0;
-    font-size: 17px;
+    color: #1515af;
+    font-size: 16px;
 }
 
 p {
     font-style: italic;
     font-family: 'myFont';
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .airline > p {
@@ -112,11 +112,11 @@ mat-form-field {
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
-    color: #3d90fd!important;
+    color: #003b88!important;
 }
 
 ::ng-deep .mat-form-field-ripple {
-    background-color: #3d90fd!important;
+    background-color: #003b88!important;
 }
 
 ::ng-deep .mat-focused .mat-form-required-marker {
