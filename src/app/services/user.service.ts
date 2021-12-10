@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 
@@ -35,7 +34,7 @@ export class UserService {
   userBooking$!: Observable<UserBooking[]>;
 
   constructor(private afs: AngularFirestore) {
-    this.userCollection = this.afs.collection<User>('users');
+    this.userCollection = this.afs.collection<User>('users', ref => ref.orderBy('lastName'));
     this.user$ = this.userCollection.valueChanges();
     
     this.userBookingCollection = this.afs.collection<UserBooking>('userbookings');

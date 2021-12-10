@@ -9,3 +9,13 @@ h1 {
   font-weight: bold;
   font-size: 40px;
 }
+
+a {
+  font: 30px 'myFont';
+  color: rgb(196, 196, 196);
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}

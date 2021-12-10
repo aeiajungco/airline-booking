@@ -84,8 +84,8 @@ i {
     font-size: 40px;
 }
 
-.home-content > div {
-    margin: 40px;
+.home-content > table > tr > td > div {
+    width: 100%;
 }
 
 div.flights {
@@ -148,4 +148,12 @@ button.flights, button.users, button.book, button.create{
 button.create:hover, button.flights:hover, button.book:hover, button.users:hover {
     background-color: rgba(3, 19, 63, 0.575);
     color: #b8d7ff;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 40px;
 }

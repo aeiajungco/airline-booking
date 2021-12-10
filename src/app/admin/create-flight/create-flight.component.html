@@ -119,7 +119,7 @@
           >
         </mat-form-field>
       </div>
-      <br>
+      <br />
       <button
         type="submit"
         class="btn btn-secondary submit"
@@ -127,17 +127,16 @@
       >
         ENTER
       </button>
-
-      <ng-template #template>
-        <mat-card class="confirmation">
-          <mat-card-content>
-            <mat-card-title
-              ><p>Flight has been added successfully!</p>
-            </mat-card-title>
-            <button class="closebtn" (click)="close()">OK</button>
-          </mat-card-content>
-        </mat-card>
-      </ng-template>
     </form>
   </mat-card-content>
 </mat-card>
+
+<ng-template #template>
+  <mat-card class="confirmation">
+    <mat-card-content>
+      <mat-card-title
+        ><p>Flight has been added successfully!</p>
+      </mat-card-title>
+    </mat-card-content>
+  </mat-card>
+</ng-template>

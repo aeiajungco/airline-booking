@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
       password: this.hashAndSalt(this.rf.password.value),
     };
 
-    // this.user.addUser(payload);  
+    this.user.addUser(payload);  
     this.registered = true;
     this.regForm.reset();
     this.rf['firstName'].setErrors(null);
@@ -58,6 +58,10 @@ export class RegisterComponent implements OnInit {
     this.rf['email'].setErrors(null);
     this.rf['password'].setErrors(null);
     this.rf['verifpass'].setErrors(null);
+
+    setTimeout(()=> {
+      this.modalRef?.hide();
+    }, 1000);
   }
   
   checkUsername() {

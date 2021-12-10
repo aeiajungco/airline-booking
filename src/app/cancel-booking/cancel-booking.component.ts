@@ -33,8 +33,13 @@ export class CancelBookingComponent implements OnInit {
     const diffDays = (date: any, otherDate: any) => Math.ceil(Math.abs(date - otherDate) / (1000 * 60 * 60 * 24));
     this.dateDiff = diffDays(new Date(this.depDate), new Date(this.bookingDate)); 
 
-    if(this.admin == 'true')
+    if(this.admin == 'true') {
       this.users.removeBooking(this.bookingID);
+      setTimeout(()=> {
+        this.closeModal(),
+        this.reload();  
+      }, 500);  
+    }
     else {
       if(this.dateDiff >= 7) {
         this.confirmed == true;
