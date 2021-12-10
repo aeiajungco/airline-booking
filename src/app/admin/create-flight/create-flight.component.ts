@@ -56,8 +56,8 @@ export class CreateFlightComponent implements OnInit {
       status: 'Available',
     };
 
-    this.showConfirm(template);
     this.flights.addFlight(flightInfo);
+    this.showConfirm(template);
   }
 
   validateTime() {
