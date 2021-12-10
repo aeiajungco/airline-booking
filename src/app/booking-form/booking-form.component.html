@@ -1,4 +1,4 @@
-<button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="openModal(template)">Book Now</button>
+<button mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="openModal(template)">Book this Flight</button>
 
 <ng-template #template>
     <div class="modal-header">
@@ -18,7 +18,7 @@
                     </mat-select>
                 </mat-form-field>
 
-                    <mat-form-field *ngIf="isAdmin == 'false'" class="field">
+                    <mat-form-field class="field">
                         <mat-label>
                             <mat-icon>person</mat-icon>
                             First Name
@@ -31,7 +31,7 @@
                         <mat-error *ngIf="bfInfo.fName.errors?.required">Please enter first name.</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field *ngIf="isAdmin == 'false'" class="field">
+                    <mat-form-field class="field">
                         <mat-label>
                             <mat-icon>person</mat-icon>
                             Last Name

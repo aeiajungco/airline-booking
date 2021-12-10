@@ -21,13 +21,24 @@
           </td>
           <td class="viewBtn">
             <button
+            *ngIf="!show || user.username != un"
               mat-raised-button
               color="primary"
               class="btn btn-primary"
-              type="button"             
+              type="button"
               (click)="showBookings(user.username)"
             >
               View Bookings
+            </button>
+            <button
+            *ngIf="show && user.username == un"
+              mat-raised-button
+              color="primary"
+              class="btn btn-primary"
+              type="button"
+              (click)="showBookings(user.username)"
+            >
+              Hide Bookings
             </button>
           </td>
         </tr>

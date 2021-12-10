@@ -41,6 +41,8 @@
   text-align: center;
 }
 
-.admin {
-  width: 100%;
+.btn:disabled {
+    border: none;
+    color: transparent;
+    background-color: transparent;
 }

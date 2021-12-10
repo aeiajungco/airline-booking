@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class CancelBookingComponent implements OnInit {
 
   @Input() bookingID: string = '';
+  @Input() status: string = '';
   @Input() bookingDate: any;
   @Input() depDate: any;
   dateDiff: any;

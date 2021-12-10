@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FlightsService } from '../services/flights.service';
@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./booking-form.component.css'],
 })
 export class BookingFormComponent implements OnInit {
+  @Input() fromFlightList: any;
   userFName = '';
   userLName = '';
   selectedSeat = '';
@@ -51,6 +52,11 @@ export class BookingFormComponent implements OnInit {
 
     this.isAdmin = localStorage.getItem('admin');
     this.userLoggedIn = localStorage.getItem('username');
+
+    if (this.fromFlightList == true)
+      this.flight.setReturningFlight(null)
+
+    console.log(this.fromFlightList)
   }
 
   getUsernames() {
@@ -69,14 +75,7 @@ export class BookingFormComponent implements OnInit {
     this.confirmed = true;
 
     if (this.isAdmin == 'true') {
-      for (let val of this.userBookings$) {
-        if (val.username == this.bfInfo.user.value) {
-          this.userFName = val.firstName
-          this.userLName = val.lastName
-        }
-      }
       console.log(this.userFName+" "+this.userLName)
-      this.flight.setReturningFlight(null)
       const bookingInfo: UserBooking = {
         $key: '',
         bookDate: this.getCurrentDate(),

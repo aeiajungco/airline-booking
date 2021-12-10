@@ -24,6 +24,7 @@ td {
     width: 900px;
     margin: 0 auto;
     margin-top: 15px;
+    border: 3px solid transparent;
 }
 
 .selected {

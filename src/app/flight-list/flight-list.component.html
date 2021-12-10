@@ -54,22 +54,6 @@
             <label for="depDate">Departure Date</label>
             <p>{{ flight.depDate }}</p>
           </td>
-          <td class="dep">
-            <label for="depTime">Departure Time</label>
-            <p>{{ flight.depTime }}</p>
-          </td>
-          <td class="arr">
-            <label for="arrTime">Arrival Time</label>
-            <p>{{ flight.arrTime }}</p>
-          </td>
-          <td class="type">
-            <label for="type">Type</label>
-            <p>{{ flight.type }}</p>
-          </td>
-          <td class="prc">
-            <label for="fPrice">Flight Price</label>
-            <p>{{ flight.flightPrice }}</p>
-          </td>
           <td class="stat">
             <label for="status">Status</label>
             <p>{{ flight.status }}</p>
@@ -137,7 +121,7 @@
             </tr>
             <tr *ngIf="flight.status == 'Available'">
               <td colspan="5">
-                <app-booking-form (click)="getDepart(flight.flightCode)"></app-booking-form>
+                <app-booking-form [fromFlightList]=true (click)="getDepart(flight.flightCode)"></app-booking-form>
               </td>
             </tr>
           </table>

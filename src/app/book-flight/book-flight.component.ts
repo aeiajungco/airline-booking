@@ -1,5 +1,5 @@
 import { UserService } from 'src/app/services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
@@ -14,7 +14,6 @@ import { OrigDestValidator } from '../orig-dest.validator';
 })
 
 export class BookFlightComponent implements OnInit {
-  
   selectedDes = "";
   selectedOri = "";
   selectedAir = "";

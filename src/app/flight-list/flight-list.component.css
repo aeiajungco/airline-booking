@@ -17,7 +17,7 @@ table {
 }
 
 .airline > label {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .dep {
@@ -56,18 +56,19 @@ td {
 
 label {
     font-family: 'fontBold';
-    color: #1515af;
-    font-size: 16px;
+    color: #253fce;
+    font-size: 23px;
 }
 
 p {
     font-style: italic;
     font-family: 'myFont';
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .airline > p {
     font-weight: bold;
+    font-size: 22px;
 }
 
 h1 {
@@ -133,9 +134,8 @@ mat-form-field {
 }
 
 mat-card.modal {
-    width: 700px;
-    top: 150%;
-    transform: translateX(-14.5%);
+    width: 800px;
+    transform: translateX(-18%);
 }
 
 .flights > mat-card:hover {

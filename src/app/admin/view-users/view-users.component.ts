@@ -31,7 +31,6 @@ export class ViewUsersComponent implements OnInit {
     this.users.getUserBookings().subscribe((val) => {
       this.bookingList$ = val
     });
-
   }
 
   showBookings(username: any) {

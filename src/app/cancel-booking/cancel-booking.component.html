@@ -1,5 +1,4 @@
-<button *ngIf="isAdmin == 'false'" mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="openModal(template)">Cancel</button>
-<button *ngIf="isAdmin == 'true'" mat-raised-button color="primary" type="button" class="btn btn-primary admin" (click)="openModal(template)">Cancel for User</button>
+<button [disabled]="status == 'Cancelled'" mat-raised-button color="primary" type="button" class="btn btn-primary" (click)="openModal(template)">Cancel</button>
 
 <ng-template #template>
     <div class="modal-header">

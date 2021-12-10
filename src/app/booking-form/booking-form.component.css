@@ -6,6 +6,13 @@
     background-color: rgba(165, 195, 252, 0.6);
 }
 
+.btn {
+    width: 180px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+
 .booking-form {
     text-align: center;
 }
