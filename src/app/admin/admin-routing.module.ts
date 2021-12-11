@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from '../app.component';
 import { BookFlightComponent } from '../book-flight/book-flight.component';
 import { FlightListComponent } from '../flight-list/flight-list.component';
 import { BookingListComponent } from '../user/booking-list/booking-list.component';

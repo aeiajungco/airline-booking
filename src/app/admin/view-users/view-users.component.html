@@ -21,25 +21,26 @@
           </td>
           <td class="viewBtn">
             <button
-            *ngIf="!show || user.username != un"
               mat-raised-button
+              id="{{ 'view-btn' + i }}"
               color="primary"
               class="btn btn-primary"
               type="button"
-              (click)="showBookings(user.username)"
+              (click)="showBookings(user.username, i)"
             >
               View Bookings
             </button>
-            <button
-            *ngIf="show && user.username == un"
+            <!-- <button
+            *ngIf="showClick == 1"
               mat-raised-button
+              id="{{ 'hide-btn' + i }}"
               color="primary"
               class="btn btn-primary"
               type="button"
-              (click)="showBookings(user.username)"
+              (click)="showBookings(user.username, i)"
             >
               Hide Bookings
-            </button>
+            </button> -->
           </td>
         </tr>
         <tr class="empty"><td colspan="5">

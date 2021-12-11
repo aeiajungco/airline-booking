@@ -1,6 +1,7 @@
 import { LoginVarService } from './../../services/login-var.service';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-view-users',
@@ -16,6 +17,7 @@ export class ViewUsersComponent implements OnInit {
   un = '';
   noBookingUser = '';
   empty: any;
+  showClick = 0;
   userWithBookings: any = [];
   isActive!: boolean;
 
@@ -33,9 +35,19 @@ export class ViewUsersComponent implements OnInit {
     });
   }
 
-  showBookings(username: any) {
+  showBookings(username: any, i: any) {
     this.un = ''
     this.show = !this.show;
+    this.showClick++;
+
+    if (this.showClick == 1) {
+      $('#view-btn'+i).html('Hide Bookings');
+    }
+    else {
+      $('button[id^="view-btn"]').html('View Bookings');
+      $('#view-btn'+i).html('View Bookings');
+      this.showClick = 0;
+    }
 
     for (let x of this.bookingList$) {
       if (username == x.username) {
@@ -52,15 +64,12 @@ export class ViewUsersComponent implements OnInit {
       for (let i = 0; i <= this.userWithBookings.length; i++) {
         if(this.userWithBookings.length == 0) {
           this.userWithBookings.push(username);
-          console.log("PASSED BY");
         }
         else if (username != this.userWithBookings[i] && i+1 == this.userWithBookings.length) {
           this.userWithBookings.push(username);
-          console.log("PASSED BY");
         }
         if (username == this.userWithBookings[i]) {
           this.noBookingUser = this.userWithBookings[i];
-          console.log("PASSED BY");
         }
       }
    }

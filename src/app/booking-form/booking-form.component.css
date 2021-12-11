@@ -98,7 +98,7 @@ mat-label {
 }
 
 ::ng-deep .mat-select-value, input{    
-    color: #0066ff!important;  
+    color: #8dd2ff !important;
     font-size: 20px;
 }
 ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
