@@ -11,7 +11,7 @@
             <div class="booking-form">
                 <mat-form-field *ngIf="isAdmin == 'true'" class="field">
                     <mat-label>Username</mat-label>
-                    <mat-select formControlName="user" [(value)]="selectedUser">
+                    <mat-select formControlName="user">
                         <mat-option *ngFor="let username of usernames" [value]="username.value">
                             {{username.viewValue}}
                         </mat-option>
@@ -62,7 +62,7 @@
                             <mat-icon>airline_seat_recline_extra</mat-icon>
                             Seat Class
                         </mat-label>
-                        <mat-select class="inpField" formControlName="seatClass" [(value)]="selectedSeat">
+                        <mat-select class="inpField" formControlName="seatClass">
                             <mat-option value="Economy">Economy</mat-option>
                             <mat-option value="Business">Business</mat-option>
                             <mat-option value="First Class">First Class</mat-option>

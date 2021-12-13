@@ -1,4 +1,3 @@
-import { LoginVarService } from './../../services/login-var.service';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
@@ -23,7 +22,6 @@ export class ViewUsersComponent implements OnInit {
 
   constructor(
     private users: UserService,
-    public varLogin: LoginVarService,
   ) {}
 
   ngOnInit(): void {

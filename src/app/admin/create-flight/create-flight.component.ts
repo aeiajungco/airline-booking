@@ -78,7 +78,6 @@ export class CreateFlightComponent implements OnInit {
       this.info.arrTime.value
     ) {
       this.invalid = 1;
-      console.log(this.info.depTime.value - this.info.arrTime.value);
     } else this.invalid = 0;
   }
 

@@ -11,7 +11,7 @@
     margin: 0 auto;
     margin-top: 5%;
     margin-bottom: 5%;
-    background-color: #74acf5;
+    background-color: #acd0ff;
 }
 
 .btn {
@@ -33,7 +33,7 @@
 
 .bf-title {
     text-align: center;
-    color: white;
+    color: rgb(32, 55, 155);
 }
 
 .field {

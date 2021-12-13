@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FlightsService } from '../services/flights.service';
-import { LoginVarService } from '../services/login-var.service';
 import { UserBooking, UserService } from '../services/user.service';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,10 +13,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BookingFormComponent implements OnInit {
   @Input() fromFlightList: any;
-  userFName = '';
-  userLName = '';
-  selectedSeat = '';
-  selectedUser = '';
   confirmed = false;
   modalRef!: BsModalRef;
   userBookings$: any = [];
@@ -55,7 +50,6 @@ export class BookingFormComponent implements OnInit {
     if (this.fromFlightList == true)
       this.flight.setReturningFlight(null)
 
-    console.log(this.fromFlightList)
   }
 
   getUsernames() {
@@ -74,7 +68,6 @@ export class BookingFormComponent implements OnInit {
     this.confirmed = true;
 
     if (this.isAdmin == 'true') {
-      console.log(this.userFName+" "+this.userLName)
       const bookingInfo: UserBooking = {
         $key: '',
         bookDate: this.getCurrentDate(),
@@ -83,8 +76,8 @@ export class BookingFormComponent implements OnInit {
           this.flight.getReturningFlight(),
         ],
         username: this.bfInfo.user.value,
-        firstName: this.userFName,
-        lastName: this.userLName,
+        firstName: this.bfInfo.fName.value,
+        lastName: this.bfInfo.lName.value,
         passNum: this.bfInfo.passNum.value,
         seatClass: this.bfInfo.seatClass.value,
       };

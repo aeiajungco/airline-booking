@@ -2,25 +2,13 @@
     <mat-card-title class="title">BOOK FLIGHT</mat-card-title>
     <mat-card-content>
         <form class="flight-form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
-            <!-- <mat-form-field class="airline-field">
-                <mat-label>
-                    <mat-icon>flight</mat-icon>
-                    Airline
-                </mat-label>
-                <mat-select formControlName="airLine" [(value)]="selectedAir">
-                    <mat-option *ngFor="let airline of airlines" [value]="airline.value">
-                        {{airline.viewValue}}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngIf="bf.airLine.errors?.required">Please choose an airline.</mat-error>
-            </mat-form-field> -->
-
+            
             <mat-form-field class="field">
                 <mat-label>
                     <mat-icon>flight_takeoff</mat-icon> 
                     Origin
                 </mat-label>
-                <mat-select formControlName="orig" [(value)]="selectedOri">
+                <mat-select formControlName="orig">
                     <mat-option *ngFor="let origin of locations" [value]="origin.value">
                         {{origin.viewValue}}
                     </mat-option>
@@ -33,7 +21,7 @@
                     <mat-icon>flight_land</mat-icon> 
                     Destination
                 </mat-label>                              
-                <mat-select formControlName="dest" [(value)]="selectedDes">
+                <mat-select formControlName="dest">
                     <mat-option *ngFor="let destination of locations" [value]="destination.value">
                         {{destination.viewValue}}
                     </mat-option>
@@ -47,7 +35,7 @@
                     <mat-icon>route</mat-icon>
                     Select trip
                 </mat-label>
-                <mat-select formControlName="trip" [(value)]="selectedTrip" (valueChange)="onChange()">
+                <mat-select formControlName="trip" (valueChange)="onChange()">
                     <mat-option value="trip1">One-Way Trip</mat-option>
                     <mat-option value="trip2">Round Trip</mat-option>
                 </mat-select>

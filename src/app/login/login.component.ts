@@ -1,15 +1,16 @@
-import { LoginVarService } from './../services/login-var.service';
 import { UserService } from './../services/user.service';
 import { AdminService } from './../services/admin.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import * as bcrypt from 'bcryptjs';
 
-interface Login {
-  $key: string;
-  username: string;
-  password: string;
-}
+// interface Admin {
+//   $key: string;
+//   username: string;
+//   password: string;
+//   fName: string;
+//   lName: string;
+// }
 
 @Component({
   selector: 'app-login',
@@ -18,8 +19,9 @@ interface Login {
 })
 export class LoginComponent implements OnInit {
   loggedIn: any;
+  admin: any;
+  user: any;
   incorrect = false;
-  isUser = 1;
   admins$: any = [];
   users$: any = [];
   role = '';
@@ -34,7 +36,6 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private admins: AdminService,
     private users: UserService,
-    public varLogin: LoginVarService
   ) {}
 
   ngOnInit(): void {
@@ -44,22 +45,23 @@ export class LoginComponent implements OnInit {
     this.users.getUsers().subscribe((val) => {
       this.users$ = val;
     });
-    localStorage.setItem('login', '0')
+    localStorage.setItem('login', '0');
     localStorage.setItem('user', 'false');
     localStorage.setItem('admin', 'false');
     localStorage.removeItem('username');
+    localStorage.removeItem('firstName');
   }
 
   setRole() {
     if (this.role == 'Admin') {
-      this.varLogin.setAdmin(1);
-      this.varLogin.setUser(0);
-      console.log('admin = ' + this.varLogin.getAdmin());
+      localStorage.setItem('admin', 'true');
+      localStorage.setItem('user', 'false');
     } else if (this.role == 'User') {
-      this.varLogin.setAdmin(0);
-      this.varLogin.setUser(1);
-      console.log('user = ' + this.varLogin.getUser());
+      localStorage.setItem('user', 'true');
+      localStorage.setItem('admin', 'false');
     }
+    this.admin = localStorage.getItem('admin');
+    this.user = localStorage.getItem('user');
   }
 
   login() {
@@ -69,8 +71,8 @@ export class LoginComponent implements OnInit {
     )
       this.incorrect = false;
     else {
-      if (this.varLogin.getUser() == 1) {
-        this.varLogin.setUserName(this.info.username.value);
+      if (this.user == 'true') {
+        localStorage.setItem('username', this.info.username.value);
         for (let x of this.users$) {
           if (
             x.username != this.info.username.value ||
@@ -81,14 +83,15 @@ export class LoginComponent implements OnInit {
             x.username == this.info.username.value &&
             bcrypt.compareSync(this.info.password.value, x.password)
           ) {
-            this.varLogin.setLoggedIn(1);
-            this.varLogin.setFirstName(x.firstName);
-            localStorage.setItem('user', 'true');            
+            localStorage.setItem('login', '1');
+            localStorage.setItem('user', 'true');
+            localStorage.setItem('firstName', x.firstName);
             break;
           }
         }
-      } else if (this.varLogin.getAdmin() == 1) {
-        this.varLogin.setUserName(this.info.username.value);
+      }
+      else if (this.admin == 'true') {
+        localStorage.setItem('username', this.info.username.value);
         for (let x of this.admins$) {
           if (
             x.username != this.info.username.value ||
@@ -100,18 +103,26 @@ export class LoginComponent implements OnInit {
             x.username == this.info.username.value &&
             bcrypt.compareSync(this.info.password.value, x.password)
           ) {
-            this.varLogin.setLoggedIn(1);
+            localStorage.setItem('login', '1');
             localStorage.setItem('admin', 'true');
-            console.log('Succesfully logged in.');
+            localStorage.setItem('firstName', x.firstName);
             break;
           }
         }
       }
-      localStorage.setItem('login', this.varLogin.getLoggedIn().toString());
+
+      /*TO CREATE AN ADMIN ACCOUT
+      const payload: Admin = {
+        $key: '',
+        fName: 'Juan',
+        lName: 'Dela Cruz',
+        username: this.info.username.value,
+        
+        const salt = bcrypt.genSaltSync(10);
+        password: this.bcrypt(this.info.password.value, salt),
+      };
+      this.admins.addAdmin(payload)*/
       this.loggedIn = localStorage.getItem('login');
-      localStorage.setItem('username', this.varLogin.getUserName());
-      localStorage.setItem('firstName', this.varLogin.getFirstName());
-      console.log('login = ' + this.varLogin.getLoggedIn());
     }
   }
 

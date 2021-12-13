@@ -1,10 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
-import { LoginVarService } from 'src/app/services/login-var.service';
 import { UserService } from 'src/app/services/user.service';
-import * as $ from 'jquery';
-import { ActivatedRoute, Router } from '@angular/router';
 
 interface AllFlightDetails {
   $key: any;

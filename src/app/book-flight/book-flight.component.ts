@@ -4,7 +4,6 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
 import { DateValidator } from '../date.validator';
-import { LoginVarService } from '../services/login-var.service';
 import { OrigDestValidator } from '../orig-dest.validator';
 
 @Component({
@@ -45,7 +44,7 @@ export class BookFlightComponent implements OnInit {
   public locations: any = [];
   public airlines: any = [];
 
-  constructor(private fb: FormBuilder, private flight: FlightsService, private locair: OrigDestAirService, private user: UserService, public variable: LoginVarService) { } 
+  constructor(private fb: FormBuilder, private flight: FlightsService, private locair: OrigDestAirService, private user: UserService) { } 
 
 
   ngOnInit(): void {

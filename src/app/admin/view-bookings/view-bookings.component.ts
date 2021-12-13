@@ -1,4 +1,3 @@
-import { LoginVarService } from './../../services/login-var.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/services/flights.service';
 import { UserBooking, UserService } from 'src/app/services/user.service';
@@ -21,7 +20,6 @@ export class ViewBookingsComponent implements OnInit {
   constructor(
     private bookings: UserService,
     private flights: FlightsService,
-    public varLogin: LoginVarService
   ) {}
 
   ngOnInit() {

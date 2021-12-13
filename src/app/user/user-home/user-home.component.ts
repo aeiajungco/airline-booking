@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginVarService } from 'src/app/services/login-var.service';
 
 @Component({
   selector: 'app-user-home',
@@ -9,13 +8,12 @@ import { LoginVarService } from 'src/app/services/login-var.service';
 })
 export class UserHomeComponent implements OnInit {
   loggedInUser: any;
-  username: any;
-  constructor(public varLogin: LoginVarService, public router: Router) { }
+  name: any;
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
-    this.loggedInUser = localStorage.getItem('user');
-    this.username = localStorage.getItem('firstName');
-    if (this.loggedInUser != 'true') {
+    this.name = localStorage.getItem('firstName');
+    if (localStorage.getItem('user') != 'true' ) {
       this.router.navigate(['/error'])
     }
   }

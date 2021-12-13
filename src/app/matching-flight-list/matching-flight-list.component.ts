@@ -130,10 +130,6 @@ export class MatchingFlightListComponent implements OnInit {
     }
   }
 
-  display() {
-    console.log('Departing: ' + this.flight.getDepartingFlight());
-    console.log('Returning: ' + this.flight.getReturningFlight());
-  }
 
 
 

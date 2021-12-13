@@ -1,4 +1,3 @@
-import { LoginVarService } from './../../services/login-var.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,19 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-home.component.css'],
 })
 export class AdminHomeComponent implements OnInit {
-  username: any;
+  name: any;
+
   loggedInAdmin: any;
 
-  constructor(public varLogin: LoginVarService, public router: Router) {
+  constructor(public router: Router) {
   }
 
   ngOnInit() {
-    this.loggedInAdmin = localStorage.getItem('admin');
-    this.username = localStorage.getItem('username');
-    console.log(this.username);
-    if (this.loggedInAdmin != 'true') {
+    this.name = localStorage.getItem('firstName');
+    if (localStorage.getItem('admin') != 'true') {
       this.router.navigate(['/error'])
     }
-    console.log("login = "+this.loggedInAdmin)
   }
 }

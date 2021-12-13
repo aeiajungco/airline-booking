@@ -7,13 +7,12 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LoginVarService } from '../services/login-var.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private loginService: LoginVarService) {}
+  constructor(private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,

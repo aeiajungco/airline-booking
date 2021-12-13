@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/c
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
 import { DatePipe } from '@angular/common';
-import { LoginVarService } from '../services/login-var.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -26,7 +25,7 @@ export class FlightListComponent implements OnInit {
   constructor(
     private flight: FlightsService,
     private airline: OrigDestAirService,
-    public varLogin: LoginVarService, private modalService: BsModalService
+    private modalService: BsModalService
   ) {}
 
   flightCode = '';
