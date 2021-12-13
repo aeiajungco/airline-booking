@@ -28,8 +28,8 @@ export class BookingFormComponent implements OnInit {
 
   bookingForm = this.bForm.group({
     user: [''],
-    fName: [''],
-    lName: [''],
+    fName: ['', Validators.required],
+    lName: ['', Validators.required],
     passNum: ['', Validators.required],
     seatClass: ['', Validators.required],
   });
@@ -38,7 +38,6 @@ export class BookingFormComponent implements OnInit {
     private bForm: FormBuilder,
     private modalService: BsModalService,
     private users: UserService,
-    private variable: LoginVarService,
     private flight: FlightsService,
     public datepipe: DatePipe,
     private router: Router,

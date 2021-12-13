@@ -37,7 +37,7 @@ export class UserService {
     this.userCollection = this.afs.collection<User>('users', ref => ref.orderBy('lastName'));
     this.user$ = this.userCollection.valueChanges();
     
-    this.userBookingCollection = this.afs.collection<UserBooking>('userbookings');
+    this.userBookingCollection = this.afs.collection<UserBooking>('userbookings', ref => ref.orderBy('bookDate', 'desc'));
     this.userBooking$ = this.userBookingCollection.valueChanges();
   }
 

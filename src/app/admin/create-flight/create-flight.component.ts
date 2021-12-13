@@ -57,6 +57,18 @@ export class CreateFlightComponent implements OnInit {
     };
 
     this.flights.addFlight(flightInfo);
+    
+    this.form.reset();
+    this.info.destination.setErrors(null);
+    this.info.origin.setErrors(null);
+    this.info.depDate.setErrors(null);
+    this.info.depTime.setErrors(null);
+    this.info.arrTime.setErrors(null);
+    this.info.type.setErrors(null);
+    this.info.flightCode.setErrors(null);
+    this.info.flightPrice.setErrors(null);
+    this.info.airline.setErrors(null);
+
     this.showConfirm(template);
   }
 
@@ -74,11 +86,10 @@ export class CreateFlightComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
     setTimeout(() => {
       this.close();
-    }, 1500);
+    }, 1000);
   }
 
-  close() {
-    this.form.reset();
+  close() {    
     this.modalRef?.hide();
   }
 

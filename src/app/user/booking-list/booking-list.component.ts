@@ -71,8 +71,8 @@ export class BookingListComponent implements OnInit {
     this.twoWayDep.length = 0;
     this.twoWayRet.length = 0;
        
-    for (let x of this.flights$) {
-      for (let y of this.userFlights) { 
+    for (let y of this.userFlights) {
+      for (let x of this.flights$) { 
 
         if (x.flightCode == y.flightCode[0]) {
           if (y.flightCode[1] != null) {             
@@ -142,7 +142,7 @@ export class BookingListComponent implements OnInit {
         }     
       }
     }
-    
+
     switch(this.filterChoice) {
       case 'All':
         if (this.oneWay.length != 0 && this.twoWayDep != 0 && this.twoWayRet != 0)

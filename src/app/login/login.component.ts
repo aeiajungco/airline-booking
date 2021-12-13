@@ -82,7 +82,8 @@ export class LoginComponent implements OnInit {
             bcrypt.compareSync(this.info.password.value, x.password)
           ) {
             this.varLogin.setLoggedIn(1);
-            localStorage.setItem('user', 'true');
+            this.varLogin.setFirstName(x.firstName);
+            localStorage.setItem('user', 'true');            
             break;
           }
         }
@@ -109,6 +110,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('login', this.varLogin.getLoggedIn().toString());
       this.loggedIn = localStorage.getItem('login');
       localStorage.setItem('username', this.varLogin.getUserName());
+      localStorage.setItem('firstName', this.varLogin.getFirstName());
       console.log('login = ' + this.varLogin.getLoggedIn());
     }
   }

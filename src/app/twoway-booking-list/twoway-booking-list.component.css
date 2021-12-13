@@ -36,16 +36,17 @@ div.tick-container {
 td {
     width: 550px;
     border: 1px solid grey;
-    background-color: white;
+    background-color: rgb(236, 246, 255);
     padding-top: 15px;
-    padding-bottom: 20px;
+    padding-bottom: 0;
 }
 
-.flightDet {
-    background-color: rgb(186, 142, 204);
+.flightDet, .guestDet {
+    background-color: rgb(52, 128, 228);
     height: 40px;
     padding: 10px;
     font-weight: 500;
+    color: white;
 }
 
 .flight-header {
@@ -179,13 +180,6 @@ p {
     text-align: left;
     float: right;
     width: 55%;
-}
-
-.guestDet {
-    background-color: rgb(186, 142, 204);
-    height: 40px;
-    padding: 10px;
-    font-weight: 500;
 }
 
 .guest-info {

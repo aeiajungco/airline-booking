@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-oneway-booking-list',
@@ -14,4 +13,5 @@ export class OnewayBookingListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 }

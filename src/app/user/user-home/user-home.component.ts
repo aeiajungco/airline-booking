@@ -14,7 +14,7 @@ export class UserHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedInUser = localStorage.getItem('user');
-    this.username = localStorage.getItem('username');
+    this.username = localStorage.getItem('firstName');
     if (this.loggedInUser != 'true') {
       this.router.navigate(['/error'])
     }
