@@ -29,10 +29,10 @@
   <h2>- No existing flights -</h2>
 </div>
 
-<div class="flights">
-  <mat-card class="container-fluid" *ngFor="let flight of filteredList" (click)="openModal(template)">
-    <mat-card-content>
-      <table>
+<div class="flights" *ngFor="let flight of filteredList">
+  <mat-card class="container-fluid">
+    <mat-card-content (click)="openModal(template)">
+      <table class="flight-list">
         <tr class="container">
           <td class="airline">
             <label for="aLine">AIRLINE</label>
@@ -58,19 +58,19 @@
             <label for="status">Status</label>
             <p>{{ flight.status }}</p>
           </td>
-          <td class="cancel" *ngIf="loggedInAdmin == 'true'">
-            <app-cancel-flight
-              [flightCode]="flight.flightCode"
-              [status]="flight.status"
-              ></app-cancel-flight
-            >
-          </td>
-        </tr>
+        </tr>        
       </table>
-    </mat-card-content>
+    </mat-card-content> 
+    <div class="cancel" *ngIf="loggedInAdmin == 'true'">
+      <app-cancel-flight
+        [flightCode]="flight.flightCode"
+        [status]="flight.status"
+        ></app-cancel-flight
+      >
+    </div>
     <ng-template #template>
       <mat-card class="modal">
-        <mat-card-content>
+        <mat-card-content class="content">
           <mat-card-title>
             <p>Flight Details</p>
           </mat-card-title>

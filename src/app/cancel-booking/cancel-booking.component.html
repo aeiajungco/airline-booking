@@ -14,8 +14,11 @@
             <button mat-button class="choice" (click)="onCancel()">Yes</button>
             <button mat-button class="choice" (click)="closeModal()">No</button>
         </div>
-        <div class="warning" *ngIf="confirmed == false">
+        <div class="confirmMsg" *ngIf="confirmed == false">
             <p class="alert alert-danger">You can only cancel bookings 7 days prior to its departure date.</p>
+        </div>
+        <div class="confirmMsg" *ngIf="successful">
+            <p class="alert alert-success">Booking is successfully cancelled.</p>
         </div>
     </div>
 </ng-template>

@@ -1,5 +1,3 @@
-{{onChange()}}
-
 <div class="filter-bar">
     <mat-form-field>
         <mat-select class="inpField" placeholder="Choose Booking Type" [(value)]="filterChoice" (valueChange)="onChange()">
@@ -8,6 +6,10 @@
             <mat-option value="Two-Way">Two-Way</mat-option>
         </mat-select>
     </mat-form-field>
+</div>
+
+<div class="air-logo-container" *ngIf="filterChoice == ''">
+  <p class="air-logo">VOYAG'AIR</p>
 </div>
 
 <div id="notExisting" *ngIf="oneWay.length == 0 && twoWayDep.length == 0 && twoWayRet.length == 0 && filterChoice == 'All' && filterInit == ''">

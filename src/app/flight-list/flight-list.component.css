@@ -3,10 +3,24 @@ table {
     border-radius: 15px;
 }
 
+.flight-list {
+    width: 90%;
+    float: left;
+}
+
 .container-fluid {
     background-color: rgba(255, 255, 255, 0.459);
+    height: 100px;
     width: 100%;
     margin-top: 15px;
+}
+
+.content {
+    padding-top: 20px;
+}
+
+.cancel {
+    margin: 0 auto;
 }
 
 .container > .airline {
@@ -40,10 +54,6 @@ table {
     max-width: 40px;
 }
 
-.cancel {
-    width: 55px;
-}
-
 .flights {
     margin: 0 auto;
     width: 95%;
@@ -51,6 +61,7 @@ table {
 
 td {
     padding: 5px;
+    padding-top: 12px;
     text-align: center;
 }
 
@@ -69,12 +80,6 @@ p {
 .airline > p {
     font-weight: bold;
     font-size: 22px;
-}
-
-h1 {
-    margin-top: 20px;
-    font-style: italic;
-    font-family: 'myFont';
 }
 
 h2 {

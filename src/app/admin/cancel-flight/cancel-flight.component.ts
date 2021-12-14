@@ -11,7 +11,7 @@ export class CancelFlightComponent implements OnInit {
 
   @Input() flightCode: any; 
   @Input() status: any;
-
+  confirmed: boolean = false;
   flights$: any = [];
   modalRef!: BsModalRef;
     
@@ -28,10 +28,11 @@ export class CancelFlightComponent implements OnInit {
   cancelFlight() {
     for (let x of this.flights$) {
       if (x.flightCode == this.flightCode) {
+        this.confirmed = true;
         this.flight.cancelFLight(x.$key, 'Cancelled');
         setTimeout(()=> {
           this.closeModal();
-        }, 500);
+        }, 1500);
       }
     }
   }

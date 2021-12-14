@@ -65,6 +65,7 @@ export class FlightListComponent implements OnInit {
 
   getDepart(flight: any) {
     this.flight.setDepartingFlight(flight);
+    this.modalRef?.hide();
     console.log(this.flight.getDepartingFlight())
   }
 }

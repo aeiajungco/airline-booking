@@ -40,36 +40,35 @@ export class ViewUsersComponent implements OnInit {
 
     if (this.showClick == 1) {
       $('#view-btn'+i).html('Hide Bookings');
+      for (let x of this.bookingList$) {
+        if (username == x.username) {
+          this.un = x.username;
+          this.empty = false;
+          console.log(this.un);
+          break;
+        }
+      }
+      if (this.un == '') {
+        console.log("EMPTY");
+        this.empty = true;
+        for (let i = 0; i <= this.userWithBookings.length; i++) {
+          if(this.userWithBookings.length == 0) {
+            this.userWithBookings.push(username);
+          }
+          else if (username != this.userWithBookings[i] && i+1 == this.userWithBookings.length) {
+            this.userWithBookings.push(username);
+          }
+          if (username == this.userWithBookings[i]) {
+            this.noBookingUser = this.userWithBookings[i];
+          }
+        }
+     }
     }
     else {
       $('button[id^="view-btn"]').html('View Bookings');
       $('#view-btn'+i).html('View Bookings');
       this.showClick = 0;
-    }
+    } 
 
-    for (let x of this.bookingList$) {
-      if (username == x.username) {
-        this.un = x.username;
-        this.empty = false;
-        break;
-      }
-    }
-    console.log(this.un);
-
-    if (this.un == '') {
-      console.log("EMPTY");
-      this.empty = true;
-      for (let i = 0; i <= this.userWithBookings.length; i++) {
-        if(this.userWithBookings.length == 0) {
-          this.userWithBookings.push(username);
-        }
-        else if (username != this.userWithBookings[i] && i+1 == this.userWithBookings.length) {
-          this.userWithBookings.push(username);
-        }
-        if (username == this.userWithBookings[i]) {
-          this.noBookingUser = this.userWithBookings[i];
-        }
-      }
-   }
   }
 }

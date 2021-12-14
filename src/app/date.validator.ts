@@ -15,3 +15,19 @@ export function DateValidator(controlName: any, comparedControlName: any) {
         }
     }
 }
+
+export function DepDateValidator(controlName: any, comparedControlName: any) {
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const comparedControl = formGroup.controls[comparedControlName];
+        if (comparedControl.errors && !comparedControl.errors.invalidDate) {
+            return;
+        }
+        if (control.value > comparedControl.value) {
+            comparedControl.setErrors({ invalidDate: true});
+        }
+        else {
+            comparedControl.setErrors(null);
+        }
+    }
+}

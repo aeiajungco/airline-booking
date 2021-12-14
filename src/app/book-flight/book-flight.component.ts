@@ -3,8 +3,9 @@ import { Component, OnInit} from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { FlightsService } from '../services/flights.service';
 import { OrigDestAirService } from '../services/orig-dest-air.service';
-import { DateValidator } from '../date.validator';
+import { DateValidator, DepDateValidator } from '../date.validator';
 import { OrigDestValidator } from '../orig-dest.validator';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-book-flight',
@@ -13,10 +14,7 @@ import { OrigDestValidator } from '../orig-dest.validator';
 })
 
 export class BookFlightComponent implements OnInit {
-  selectedDes = "";
-  selectedOri = "";
-  selectedAir = "";
-  selectedTrip = "";
+  selectedTrip = '';
   flightList$: any = [];
   userList$: any = [];
   matchingList: any = [];
@@ -28,23 +26,23 @@ export class BookFlightComponent implements OnInit {
   matched!: boolean;
   retDateMatched!: boolean;
   dateDiff: any;
-
+  currentDate: any;
 
   bookForm = this.fb.group ({
-    airLine: [''],
+    bookDate: [this.getCurrentDate()],
     orig: ['', Validators.required],
     dest: ['', Validators.required],
     trip: ['', Validators.required],
     depDate: ['', Validators.required],
     retDate: [''],
   }, {
-      validator: [DateValidator('depDate', 'retDate'), OrigDestValidator('orig','dest')]
+      validator: [DateValidator('depDate', 'retDate'), OrigDestValidator('orig','dest'), DepDateValidator('bookDate','depDate')]
     });
 
   public locations: any = [];
   public airlines: any = [];
 
-  constructor(private fb: FormBuilder, private flight: FlightsService, private locair: OrigDestAirService, private user: UserService) { } 
+  constructor(private fb: FormBuilder, private flight: FlightsService, private locair: OrigDestAirService, private user: UserService, private datepipe: DatePipe) { } 
 
 
   ngOnInit(): void {
@@ -56,10 +54,17 @@ export class BookFlightComponent implements OnInit {
     })
 
     this.locations = this.locair.getLocations();
-    this.airlines = this.locair.getAirLine();    
+    this.airlines = this.locair.getAirLine();
+  }
+
+  getCurrentDate() {
+    this.currentDate = new Date();
+    let bookDate = this.datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+    return bookDate;
   }
 
   onSubmit() {
+    console.log(this.bookForm.value);
     const diffDays = (date: any, otherDate: any) => Math.ceil(Math.abs(date - otherDate) / (1000 * 60 * 60 * 24));     
 
     this.flight.setDepartingFlight(null);

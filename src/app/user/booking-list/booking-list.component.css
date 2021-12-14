@@ -3,6 +3,21 @@
     text-align: center;
 }
 
+.air-logo-container {
+    text-align: center;
+    margin-top: 250px;
+}
+
+.air-logo {    
+    color: white;
+    opacity: 0.3;
+    letter-spacing: 20px;
+    font-size: 120px;
+    font-weight: bold;
+    font-family: 'myFont';
+    font-style: italic;
+}
+
 mat-form-field {
     font-size: 20px;
     width: 250px;

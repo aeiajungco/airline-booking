@@ -18,6 +18,7 @@ export class CancelBookingComponent implements OnInit {
   modalRef!: BsModalRef;
   isAdmin: any;
   confirmed: boolean = false;
+  successful: boolean = false;
 
   constructor(private users: UserService, private modalService: BsModalService, private router: Router, private route: ActivatedRoute) {}
 
@@ -40,22 +41,22 @@ export class CancelBookingComponent implements OnInit {
       setTimeout(()=> {
         this.closeModal(),
         this.reload();  
-      }, 500);  
+      }, 1200);  
     }
     else {
       if(this.dateDiff >= 7) {
-        this.confirmed == true;
+        this.successful = true;
         this.users.removeBooking(this.bookingID);
         setTimeout(()=> {
           this.closeModal(),
           this.reload();  
-        }, 500);          
+        }, 1200);          
       }
       else {
         this.confirmed = false;
         setTimeout(()=> {
           this.closeModal();
-        }, 500);
+        }, 1200);
       }
     }
   }

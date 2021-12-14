@@ -105,7 +105,7 @@
           <div class="flight-header">
             <div class="rfDateLabel"></div>
             <div class="cancel">
-              <app-cancel-booking *ngIf=" depFl.status != 'Cancelled' || twoWayRet[i].status != 'Cancelled'"
+              <app-cancel-booking *ngIf=" depFl.status != 'Cancelled' && twoWayRet[i].status != 'Cancelled'"
                 [bookingID]="depFl.$key"
                 [bookingDate]="depFl.bookDate"
                 [depDate]="depFl.depDate"

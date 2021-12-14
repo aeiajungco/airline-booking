@@ -35,7 +35,7 @@
                     <mat-icon>route</mat-icon>
                     Select trip
                 </mat-label>
-                <mat-select formControlName="trip" (valueChange)="onChange()">
+                <mat-select formControlName="trip" [(value)]="selectedTrip" (valueChange)="onChange()">
                     <mat-option value="trip1">One-Way Trip</mat-option>
                     <mat-option value="trip2">Round Trip</mat-option>
                 </mat-select>
@@ -51,6 +51,7 @@
                     formControlName="depDate"
                     >
                 <mat-error *ngIf="bf.depDate.errors?.required">Please select departure date.</mat-error>
+                <mat-error *ngIf="bf.depDate.errors?.invalidDate">Invalid departure date.</mat-error>
             </mat-form-field>
 
             <mat-form-field class="field" *ngIf="selectedTrip == 'trip2'">
@@ -67,7 +68,7 @@
     </mat-card-content>
 </mat-card>
 
-<app-matching-flight-list *ngIf="matched" [departingFlight]="departingFlight" [closeDepFlight]="closeDepFlight" [returningFlight]="returningFlight" [closeRetFlight]="closeRetFlight" [selectedTrip]="bf.trip.value"></app-matching-flight-list>
+<app-matching-flight-list *ngIf="matched" [departingFlight]="departingFlight" [closeDepFlight]="closeDepFlight" [returningFlight]="returningFlight" [closeRetFlight]="closeRetFlight" [selectedTrip]="selectedTrip"></app-matching-flight-list>
 <div id="noMatches" *ngIf="!matched && submitted && !retDateMatched">
     <h2>- No Available Flights -</h2>
 </div>

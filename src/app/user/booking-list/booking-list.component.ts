@@ -58,9 +58,6 @@ export class BookingListComponent implements OnInit {
     });
 
     this.userLoggedIn = localStorage.getItem('username');
-    console.log(this.userFlights); 
-
-    this.filterChoice = 'All';
   }
   
   onChange() {    
